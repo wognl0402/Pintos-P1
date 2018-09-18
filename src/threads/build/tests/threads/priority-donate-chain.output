@@ -1,4 +1,4 @@
-Writing command line to /tmp/LoUJR5InTj.dsk...
+Writing command line to /tmp/oGbIZYzCtl.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-chain
@@ -13,14 +13,14 @@ Executing 'priority-donate-chain':
 (priority-donate-chain) main should have priority 3.  Actual priority: 0.
 (priority-donate-chain) interloper 1 finished.
 (priority-donate-chain) main should have priority 6.  Actual priority: 0.
-(priority-donate-chain) main should have priority 9.  Actual priority: 0.
 (priority-donate-chain) interloper 2 finished.
+(priority-donate-chain) main should have priority 9.  Actual priority: 0.
 (priority-donate-chain) interloper 3 finished.
 (priority-donate-chain) main should have priority 12.  Actual priority: 0.
-(priority-donate-chain) main should have priority 15.  Actual priority: 0.
 (priority-donate-chain) interloper 4 finished.
-(priority-donate-chain) interloper 5 finished.
+(priority-donate-chain) main should have priority 15.  Actual priority: 0.
 (priority-donate-chain) main should have priority 18.  Actual priority: 0.
+(priority-donate-chain) interloper 5 finished.
 (priority-donate-chain) interloper 6 finished.
 (priority-donate-chain) main should have priority 21.  Actual priority: 0.
 (priority-donate-chain) main finishing with priority 0.

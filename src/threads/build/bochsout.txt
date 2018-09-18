@@ -30,7 +30,7 @@
 00000000000i[     ]   SB16 support: no
 00000000000i[     ]   USB support: no
 00000000000i[     ]   VGA extension support:  
-00000000000i[MEM0 ] allocated memory at 0x7f220b3fb010. after alignment, vector=0x7f220b3fc000
+00000000000i[MEM0 ] allocated memory at 0x2acbd2169010. after alignment, vector=0x2acbd216a000
 00000000000i[MEM0 ] 4.00MB
 00000000000i[MEM0 ] rom at 0xf0000/65536 ('/usr/local/share/bochs/BIOS-bochs-latest')
 00000000000i[MEM0 ] rom at 0xc0000/32768 ('/usr/local/share/bochs/VGABIOS-lgpl-latest')
@@ -46,7 +46,7 @@
 00000000000i[     ] init_mem of 'extfpuirq' plugin device by virtual method
 00000000000i[     ] init_mem of 'speaker' plugin device by virtual method
 00000000000i[     ] init_dev of 'harddrv' plugin device by virtual method
-00000000000i[HD   ] HD on ata0-0: '/tmp/T_cH6cEqGd.dsk' 'flat' mode 
+00000000000i[HD   ] HD on ata0-0: '/tmp/yG5WBkxzKD.dsk' 'flat' mode 
 00000000000i[HD   ] Using boot sequence disk, none, none
 00000000000i[HD   ] Floppy boot signature check is enabled
 00000000000i[     ] init_dev of 'keyboard' plugin device by virtual method
@@ -73,28 +73,27 @@
 00000786523e[HD   ] ata0: device set to 1 which does not exist
 00000786815e[HD   ] ata1: device set to 0 which does not exist
 00000787108e[HD   ] ata1: device set to 1 which does not exist
-00710500504p[     ] >>PANIC<< SIGNAL 2 caught
-00710500504i[SYS  ] Last time is 710
-00710500504i[NGUI ] bx_nogui_gui_c::exit() not implemented yet.
-00710500504i[CPU  ] protected mode
-00710500504i[CPU  ] CS.d_b = 32 bit
-00710500504i[CPU  ] SS.d_b = 32 bit
-00710500504i[CPU  ] | EAX=00000000  EBX=00000175  ECX=0007800f  EDX=000003f8
-00710500504i[CPU  ] | ESP=c002fe24  EBP=c002fe5c  ESI=c010b8e7  EDI=c010cae3
-00710500504i[CPU  ] | IOPL=0 id vip vif ac vm rf nt of df if tf sf ZF af PF cf
-00710500504i[CPU  ] | SEG selector     base    limit G D
-00710500504i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
-00710500504i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
-00710500504i[CPU  ] |  DS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00710500504i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00710500504i[CPU  ] |  ES:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00710500504i[CPU  ] |  FS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00710500504i[CPU  ] |  GS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00710500504i[CPU  ] | EIP=c0106f60 (c0106f60)
-00710500504i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0x0000003c
-00710500504i[CPU  ] | CR3=0x00112000 CR4=0x00000000
-00710500504i[CPU  ] >> eb
-00710500504i[CPU  ] >> fb
-00710500504i[CPU  ] >> : jmp .+0xfffffffb
-00710500504i[     ] restoring default signal behavior
-00710500504i[CTRL ] quit_sim called with exit code 1
+00032147601p[UNMP ] >>PANIC<< Shutdown port: shutdown requested
+00032147601i[SYS  ] Last time is 32
+00032147601i[NGUI ] bx_nogui_gui_c::exit() not implemented yet.
+00032147601i[CPU  ] protected mode
+00032147601i[CPU  ] CS.d_b = 32 bit
+00032147601i[CPU  ] SS.d_b = 32 bit
+00032147601i[CPU  ] | EAX=0000006e  EBX=c002ff82  ECX=ffff8900  EDX=ffff8900
+00032147601i[CPU  ] | ESP=c002ff70  EBP=c002ff88  ESI=00000000  EDI=c0112c00
+00032147601i[CPU  ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf zf af pf cf
+00032147601i[CPU  ] | SEG selector     base    limit G D
+00032147601i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00032147601i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00032147601i[CPU  ] |  DS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00032147601i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00032147601i[CPU  ] |  ES:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00032147601i[CPU  ] |  FS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00032147601i[CPU  ] |  GS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00032147601i[CPU  ] | EIP=c0100069 (c0100068)
+00032147601i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0x00000000
+00032147601i[CPU  ] | CR3=0x00112000 CR4=0x00000000
+00032147601i[CPU  ] >> ee
+00032147601i[CPU  ] >> : out dx, al
+00032147601i[     ] restoring default signal behavior
+00032147601i[CTRL ] quit_sim called with exit code 1

@@ -20,11 +20,17 @@
 /* Number of timer ticks since OS booted. */
 static int64_t ticks;
 
+static struct list block_list;
+
 /* Number of loops per timer tick.
    Initialized by timer_calibrate(). */
 static unsigned loops_per_tick;
 
 static intr_handler_func timer_interrupt;
+/*static bool less_tick_func (const struct list_elem *a,
+			    const struct list_elem *b,
+			    void *aux);
+*/ 
 static bool too_many_loops (unsigned loops);
 static void busy_wait (int64_t loops);
 static void real_time_sleep (int64_t num, int32_t denom);
@@ -44,6 +50,8 @@ timer_init (void)
   outb (0x40, count >> 8);
 
   intr_register_ext (0x20, timer_interrupt, "8254 Timer");
+
+  list_init (&block_list); 
 }
 
 /* Calibrates loops_per_tick, used to implement brief delays. */
@@ -73,6 +81,12 @@ timer_calibrate (void)
   printf ("%'"PRIu64" loops/s.\n", (uint64_t) loops_per_tick * TIMER_FREQ);
 }
 
+bool less_tick_func (const struct list_elem *a,
+		     const struct list_elem *b,
+		     void *aux){
+  return list_entry (a, struct thread, elem)->left_ticks <
+	 list_entry (b, struct thread, elem)->left_ticks;
+}
 /* Returns the number of timer ticks since the OS booted. */
 int64_t
 timer_ticks (void) 
@@ -84,6 +98,40 @@ timer_ticks (void)
   return t;
 }
 
+/* CUSTOM: block_list update */
+void
+block_ticks (void){
+  struct list_elem *e;
+  if (list_empty (&block_list))
+    return;
+  /*
+  for (e = list_begin (&block_list); e != list_end (&block_list);
+     e = list_next(e)){
+    struct thread *t = list_entry (e, struct thread, elem);
+    t->left_ticks--;
+  }*/
+  //printf("WHEN PANIC 1\n");
+  /*
+  int count = 0;
+  for (e = list_begin (&block_list); e != list_end (&block_list);
+	e = list_next(e)){
+    printf("%dth block_list ticks = %d\n", count, list_entry (e, struct thread, elem)->left_ticks);
+    count++;
+  }*/ 
+  //printf("WHEN PANIC 2\n");
+  e = list_begin (&block_list);
+  struct thread *t = list_entry (e,struct thread, elem);
+
+  ASSERT (t->status == THREAD_BLOCKED);
+  //printf("WHEN PANIC 3\n");
+  if(t->left_ticks <= ticks){
+    printf("I'm here");
+    list_pop_front (&block_list);
+    thread_unblock(t);
+    //list_remove(e);
+  } 
+}
+
 /* Returns the number of timer ticks elapsed since THEN, which
    should be a value once returned by timer_ticks(). */
 int64_t
@@ -93,16 +141,39 @@ timer_elapsed (int64_t then)
 }
 
 /* Suspends execution for approximately TICKS timer ticks. */
+
 void
 timer_sleep (int64_t ticks) 
+{
+  int64_t start = timer_ticks ();
+
+  struct thread *t = thread_current ();
+  
+  enum intr_level old_level;
+  old_level = intr_disable();
+
+  printf("intr_get_level ()==INTR_ON identify: ");
+  printf("\n end of indent \n");
+  t->left_ticks = start+ticks;
+  printf("%d left_ticks: \n:", t->left_ticks);
+  list_insert_ordered (&block_list, &t->elem, less_tick_func, NULL); 
+  thread_block ();
+
+  intr_set_level (old_level); 
+}
+
+/*
+void
+timer_sleep (int64_t ticks)
 {
   int64_t start = timer_ticks ();
 
   ASSERT (intr_get_level () == INTR_ON);
   while (timer_elapsed (start) < ticks) 
     thread_yield ();
+ 
 }
-
+*/
 /* Suspends execution for approximately MS milliseconds. */
 void
 timer_msleep (int64_t ms) 
@@ -130,13 +201,14 @@ timer_print_stats (void)
 {
   printf ("Timer: %"PRId64" ticks\n", timer_ticks ());
 }
-
+
 /* Timer interrupt handler. */
 static void
 timer_interrupt (struct intr_frame *args UNUSED)
 {
   ticks++;
   thread_tick ();
+  block_ticks ();
 }
 
 /* Returns true if LOOPS iterations waits for more than one timer

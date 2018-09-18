@@ -89,6 +89,9 @@ struct thread
     uint8_t *stack;                     /* Saved stack pointer. */
     int priority;                       /* Priority. */
 
+    int64_t left_ticks;			/* CUSTOM: blocking time */
+
+
     /* Shared between thread.c and synch.c. */
     struct list_elem elem;              /* List element. */
 

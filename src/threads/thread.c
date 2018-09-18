@@ -28,6 +28,10 @@
    that are ready to run but not actually running. */
 static struct list ready_list;
 
+/* CUSTOM: List of processes in THREAD_BLOCK state, that is processes
+	that are actually blocked */
+//static struct list block_list;
+
 /* Idle thread. */
 static struct thread *idle_thread;
 
@@ -71,6 +75,14 @@ static void schedule (void);
 void schedule_tail (struct thread *prev);
 static tid_t allocate_tid (void);
 
+/*
+typedef bool less_tick_func (const struct list_elem *a,
+			     const struct list_elem *b,
+			     void *aux){
+  return list_entry (a, struct thread, elem)->left_ticks <
+		list_entry(b, struct thread, elem)->left_ticks;
+}*/
+
 /* Initializes the threading system by transforming the code
    that's currently running into a thread.  This can't work in
    general and it is possible in this case only because loader.S
@@ -91,7 +103,7 @@ thread_init (void)
 
   lock_init (&tid_lock);
   list_init (&ready_list);
-
+  //list_init (&block_list);
   /* Set up a thread structure for the running thread. */
   initial_thread = running_thread ();
   init_thread (initial_thread, "main", PRI_DEFAULT);
@@ -208,6 +220,7 @@ thread_create (const char *name, int priority,
    This function must be called with interrupts turned off.  It
    is usually a better idea to use one of the synchronization
    primitives in synch.h. */
+/* CUSTOM: thread_block changed*/
 void
 thread_block (void) 
 {
