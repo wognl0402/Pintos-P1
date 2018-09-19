@@ -1,4 +1,4 @@
-Writing command line to /tmp/jIAcDgLiT3.dsk...
+Writing command line to /tmp/dgaCu_w6NN.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run alarm-negative
@@ -9,11 +9,14 @@ Calibrating timer...  204,600 loops/s.
 Boot complete.
 Executing 'alarm-negative':
 (alarm-negative) begin
-(alarm-negative) PASS
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+-77 left_ticks: 
+:I'm here(alarm-negative) PASS
 (alarm-negative) end
 Execution of 'alarm-negative' complete.
-Timer: 35 ticks
-Thread: 0 idle ticks, 38 kernel ticks, 0 user ticks
-Console: 405 characters output
+Timer: 36 ticks
+Thread: 1 idle ticks, 38 kernel ticks, 0 user ticks
+Console: 485 characters output
 Keyboard: 0 keys pressed
 Powering off...

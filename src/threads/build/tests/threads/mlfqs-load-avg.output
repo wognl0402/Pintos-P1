@@ -1,4 +1,4 @@
-Writing command line to /tmp/Nb8y6qBpy4.dsk...
+Writing command line to /tmp/6gTbYgjWBW.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-load-avg
@@ -10,101 +10,731 @@ Boot complete.
 Executing 'mlfqs-load-avg':
 (mlfqs-load-avg) begin
 (mlfqs-load-avg) Starting 60 load threads...
-(mlfqs-load-avg) Starting threads took 2 seconds.
-(mlfqs-load-avg) After 0 seconds, load average=0.00.
-(mlfqs-load-avg) After 2 seconds, load average=0.00.
-(mlfqs-load-avg) After 4 seconds, load average=0.00.
-(mlfqs-load-avg) After 6 seconds, load average=0.00.
-(mlfqs-load-avg) After 8 seconds, load average=0.00.
-(mlfqs-load-avg) After 10 seconds, load average=0.00.
-(mlfqs-load-avg) After 12 seconds, load average=0.00.
-(mlfqs-load-avg) After 14 seconds, load average=0.00.
-(mlfqs-load-avg) After 16 seconds, load average=0.00.
-(mlfqs-load-avg) After 18 seconds, load average=0.00.
-(mlfqs-load-avg) After 20 seconds, load average=0.00.
-(mlfqs-load-avg) After 22 seconds, load average=0.00.
-(mlfqs-load-avg) After 24 seconds, load average=0.00.
-(mlfqs-load-avg) After 26 seconds, load average=0.00.
-(mlfqs-load-avg) After 28 seconds, load average=0.00.
-(mlfqs-load-avg) After 30 seconds, load average=0.00.
-(mlfqs-load-avg) After 32 seconds, load average=0.00.
-(mlfqs-load-avg) After 34 seconds, load average=0.00.
-(mlfqs-load-avg) After 36 seconds, load average=0.00.
-(mlfqs-load-avg) After 38 seconds, load average=0.00.
-(mlfqs-load-avg) After 40 seconds, load average=0.00.
-(mlfqs-load-avg) After 42 seconds, load average=0.00.
-(mlfqs-load-avg) After 44 seconds, load average=0.00.
-(mlfqs-load-avg) After 46 seconds, load average=0.00.
-(mlfqs-load-avg) After 48 seconds, load average=0.00.
-(mlfqs-load-avg) After 50 seconds, load average=0.00.
-(mlfqs-load-avg) After 52 seconds, load average=0.00.
-(mlfqs-load-avg) After 54 seconds, load average=0.00.
-(mlfqs-load-avg) After 56 seconds, load average=0.00.
-(mlfqs-load-avg) After 58 seconds, load average=0.00.
-(mlfqs-load-avg) After 60 seconds, load average=0.00.
-(mlfqs-load-avg) After 62 seconds, load average=0.00.
-(mlfqs-load-avg) After 64 seconds, load average=0.00.
-(mlfqs-load-avg) After 66 seconds, load average=0.00.
-(mlfqs-load-avg) After 68 seconds, load average=0.00.
-(mlfqs-load-avg) After 70 seconds, load average=0.00.
-(mlfqs-load-avg) After 72 seconds, load average=0.00.
-(mlfqs-load-avg) After 74 seconds, load average=0.00.
-(mlfqs-load-avg) After 76 seconds, load average=0.00.
-(mlfqs-load-avg) After 78 seconds, load average=0.00.
-(mlfqs-load-avg) After 80 seconds, load average=0.00.
-(mlfqs-load-avg) After 82 seconds, load average=0.00.
-(mlfqs-load-avg) After 84 seconds, load average=0.00.
-(mlfqs-load-avg) After 86 seconds, load average=0.00.
-(mlfqs-load-avg) After 88 seconds, load average=0.00.
-(mlfqs-load-avg) After 90 seconds, load average=0.00.
-(mlfqs-load-avg) After 92 seconds, load average=0.00.
-(mlfqs-load-avg) After 94 seconds, load average=0.00.
-(mlfqs-load-avg) After 96 seconds, load average=0.00.
-(mlfqs-load-avg) After 98 seconds, load average=0.00.
-(mlfqs-load-avg) After 100 seconds, load average=0.00.
-(mlfqs-load-avg) After 102 seconds, load average=0.00.
-(mlfqs-load-avg) After 104 seconds, load average=0.00.
-(mlfqs-load-avg) After 106 seconds, load average=0.00.
-(mlfqs-load-avg) After 108 seconds, load average=0.00.
-(mlfqs-load-avg) After 110 seconds, load average=0.00.
-(mlfqs-load-avg) After 112 seconds, load average=0.00.
-(mlfqs-load-avg) After 114 seconds, load average=0.00.
-(mlfqs-load-avg) After 116 seconds, load average=0.00.
-(mlfqs-load-avg) After 118 seconds, load average=0.00.
-(mlfqs-load-avg) After 120 seconds, load average=0.00.
-(mlfqs-load-avg) After 122 seconds, load average=0.00.
-(mlfqs-load-avg) After 124 seconds, load average=0.00.
-(mlfqs-load-avg) After 126 seconds, load average=0.00.
-(mlfqs-load-avg) After 128 seconds, load average=0.00.
-(mlfqs-load-avg) After 130 seconds, load average=0.00.
-(mlfqs-load-avg) After 132 seconds, load average=0.00.
-(mlfqs-load-avg) After 134 seconds, load average=0.00.
-(mlfqs-load-avg) After 136 seconds, load average=0.00.
-(mlfqs-load-avg) After 138 seconds, load average=0.00.
-(mlfqs-load-avg) After 140 seconds, load average=0.00.
-(mlfqs-load-avg) After 142 seconds, load average=0.00.
-(mlfqs-load-avg) After 144 seconds, load average=0.00.
-(mlfqs-load-avg) After 146 seconds, load average=0.00.
-(mlfqs-load-avg) After 148 seconds, load average=0.00.
-(mlfqs-load-avg) After 150 seconds, load average=0.00.
-(mlfqs-load-avg) After 152 seconds, load average=0.00.
-(mlfqs-load-avg) After 154 seconds, load average=0.00.
-(mlfqs-load-avg) After 156 seconds, load average=0.00.
-(mlfqs-load-avg) After 158 seconds, load average=0.00.
-(mlfqs-load-avg) After 160 seconds, load average=0.00.
-(mlfqs-load-avg) After 162 seconds, load average=0.00.
-(mlfqs-load-avg) After 164 seconds, load average=0.00.
-(mlfqs-load-avg) After 166 seconds, load average=0.00.
-(mlfqs-load-avg) After 168 seconds, load average=0.00.
-(mlfqs-load-avg) After 170 seconds, load average=0.00.
-(mlfqs-load-avg) After 172 seconds, load average=0.00.
-(mlfqs-load-avg) After 174 seconds, load average=0.00.
-(mlfqs-load-avg) After 176 seconds, load average=0.00.
-(mlfqs-load-avg) After 178 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1123 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1223 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1323 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1423 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1623 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1723 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1823 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1923 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2123 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2223 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2323 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2423 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2623 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2723 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2823 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2923 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3123 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3223 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3323 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3423 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3623 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3723 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3823 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3923 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4123 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4223 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4323 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4423 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4623 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4723 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4823 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4923 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5123 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5223 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5323 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5423 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5623 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5723 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5823 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5923 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6123 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6223 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6323 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6423 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6623 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6723 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6823 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6923 left_ticks: 
+:(mlfqs-load-avg) Starting threads took 2 seconds.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 0 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1223 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 2 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1423 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 4 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1623 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 6 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1823 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 8 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2023 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 10 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2223 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 12 seconds, I'm hereload average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2423 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 14 seconds, I'm hereload average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2623 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 16 seconds,I'm here load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2823 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 18 seconds,I'm here load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3023 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 20 seconds,I'm here load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3223 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 22 secondsI'm here, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3423 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 24 I'm hereseconds, load average=0.I'm here00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3623 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 26 secondsI'm here, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3823 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 28 secondI'm hereI'm heres, load average=0.00.
+I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+4023 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 30 secondI'm hereI'm heres, load average=0.00.
+I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+4223 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 32 seconI'm hereds, load average=0.00.I'm hereI'm here
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4423 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 34 secoI'm hereI'm herends, load average=0.00I'm hereI'm here.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4623 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 36 secoI'm hereI'm herends, load average=0.0I'm hereI'm here0.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4823 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 38 secI'm hereI'm hereonds, load average=0I'm here.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5023 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 40 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5223 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 42 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5423 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 44 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5623 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 46 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5823 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 48 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6023 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 50 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6223 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 52 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6423 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 54 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6623 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 56 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6823 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 58 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+7023 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 60 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+7223 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 62 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+7423 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 64 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+7623 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 66 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+7823 left_ticks: 
+:I'm hereI'm hereI'm hereI'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm here(mlfqs-load-avg) After 68 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+8023 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 70 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+8223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 72 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+8423 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 74 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+8623 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 76 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+8823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 78 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+9023 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 80 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+9223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 82 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+9423 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 84 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+9623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 86 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+9823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 88 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+10023 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 90 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+10223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 92 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+10423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 94 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+10623 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 96 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+10823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 98 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+11023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 100 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+11223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 102 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+11423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 104 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+11623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 106 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+11823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 108 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm here(I'm heremlfqs-load-avg) After 110 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 112 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 114 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 116 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 118 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 120 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 122 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 124 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 126 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 128 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+14023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 130 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+14223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 132 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+14423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 134 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+14623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 136 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+14823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 138 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+15023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 140 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+15223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 142 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+15423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 144 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+15623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 146 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+15823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 148 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+16023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 150 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+16223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 152 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+16423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 154 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+16623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 156 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+16823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 158 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+17023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 160 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+17223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 162 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+17423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 164 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+17623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 166 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+17823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 168 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+18023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 170 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+18223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 172 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+18423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 174 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+18623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 176 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+18823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 178 seconds, load average=0.00.
 (mlfqs-load-avg) end
 Execution of 'mlfqs-load-avg' complete.
-Timer: 18838 ticks
-Thread: 0 idle ticks, 18841 kernel ticks, 0 user ticks
-Console: 5386 characters output
+Timer: 18839 ticks
+Thread: 6417 idle ticks, 12425 kernel ticks, 0 user ticks
+Console: 22504 characters output
 Keyboard: 0 keys pressed
 Powering off...

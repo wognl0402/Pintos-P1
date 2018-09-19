@@ -1,4 +1,4 @@
-TOTAL TESTING SCORE: 24.2%
+TOTAL TESTING SCORE: 27.0%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -6,11 +6,11 @@ SUMMARY BY TEST SET
 
 Test Set                                      Pts Max  % Ttl  % Max
 --------------------------------------------- --- --- ------ ------
-tests/threads/Rubric.alarm                     14/ 18  15.6%/ 20.0%
-tests/threads/Rubric.priority                   0/ 38   0.0%/ 40.0%
+tests/threads/Rubric.alarm                      8/ 18   8.9%/ 20.0%
+tests/threads/Rubric.priority                   9/ 38   9.5%/ 40.0%
 tests/threads/Rubric.mlfqs                      8/ 37   8.6%/ 40.0%
 --------------------------------------------- --- --- ------ ------
-Total                                                  24.2%/100.0%
+Total                                                  27.0%/100.0%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -19,21 +19,21 @@ SUMMARY OF INDIVIDUAL TESTS
 Functionality and robustness of alarm clock (tests/threads/Rubric.alarm):
 	     4/ 4 tests/threads/alarm-single
 	     4/ 4 tests/threads/alarm-multiple
-	     4/ 4 tests/threads/alarm-simultaneous
+	  ** 0/ 4 tests/threads/alarm-simultaneous
 	  ** 0/ 4 tests/threads/alarm-priority
 
-	     1/ 1 tests/threads/alarm-zero
-	     1/ 1 tests/threads/alarm-negative
+	  ** 0/ 1 tests/threads/alarm-zero
+	  ** 0/ 1 tests/threads/alarm-negative
 
 	- Section summary.
-	      5/  6 tests passed
-	     14/ 18 points subtotal
+	      2/  6 tests passed
+	      8/ 18 points subtotal
 
 Functionality of priority scheduler (tests/threads/Rubric.priority):
-	  ** 0/ 3 tests/threads/priority-change
-	  ** 0/ 3 tests/threads/priority-preempt
+	     3/ 3 tests/threads/priority-change
+	     3/ 3 tests/threads/priority-preempt
 
-	  ** 0/ 3 tests/threads/priority-fifo
+	     3/ 3 tests/threads/priority-fifo
 	  ** 0/ 3 tests/threads/priority-sema
 	  ** 0/ 3 tests/threads/priority-condvar
 
@@ -46,8 +46,8 @@ Functionality of priority scheduler (tests/threads/Rubric.priority):
 	  ** 0/ 3 tests/threads/priority-donate-lower
 
 	- Section summary.
-	      0/ 12 tests passed
-	      0/ 38 points subtotal
+	      3/ 12 tests passed
+	      9/ 38 points subtotal
 
 Functionality of advanced scheduler (tests/threads/Rubric.mlfqs):
 	  ** 0/ 5 tests/threads/mlfqs-load-1
@@ -71,6 +71,222 @@ Functionality of advanced scheduler (tests/threads/Rubric.mlfqs):
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
+DETAILS OF tests/threads/alarm-simultaneous FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (alarm-simultaneous) begin
+  (alarm-simultaneous) Creating 3 threads to sleep 5 times each.
+  (alarm-simultaneous) Each thread sleeps 10 ticks each time.
+  (alarm-simultaneous) Within an iteration, all threads should wake up on the same tick.
+  (alarm-simultaneous) iteration 0, thread 0: woke up after 10 ticks
+  (alarm-simultaneous) iteration 0, thread 1: woke up 0 ticks later
+  (alarm-simultaneous) iteration 0, thread 2: woke up 0 ticks later
+  (alarm-simultaneous) iteration 1, thread 0: woke up 10 ticks later
+  (alarm-simultaneous) iteration 1, thread 1: woke up 0 ticks later
+  (alarm-simultaneous) iteration 1, thread 2: woke up 0 ticks later
+  (alarm-simultaneous) iteration 2, thread 0: woke up 10 ticks later
+  (alarm-simultaneous) iteration 2, thread 1: woke up 0 ticks later
+  (alarm-simultaneous) iteration 2, thread 2: woke up 0 ticks later
+  (alarm-simultaneous) iteration 3, thread 0: woke up 10 ticks later
+  (alarm-simultaneous) iteration 3, thread 1: woke up 0 ticks later
+  (alarm-simultaneous) iteration 3, thread 2: woke up 0 ticks later
+  (alarm-simultaneous) iteration 4, thread 0: woke up 10 ticks later
+  (alarm-simultaneous) iteration 4, thread 1: woke up 0 ticks later
+  (alarm-simultaneous) iteration 4, thread 2: woke up 0 ticks later
+  (alarm-simultaneous) end
+Differences in `diff -u' format:
+  (alarm-simultaneous) begin
+  (alarm-simultaneous) Creating 3 threads to sleep 5 times each.
+  (alarm-simultaneous) Each thread sleeps 10 ticks each time.
+  (alarm-simultaneous) Within an iteration, all threads should wake up on the same tick.
+- (alarm-simultaneous) iteration 0, thread 0: woke up after 10 ticks
+- (alarm-simultaneous) iteration 0, thread 1: woke up 0 ticks later
+- (alarm-simultaneous) iteration 0, thread 2: woke up 0 ticks later
+- (alarm-simultaneous) iteration 1, thread 0: woke up 10 ticks later
+- (alarm-simultaneous) iteration 1, thread 1: woke up 0 ticks later
+- (alarm-simultaneous) iteration 1, thread 2: woke up 0 ticks later
+- (alarm-simultaneous) iteration 2, thread 0: woke up 10 ticks later
+- (alarm-simultaneous) iteration 2, thread 1: woke up 0 ticks later
+- (alarm-simultaneous) iteration 2, thread 2: woke up 0 ticks later
+- (alarm-simultaneous) iteration 3, thread 0: woke up 10 ticks later
+- (alarm-simultaneous) iteration 3, thread 1: woke up 0 ticks later
+- (alarm-simultaneous) iteration 3, thread 2: woke up 0 ticks later
+- (alarm-simultaneous) iteration 4, thread 0: woke up 10 ticks later
+- (alarm-simultaneous) iteration 4, thread 1: woke up 0 ticks later
++ intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 55 left_ticks: 
++ :I'm hereintr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 161 left_ticks: 
++ :intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 61 left_ticks: 
++ :I'm hereintr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 161 left_ticks: 
++ :intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 66 left_ticks: 
++ :I'm hereintr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 316 left_ticks: 
++ :intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 161 left_ticks: 
++ :I'm hereintr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 171 left_ticks: 
++ :I'm hereintr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 171 left_ticks: 
++ :I'm hereintr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 171 left_ticks: 
++ :I'm hereintr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 181 left_ticks: 
++ :I'm hereintr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 181 left_ticks: 
++ :I'm hereintr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 181 left_ticks: 
++ :I'm hereintr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 191 left_ticks: 
++ :I'm hereintr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 191 left_ticks: 
++ :I'm hereintr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 191 left_ticks: 
++ :I'm hereintr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 201 left_ticks: 
++ :I'm hereintr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 201 left_ticks: 
++ :I'm hereintr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 201 left_ticks: 
++ :I'm hereI'm hereI'm hereI'm here(alarm-simultaneous) iteration 0, thread 0: woke up after 10 ticks
++ (alarm-simultaneous) iteration 0, thread 1: woke up 1 ticks later
++ (alarm-simultaneous) iteration 0, thread 2: woke up 1 ticks later
++ (alarm-simultaneous) iteration 1, thread 0: woke up 8 ticks later
++ (alarm-simultaneous) iteration 1, thread 1: woke up 1 ticks later
++ (alarm-simultaneous) iteration 1, thread 2: woke up 1 ticks later
++ (alarm-simultaneous) iteration 2, thread 0: woke up 8 ticks later
++ (alarm-simultaneous) iteration 2, thread 1: woke up 1 ticks later
++ (alarm-simultaneous) iteration 2, thread 2: woke up 1 ticks later
++ (alarm-simultaneous) iteration 3, thread 0: woke up 8 ticks later
++ (alarm-simultaneous) iteration 3, thread 1: woke up 1 ticks later
++ (alarm-simultaneous) iteration 3, thread 2: woke up 1 ticks later
++ (alarm-simultaneous) iteration 4, thread 0: woke up 8 ticks later
++ (alarm-simultaneous) iteration 4, thread 1: woke up 3 ticks later
+  (alarm-simultaneous) iteration 4, thread 2: woke up 0 ticks later
+  (alarm-simultaneous) end
+
+OUTPUT FROM tests/threads/alarm-simultaneous:
+
+Writing command line to /tmp/EQb2ibummV.dsk...
+warning: can't find squish-pty, so terminal input will fail
+bochs -q
+Kernel command line: -q run alarm-simultaneous
+Pintos booting with 4,096 kB RAM...
+375 pages available in kernel pool.
+374 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+Boot complete.
+Executing 'alarm-simultaneous':
+(alarm-simultaneous) begin
+(alarm-simultaneous) Creating 3 threads to sleep 5 times each.
+(alarm-simultaneous) Each thread sleeps 10 ticks each time.
+(alarm-simultaneous) Within an iteration, all threads should wake up on the same tick.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+55 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+161 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+61 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+161 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+66 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+316 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+161 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+171 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+171 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+171 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+181 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+181 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+181 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+191 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+191 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+191 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+201 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+201 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+201 left_ticks: 
+:I'm hereI'm hereI'm hereI'm here(alarm-simultaneous) iteration 0, thread 0: woke up after 10 ticks
+(alarm-simultaneous) iteration 0, thread 1: woke up 1 ticks later
+(alarm-simultaneous) iteration 0, thread 2: woke up 1 ticks later
+(alarm-simultaneous) iteration 1, thread 0: woke up 8 ticks later
+(alarm-simultaneous) iteration 1, thread 1: woke up 1 ticks later
+(alarm-simultaneous) iteration 1, thread 2: woke up 1 ticks later
+(alarm-simultaneous) iteration 2, thread 0: woke up 8 ticks later
+(alarm-simultaneous) iteration 2, thread 1: woke up 1 ticks later
+(alarm-simultaneous) iteration 2, thread 2: woke up 1 ticks later
+(alarm-simultaneous) iteration 3, thread 0: woke up 8 ticks later
+(alarm-simultaneous) iteration 3, thread 1: woke up 1 ticks later
+(alarm-simultaneous) iteration 3, thread 2: woke up 1 ticks later
+(alarm-simultaneous) iteration 4, thread 0: woke up 8 ticks later
+(alarm-simultaneous) iteration 4, thread 1: woke up 3 ticks later
+(alarm-simultaneous) iteration 4, thread 2: woke up 0 ticks later
+(alarm-simultaneous) end
+Execution of 'alarm-simultaneous' complete.
+Timer: 453 ticks
+Thread: 248 idle ticks, 208 kernel ticks, 0 user ticks
+Console: 3125 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
 DETAILS OF tests/threads/alarm-priority FAILURE:
 
 Test output failed to match any acceptable form.
@@ -91,24 +307,51 @@ Acceptable output:
 Differences in `diff -u' format:
   (alarm-priority) begin
 - (alarm-priority) Thread priority 30 woke up.
++ intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 523 left_ticks: 
++ :intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 523 left_ticks: 
++ :intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 523 left_ticks: 
++ :intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 523 left_ticks: 
++ :intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 523 left_ticks: 
++ :intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 523 left_ticks: 
++ :intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 523 left_ticks: 
++ :intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 523 left_ticks: 
++ :intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 523 left_ticks: 
++ :intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 523 left_ticks: 
++ :I'm here(alI'm herearm-I'm hereprioI'm hererityI'm here) I'm hereThreI'm hereadI'm hereI'm hereI'm here priority 30 woke up.
   (alarm-priority) Thread priority 29 woke up.
   (alarm-priority) Thread priority 28 woke up.
-+ (alarm-priority) Thread priority 25 woke up.
-+ (alarm-priority) Thread priority 22 woke up.
   (alarm-priority) Thread priority 27 woke up.
-+ (alarm-priority) Thread priority 23 woke up.
   (alarm-priority) Thread priority 26 woke up.
-- (alarm-priority) Thread priority 25 woke up.
-+ (alarm-priority) Thread priority 30 woke up.
+  (alarm-priority) Thread priority 25 woke up.
   (alarm-priority) Thread priority 24 woke up.
-- (alarm-priority) Thread priority 23 woke up.
-- (alarm-priority) Thread priority 22 woke up.
+  (alarm-priority) Thread priority 23 woke up.
+  (alarm-priority) Thread priority 22 woke up.
   (alarm-priority) Thread priority 21 woke up.
   (alarm-priority) end
 
 OUTPUT FROM tests/threads/alarm-priority:
 
-Writing command line to /tmp/hOXrYZ4oD_.dsk...
+Writing command line to /tmp/dkhnxEtdbw.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run alarm-priority
@@ -119,162 +362,139 @@ Calibrating timer...  204,600 loops/s.
 Boot complete.
 Executing 'alarm-priority':
 (alarm-priority) begin
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:I'm here(alI'm herearm-I'm hereprioI'm hererityI'm here) I'm hereThreI'm hereadI'm hereI'm hereI'm here priority 30 woke up.
 (alarm-priority) Thread priority 29 woke up.
 (alarm-priority) Thread priority 28 woke up.
-(alarm-priority) Thread priority 25 woke up.
-(alarm-priority) Thread priority 22 woke up.
 (alarm-priority) Thread priority 27 woke up.
-(alarm-priority) Thread priority 23 woke up.
 (alarm-priority) Thread priority 26 woke up.
-(alarm-priority) Thread priority 30 woke up.
+(alarm-priority) Thread priority 25 woke up.
 (alarm-priority) Thread priority 24 woke up.
+(alarm-priority) Thread priority 23 woke up.
+(alarm-priority) Thread priority 22 woke up.
 (alarm-priority) Thread priority 21 woke up.
 (alarm-priority) end
 Execution of 'alarm-priority' complete.
-Timer: 602 ticks
-Thread: 0 idle ticks, 605 kernel ticks, 0 user ticks
-Console: 835 characters output
+Timer: 608 ticks
+Thread: 454 idle ticks, 157 kernel ticks, 0 user ticks
+Console: 1637 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-DETAILS OF tests/threads/priority-change FAILURE:
+DETAILS OF tests/threads/alarm-zero FAILURE:
 
 Test output failed to match any acceptable form.
 
 Acceptable output:
-  (priority-change) begin
-  (priority-change) Creating a high-priority thread 2.
-  (priority-change) Thread 2 now lowering priority.
-  (priority-change) Thread 2 should have just lowered its priority.
-  (priority-change) Thread 2 exiting.
-  (priority-change) Thread 2 should have just exited.
-  (priority-change) end
+  (alarm-zero) begin
+  (alarm-zero) PASS
+  (alarm-zero) end
 Differences in `diff -u' format:
-  (priority-change) begin
-  (priority-change) Creating a high-priority thread 2.
-- (priority-change) Thread 2 now lowering priority.
-  (priority-change) Thread 2 should have just lowered its priority.
-- (priority-change) Thread 2 exiting.
-  (priority-change) Thread 2 should have just exited.
-  (priority-change) end
+  (alarm-zero) begin
+- (alarm-zero) PASS
++ intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 22 left_ticks: 
++ :I'm here(alarm-zero) PASS
+  (alarm-zero) end
 
-OUTPUT FROM tests/threads/priority-change:
+OUTPUT FROM tests/threads/alarm-zero:
 
-Writing command line to /tmp/hoUIRti6l3.dsk...
+Writing command line to /tmp/tqL4bmlLGQ.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
-Kernel command line: -q run priority-change
+Kernel command line: -q run alarm-zero
 Pintos booting with 4,096 kB RAM...
 375 pages available in kernel pool.
 374 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 Boot complete.
-Executing 'priority-change':
-(priority-change) begin
-(priority-change) Creating a high-priority thread 2.
-(priority-change) Thread 2 should have just lowered its priority.
-(priority-change) Thread 2 should have just exited.
-(priority-change) end
-Execution of 'priority-change' complete.
-Timer: 56 ticks
-Thread: 0 idle ticks, 59 kernel ticks, 0 user ticks
-Console: 559 characters output
+Executing 'alarm-zero':
+(alarm-zero) begin
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+22 left_ticks: 
+:I'm here(alarm-zero) PASS
+(alarm-zero) end
+Execution of 'alarm-zero' complete.
+Timer: 35 ticks
+Thread: 2 idle ticks, 36 kernel ticks, 0 user ticks
+Console: 460 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-DETAILS OF tests/threads/priority-preempt FAILURE:
+DETAILS OF tests/threads/alarm-negative FAILURE:
 
 Test output failed to match any acceptable form.
 
 Acceptable output:
-  (priority-preempt) begin
-  (priority-preempt) Thread high-priority iteration 0
-  (priority-preempt) Thread high-priority iteration 1
-  (priority-preempt) Thread high-priority iteration 2
-  (priority-preempt) Thread high-priority iteration 3
-  (priority-preempt) Thread high-priority iteration 4
-  (priority-preempt) Thread high-priority done!
-  (priority-preempt) The high-priority thread should have already completed.
-  (priority-preempt) end
+  (alarm-negative) begin
+  (alarm-negative) PASS
+  (alarm-negative) end
 Differences in `diff -u' format:
-  (priority-preempt) begin
-- (priority-preempt) Thread high-priority iteration 0
-- (priority-preempt) Thread high-priority iteration 1
-- (priority-preempt) Thread high-priority iteration 2
-- (priority-preempt) Thread high-priority iteration 3
-- (priority-preempt) Thread high-priority iteration 4
-- (priority-preempt) Thread high-priority done!
-  (priority-preempt) The high-priority thread should have already completed.
-  (priority-preempt) end
+  (alarm-negative) begin
+- (alarm-negative) PASS
++ intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ -77 left_ticks: 
++ :I'm here(alarm-negative) PASS
+  (alarm-negative) end
 
-OUTPUT FROM tests/threads/priority-preempt:
+OUTPUT FROM tests/threads/alarm-negative:
 
-Writing command line to /tmp/D_7HN6kEXl.dsk...
+Writing command line to /tmp/dgaCu_w6NN.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
-Kernel command line: -q run priority-preempt
+Kernel command line: -q run alarm-negative
 Pintos booting with 4,096 kB RAM...
 375 pages available in kernel pool.
 374 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 Boot complete.
-Executing 'priority-preempt':
-(priority-preempt) begin
-(priority-preempt) The high-priority thread should have already completed.
-(priority-preempt) end
-Execution of 'priority-preempt' complete.
-Timer: 44 ticks
-Thread: 0 idle ticks, 47 kernel ticks, 0 user ticks
-Console: 468 characters output
-Keyboard: 0 keys pressed
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/threads/priority-fifo FAILURE:
-
-First iteration does not list all threads 0...15
-
-OUTPUT FROM tests/threads/priority-fifo:
-
-Writing command line to /tmp/cdPoiz686Q.dsk...
-warning: can't find squish-pty, so terminal input will fail
-bochs -q
-Kernel command line: -q run priority-fifo
-Pintos booting with 4,096 kB RAM...
-375 pages available in kernel pool.
-374 pages available in user pool.
-Calibrating timer...  204,600 loops/s.
-Boot complete.
-Executing 'priority-fifo':
-(priority-fifo) begin
-(priority-fifo) 16 threads will iterate 16 times in the same order each time.
-(priority-fifo) If the order varies then there is a bug.
-(priority-fifo) iteration: 0 1 0 1 2 0 1 2 3 4 0 1 2 3 4 5
-(priority-fifo) iteration: 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
-(priority-fifo) iteration: 8 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4
-(priority-fifo) iteration: 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8
-(priority-fifo) iteration: 9 10 11 12 0 1 2 3 4 5 6 7 8 9 10 11
-(priority-fifo) iteration: 12 13 14 0 1 2 3 4 5 6 7 8 9 10 11 12
-(priority-fifo) iteration: 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11 12
-(priority-fifo) iteration: 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11 12
-(priority-fifo) iteration: 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11 12
-(priority-fifo) iteration: 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11 12
-(priority-fifo) iteration: 13 14 15 0 1 2 3 4 5 6 7 8 9 10 11 12
-(priority-fifo) iteration: 13 14 15 2 3 4 5 6 7 8 9 10 11 12 13 14
-(priority-fifo) iteration: 15 3 4 5 6 7 8 9 10 11 12 13 14 15 5 6
-(priority-fifo) iteration: 7 8 9 10 11 12 13 14 15 6 7 8 9 10 11 12
-(priority-fifo) iteration: 13 14 15 8 9 10 11 12 13 14 15 9 10 11 12 13
-(priority-fifo) iteration: 14 15 10 11 12 13 14 15 12 13 14 15 13 14 15 15
-(priority-fifo) end
-Execution of 'priority-fifo' complete.
-Timer: 278 ticks
-Thread: 0 idle ticks, 281 kernel ticks, 0 user ticks
-Console: 1555 characters output
+Executing 'alarm-negative':
+(alarm-negative) begin
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+-77 left_ticks: 
+:I'm here(alarm-negative) PASS
+(alarm-negative) end
+Execution of 'alarm-negative' complete.
+Timer: 36 ticks
+Thread: 1 idle ticks, 38 kernel ticks, 0 user ticks
+Console: 485 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -327,21 +547,13 @@ Differences in `diff -u' format:
   (priority-sema) Back in main thread.
 - (priority-sema) Thread priority 22 woke up.
   (priority-sema) Back in main thread.
-  (priority-sema) Thread priority 21 woke up.
-+ (priority-sema) Thread priority 27 woke up.
-+ (priority-sema) Thread priority 24 woke up.
-+ (priority-sema) Thread priority 29 woke up.
-+ (priority-sema) Thread priority 30 woke up.
-+ (priority-sema) Thread priority 28 woke up.
-+ (priority-sema) Thread priority 22 woke up.
-+ (priority-sema) Thread priority 25 woke up.
-+ (priority-sema) Thread priority 23 woke up.
+- (priority-sema) Thread priority 21 woke up.
   (priority-sema) Back in main thread.
   (priority-sema) end
 
 OUTPUT FROM tests/threads/priority-sema:
 
-Writing command line to /tmp/Yrl7FKy7yM.dsk...
+Writing command line to /tmp/fkMO89hm7I.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-sema
@@ -361,21 +573,12 @@ Executing 'priority-sema':
 (priority-sema) Back in main thread.
 (priority-sema) Back in main thread.
 (priority-sema) Back in main thread.
-(priority-sema) Thread priority 21 woke up.
-(priority-sema) Thread priority 27 woke up.
-(priority-sema) Thread priority 24 woke up.
-(priority-sema) Thread priority 29 woke up.
-(priority-sema) Thread priority 30 woke up.
-(priority-sema) Thread priority 28 woke up.
-(priority-sema) Thread priority 22 woke up.
-(priority-sema) Thread priority 25 woke up.
-(priority-sema) Thread priority 23 woke up.
 (priority-sema) Back in main thread.
 (priority-sema) end
 Execution of 'priority-sema' complete.
-Timer: 174 ticks
-Thread: 0 idle ticks, 177 kernel ticks, 0 user ticks
-Console: 1146 characters output
+Timer: 113 ticks
+Thread: 0 idle ticks, 116 kernel ticks, 0 user ticks
+Console: 750 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -422,15 +625,14 @@ Differences in `diff -u' format:
   (priority-condvar) begin
   (priority-condvar) Thread priority 23 starting.
   (priority-condvar) Thread priority 22 starting.
-- (priority-condvar) Thread priority 21 starting.
+  (priority-condvar) Thread priority 21 starting.
   (priority-condvar) Thread priority 30 starting.
-- (priority-condvar) Thread priority 29 starting.
+  (priority-condvar) Thread priority 29 starting.
   (priority-condvar) Thread priority 28 starting.
   (priority-condvar) Thread priority 27 starting.
-- (priority-condvar) Thread priority 26 starting.
+  (priority-condvar) Thread priority 26 starting.
   (priority-condvar) Thread priority 25 starting.
-- (priority-condvar) Thread priority 24 starting.
-+ (priority-condvar) Thread priority 21 starting.
+  (priority-condvar) Thread priority 24 starting.
   (priority-condvar) Signaling...
 - (priority-condvar) Thread priority 30 woke up.
   (priority-condvar) Signaling...
@@ -449,16 +651,13 @@ Differences in `diff -u' format:
 - (priority-condvar) Thread priority 23 woke up.
   (priority-condvar) Signaling...
 - (priority-condvar) Thread priority 22 woke up.
-+ (priority-condvar) Thread priority 24 starting.
-+ (priority-condvar) Thread priority 26 starting.
-+ (priority-condvar) Thread priority 29 starting.
   (priority-condvar) Signaling...
 - (priority-condvar) Thread priority 21 woke up.
   (priority-condvar) end
 
 OUTPUT FROM tests/threads/priority-condvar:
 
-Writing command line to /tmp/LLbEaK2qYv.dsk...
+Writing command line to /tmp/cQHQ_l4O8M.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-condvar
@@ -471,28 +670,28 @@ Executing 'priority-condvar':
 (priority-condvar) begin
 (priority-condvar) Thread priority 23 starting.
 (priority-condvar) Thread priority 22 starting.
+(priority-condvar) Thread priority 21 starting.
 (priority-condvar) Thread priority 30 starting.
+(priority-condvar) Thread priority 29 starting.
 (priority-condvar) Thread priority 28 starting.
 (priority-condvar) Thread priority 27 starting.
-(priority-condvar) Thread priority 25 starting.
-(priority-condvar) Thread priority 21 starting.
-(priority-condvar) Signaling...
-(priority-condvar) Signaling...
-(priority-condvar) Signaling...
-(priority-condvar) Signaling...
-(priority-condvar) Signaling...
-(priority-condvar) Signaling...
-(priority-condvar) Signaling...
-(priority-condvar) Signaling...
-(priority-condvar) Signaling...
-(priority-condvar) Thread priority 24 starting.
 (priority-condvar) Thread priority 26 starting.
-(priority-condvar) Thread priority 29 starting.
+(priority-condvar) Thread priority 25 starting.
+(priority-condvar) Thread priority 24 starting.
+(priority-condvar) Signaling...
+(priority-condvar) Signaling...
+(priority-condvar) Signaling...
+(priority-condvar) Signaling...
+(priority-condvar) Signaling...
+(priority-condvar) Signaling...
+(priority-condvar) Signaling...
+(priority-condvar) Signaling...
+(priority-condvar) Signaling...
 (priority-condvar) Signaling...
 (priority-condvar) end
 Execution of 'priority-condvar' complete.
-Timer: 169 ticks
-Thread: 0 idle ticks, 172 kernel ticks, 0 user ticks
+Timer: 170 ticks
+Thread: 0 idle ticks, 173 kernel ticks, 0 user ticks
 Console: 1195 characters output
 Keyboard: 0 keys pressed
 Powering off...
@@ -530,7 +729,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/priority-donate-one:
 
-Writing command line to /tmp/Ro1KCb2URW.dsk...
+Writing command line to /tmp/aiOdfNup7y.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-one
@@ -547,8 +746,8 @@ Executing 'priority-donate-one':
 (priority-donate-one) This should be the last line before finishing this test.
 (priority-donate-one) end
 Execution of 'priority-donate-one' complete.
-Timer: 81 ticks
-Thread: 0 idle ticks, 84 kernel ticks, 0 user ticks
+Timer: 82 ticks
+Thread: 0 idle ticks, 85 kernel ticks, 0 user ticks
 Console: 733 characters output
 Keyboard: 0 keys pressed
 Powering off...
@@ -591,7 +790,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/priority-donate-multiple:
 
-Writing command line to /tmp/WecmTxSfFX.dsk...
+Writing command line to /tmp/HYRa9snZej.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-multiple
@@ -610,8 +809,8 @@ Executing 'priority-donate-multiple':
 (priority-donate-multiple) Main thread should have priority 31.  Actual priority: 31.
 (priority-donate-multiple) end
 Execution of 'priority-donate-multiple' complete.
-Timer: 103 ticks
-Thread: 0 idle ticks, 106 kernel ticks, 0 user ticks
+Timer: 104 ticks
+Thread: 0 idle ticks, 107 kernel ticks, 0 user ticks
 Console: 905 characters output
 Keyboard: 0 keys pressed
 Powering off...
@@ -644,8 +843,8 @@ Differences in `diff -u' format:
 - (priority-donate-multiple2) Thread b finished.
 - (priority-donate-multiple2) Thread a acquired lock a.
 - (priority-donate-multiple2) Thread a finished.
-- (priority-donate-multiple2) Thread c finished.
 + (priority-donate-multiple2) Main thread should have priority 34.  Actual priority: 31.
+  (priority-donate-multiple2) Thread c finished.
 + (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 31.
 + (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 31.
   (priority-donate-multiple2) Threads b, a, c should have just finished, in that order.
@@ -654,7 +853,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/priority-donate-multiple2:
 
-Writing command line to /tmp/dZXJPXRuZg.dsk...
+Writing command line to /tmp/yYMZgP4UIc.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-multiple2
@@ -666,15 +865,16 @@ Boot complete.
 Executing 'priority-donate-multiple2':
 (priority-donate-multiple2) begin
 (priority-donate-multiple2) Main thread should have priority 34.  Actual priority: 31.
+(priority-donate-multiple2) Thread c finished.
 (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 31.
 (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 31.
 (priority-donate-multiple2) Threads b, a, c should have just finished, in that order.
 (priority-donate-multiple2) Main thread should have priority 31.  Actual priority: 31.
 (priority-donate-multiple2) end
 Execution of 'priority-donate-multiple2' complete.
-Timer: 102 ticks
-Thread: 0 idle ticks, 104 kernel ticks, 0 user ticks
-Console: 874 characters output
+Timer: 110 ticks
+Thread: 0 idle ticks, 113 kernel ticks, 0 user ticks
+Console: 921 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -706,17 +906,17 @@ Differences in `diff -u' format:
 + (priority-donate-nest) Low thread should have priority 33.  Actual priority: 31.
 + (priority-donate-nest) Medium thread should have priority 33.  Actual priority: 32.
   (priority-donate-nest) Medium thread got the lock.
-- (priority-donate-nest) High thread got the lock.
-- (priority-donate-nest) High thread finished.
-- (priority-donate-nest) High thread should have just finished.
-- (priority-donate-nest) Middle thread finished.
+  (priority-donate-nest) High thread got the lock.
+  (priority-donate-nest) High thread finished.
+  (priority-donate-nest) High thread should have just finished.
+  (priority-donate-nest) Middle thread finished.
   (priority-donate-nest) Medium thread should just have finished.
   (priority-donate-nest) Low thread should have priority 31.  Actual priority: 31.
   (priority-donate-nest) end
 
 OUTPUT FROM tests/threads/priority-donate-nest:
 
-Writing command line to /tmp/DUgRjr_HeE.dsk...
+Writing command line to /tmp/gUn5KYWXDi.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-nest
@@ -731,13 +931,17 @@ Executing 'priority-donate-nest':
 (priority-donate-nest) Low thread should have priority 33.  Actual priority: 31.
 (priority-donate-nest) Medium thread should have priority 33.  Actual priority: 32.
 (priority-donate-nest) Medium thread got the lock.
+(priority-donate-nest) High thread got the lock.
+(priority-donate-nest) High thread finished.
+(priority-donate-nest) High thread should have just finished.
+(priority-donate-nest) Middle thread finished.
 (priority-donate-nest) Medium thread should just have finished.
 (priority-donate-nest) Low thread should have priority 31.  Actual priority: 31.
 (priority-donate-nest) end
 Execution of 'priority-donate-nest' complete.
-Timer: 98 ticks
-Thread: 0 idle ticks, 101 kernel ticks, 0 user ticks
-Console: 856 characters output
+Timer: 127 ticks
+Thread: 0 idle ticks, 130 kernel ticks, 0 user ticks
+Console: 1060 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -833,16 +1037,17 @@ Differences in `diff -u' format:
 + (priority-donate-chain) main should have priority 12.  Actual priority: 0.
 + (priority-donate-chain) interloper 4 finished.
 + (priority-donate-chain) main should have priority 15.  Actual priority: 0.
-+ (priority-donate-chain) main should have priority 18.  Actual priority: 0.
 + (priority-donate-chain) interloper 5 finished.
++ (priority-donate-chain) main should have priority 18.  Actual priority: 0.
 + (priority-donate-chain) interloper 6 finished.
 + (priority-donate-chain) main should have priority 21.  Actual priority: 0.
++ (priority-donate-chain) interloper 7 finished.
   (priority-donate-chain) main finishing with priority 0.
   (priority-donate-chain) end
 
 OUTPUT FROM tests/threads/priority-donate-chain:
 
-Writing command line to /tmp/oGbIZYzCtl.dsk...
+Writing command line to /tmp/zKgslsDemk.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-chain
@@ -863,16 +1068,17 @@ Executing 'priority-donate-chain':
 (priority-donate-chain) main should have priority 12.  Actual priority: 0.
 (priority-donate-chain) interloper 4 finished.
 (priority-donate-chain) main should have priority 15.  Actual priority: 0.
-(priority-donate-chain) main should have priority 18.  Actual priority: 0.
 (priority-donate-chain) interloper 5 finished.
+(priority-donate-chain) main should have priority 18.  Actual priority: 0.
 (priority-donate-chain) interloper 6 finished.
 (priority-donate-chain) main should have priority 21.  Actual priority: 0.
+(priority-donate-chain) interloper 7 finished.
 (priority-donate-chain) main finishing with priority 0.
 (priority-donate-chain) end
 Execution of 'priority-donate-chain' complete.
-Timer: 189 ticks
-Thread: 0 idle ticks, 192 kernel ticks, 0 user ticks
-Console: 1319 characters output
+Timer: 198 ticks
+Thread: 0 idle ticks, 201 kernel ticks, 0 user ticks
+Console: 1366 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -895,17 +1101,17 @@ Acceptable output:
 Differences in `diff -u' format:
   (priority-donate-sema) begin
   (priority-donate-sema) Thread L acquired lock.
-  (priority-donate-sema) Thread L downed semaphore.
+- (priority-donate-sema) Thread L downed semaphore.
 - (priority-donate-sema) Thread H acquired lock.
 - (priority-donate-sema) Thread H finished.
 - (priority-donate-sema) Thread M finished.
-  (priority-donate-sema) Thread L finished.
+- (priority-donate-sema) Thread L finished.
   (priority-donate-sema) Main thread finished.
   (priority-donate-sema) end
 
 OUTPUT FROM tests/threads/priority-donate-sema:
 
-Writing command line to /tmp/AY5jC4mRuK.dsk...
+Writing command line to /tmp/Jk3Yr0oSDQ.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-sema
@@ -917,14 +1123,12 @@ Boot complete.
 Executing 'priority-donate-sema':
 (priority-donate-sema) begin
 (priority-donate-sema) Thread L acquired lock.
-(priority-donate-sema) Thread L downed semaphore.
-(priority-donate-sema) Thread L finished.
 (priority-donate-sema) Main thread finished.
 (priority-donate-sema) end
 Execution of 'priority-donate-sema' complete.
-Timer: 67 ticks
-Thread: 0 idle ticks, 70 kernel ticks, 0 user ticks
-Console: 597 characters output
+Timer: 54 ticks
+Thread: 0 idle ticks, 57 kernel ticks, 0 user ticks
+Console: 505 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -959,7 +1163,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/priority-donate-lower:
 
-Writing command line to /tmp/4JU3pbYQU2.dsk...
+Writing command line to /tmp/_BPT6dCesM.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-lower
@@ -978,7 +1182,7 @@ Executing 'priority-donate-lower':
 (priority-donate-lower) end
 Execution of 'priority-donate-lower' complete.
 Timer: 85 ticks
-Thread: 0 idle ticks, 87 kernel ticks, 0 user ticks
+Thread: 0 idle ticks, 88 kernel ticks, 0 user ticks
 Console: 777 characters output
 Keyboard: 0 keys pressed
 Powering off...
@@ -994,7 +1198,7 @@ Translation of call stack:
 
 OUTPUT FROM tests/threads/mlfqs-load-1:
 
-Writing command line to /tmp/8uFVIvQNKL.dsk...
+Writing command line to /tmp/rjE1XyBQcC.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-load-1
@@ -1008,14 +1212,14 @@ Executing 'mlfqs-load-1':
 (mlfqs-load-1) spinning for up to 45 seconds, please wait...
 (mlfqs-load-1) FAIL: load average stayed below 0.5 for more than 45 seconds
 Kernel PANIC at ../../tests/threads/tests.c:94 in fail(): test failed
-Call stack: 0xc002fed8Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc01052c2
+Call stack: 0xc002fed8Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105382
  cr2=0000005e error=00000000
  eax=0000005e ebx=0000005e ecx=c002fe04 edx=000003d4
- esi=c010c1e0 edi=c010d9bd esp=c010d41b ebp=c002fe98
+ esi=c010c2a0 edi=c010dac9 esp=c010d527 ebp=c002fe98
  cs=0008 ds=0010 es=0010 ss=fed8
 Kernel PANIC recursion at ../../threads/interrupt.c:373 in intr_handler().
-Timer: 4639 ticks
-Thread: 0 idle ticks, 4639 kernel ticks, 0 user ticks
+Timer: 4640 ticks
+Thread: 0 idle ticks, 4640 kernel ticks, 0 user ticks
 Console: 859 characters output
 Keyboard: 0 keys pressed
 Powering off...
@@ -1119,7 +1323,7 @@ Some load average values were missing or differed from those expected by more th
 
 OUTPUT FROM tests/threads/mlfqs-load-60:
 
-Writing command line to /tmp/hnUJOJJN6B.dsk...
+Writing command line to /tmp/nyurVnpiE8.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-load-60
@@ -1131,102 +1335,732 @@ Boot complete.
 Executing 'mlfqs-load-60':
 (mlfqs-load-60) begin
 (mlfqs-load-60) Starting 60 niced load threads...
-(mlfqs-load-60) Starting threads took 2 seconds.
-(mlfqs-load-60) After 0 seconds, load average=0.00.
-(mlfqs-load-60) After 2 seconds, load average=0.00.
-(mlfqs-load-60) After 4 seconds, load average=0.00.
-(mlfqs-load-60) After 6 seconds, load average=0.00.
-(mlfqs-load-60) After 8 seconds, load average=0.00.
-(mlfqs-load-60) After 10 seconds, load average=0.00.
-(mlfqs-load-60) After 12 seconds, load average=0.00.
-(mlfqs-load-60) After 14 seconds, load average=0.00.
-(mlfqs-load-60) After 16 seconds, load average=0.00.
-(mlfqs-load-60) After 18 seconds, load average=0.00.
-(mlfqs-load-60) After 20 seconds, load average=0.00.
-(mlfqs-load-60) After 22 seconds, load average=0.00.
-(mlfqs-load-60) After 24 seconds, load average=0.00.
-(mlfqs-load-60) After 26 seconds, load average=0.00.
-(mlfqs-load-60) After 28 seconds, load average=0.00.
-(mlfqs-load-60) After 30 seconds, load average=0.00.
-(mlfqs-load-60) After 32 seconds, load average=0.00.
-(mlfqs-load-60) After 34 seconds, load average=0.00.
-(mlfqs-load-60) After 36 seconds, load average=0.00.
-(mlfqs-load-60) After 38 seconds, load average=0.00.
-(mlfqs-load-60) After 40 seconds, load average=0.00.
-(mlfqs-load-60) After 42 seconds, load average=0.00.
-(mlfqs-load-60) After 44 seconds, load average=0.00.
-(mlfqs-load-60) After 46 seconds, load average=0.00.
-(mlfqs-load-60) After 48 seconds, load average=0.00.
-(mlfqs-load-60) After 50 seconds, load average=0.00.
-(mlfqs-load-60) After 52 seconds, load average=0.00.
-(mlfqs-load-60) After 54 seconds, load average=0.00.
-(mlfqs-load-60) After 56 seconds, load average=0.00.
-(mlfqs-load-60) After 58 seconds, load average=0.00.
-(mlfqs-load-60) After 60 seconds, load average=0.00.
-(mlfqs-load-60) After 62 seconds, load average=0.00.
-(mlfqs-load-60) After 64 seconds, load average=0.00.
-(mlfqs-load-60) After 66 seconds, load average=0.00.
-(mlfqs-load-60) After 68 seconds, load average=0.00.
-(mlfqs-load-60) After 70 seconds, load average=0.00.
-(mlfqs-load-60) After 72 seconds, load average=0.00.
-(mlfqs-load-60) After 74 seconds, load average=0.00.
-(mlfqs-load-60) After 76 seconds, load average=0.00.
-(mlfqs-load-60) After 78 seconds, load average=0.00.
-(mlfqs-load-60) After 80 seconds, load average=0.00.
-(mlfqs-load-60) After 82 seconds, load average=0.00.
-(mlfqs-load-60) After 84 seconds, load average=0.00.
-(mlfqs-load-60) After 86 seconds, load average=0.00.
-(mlfqs-load-60) After 88 seconds, load average=0.00.
-(mlfqs-load-60) After 90 seconds, load average=0.00.
-(mlfqs-load-60) After 92 seconds, load average=0.00.
-(mlfqs-load-60) After 94 seconds, load average=0.00.
-(mlfqs-load-60) After 96 seconds, load average=0.00.
-(mlfqs-load-60) After 98 seconds, load average=0.00.
-(mlfqs-load-60) After 100 seconds, load average=0.00.
-(mlfqs-load-60) After 102 seconds, load average=0.00.
-(mlfqs-load-60) After 104 seconds, load average=0.00.
-(mlfqs-load-60) After 106 seconds, load average=0.00.
-(mlfqs-load-60) After 108 seconds, load average=0.00.
-(mlfqs-load-60) After 110 seconds, load average=0.00.
-(mlfqs-load-60) After 112 seconds, load average=0.00.
-(mlfqs-load-60) After 114 seconds, load average=0.00.
-(mlfqs-load-60) After 116 seconds, load average=0.00.
-(mlfqs-load-60) After 118 seconds, load average=0.00.
-(mlfqs-load-60) After 120 seconds, load average=0.00.
-(mlfqs-load-60) After 122 seconds, load average=0.00.
-(mlfqs-load-60) After 124 seconds, load average=0.00.
-(mlfqs-load-60) After 126 seconds, load average=0.00.
-(mlfqs-load-60) After 128 seconds, load average=0.00.
-(mlfqs-load-60) After 130 seconds, load average=0.00.
-(mlfqs-load-60) After 132 seconds, load average=0.00.
-(mlfqs-load-60) After 134 seconds, load average=0.00.
-(mlfqs-load-60) After 136 seconds, load average=0.00.
-(mlfqs-load-60) After 138 seconds, load average=0.00.
-(mlfqs-load-60) After 140 seconds, load average=0.00.
-(mlfqs-load-60) After 142 seconds, load average=0.00.
-(mlfqs-load-60) After 144 seconds, load average=0.00.
-(mlfqs-load-60) After 146 seconds, load average=0.00.
-(mlfqs-load-60) After 148 seconds, load average=0.00.
-(mlfqs-load-60) After 150 seconds, load average=0.00.
-(mlfqs-load-60) After 152 seconds, load average=0.00.
-(mlfqs-load-60) After 154 seconds, load average=0.00.
-(mlfqs-load-60) After 156 seconds, load average=0.00.
-(mlfqs-load-60) After 158 seconds, load average=0.00.
-(mlfqs-load-60) After 160 seconds, load average=0.00.
-(mlfqs-load-60) After 162 seconds, load average=0.00.
-(mlfqs-load-60) After 164 seconds, load average=0.00.
-(mlfqs-load-60) After 166 seconds, load average=0.00.
-(mlfqs-load-60) After 168 seconds, load average=0.00.
-(mlfqs-load-60) After 170 seconds, load average=0.00.
-(mlfqs-load-60) After 172 seconds, load average=0.00.
-(mlfqs-load-60) After 174 seconds, load average=0.00.
-(mlfqs-load-60) After 176 seconds, load average=0.00.
-(mlfqs-load-60) After 178 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1024 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:(mlfqs-load-60) Starting threads took 2 seconds.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:I'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm here(mlfqs-load-60) After 0 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1223 left_ticks: 
+:I'm here(mlfqs-load-60) After 2 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1423 left_ticks: 
+:I'm here(mlfqs-load-60) After 4 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1623 left_ticks: 
+:I'm here(mlfqs-load-60) After 6 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1823 left_ticks: 
+:I'm here(mlfqs-load-60) After 8 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2023 left_ticks: 
+:I'm here(mlfqs-load-60) After 10 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2223 left_ticks: 
+:I'm here(mlfqs-load-60) After 12 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2423 left_ticks: 
+:I'm here(mlfqs-load-60) After 14 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2623 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:(mlfqs-load-60) After 16 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2823 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:I'm here(mlfqs-load-60) After 18 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3023 left_ticks: 
+:I'm here(mlfqs-load-60) After 20 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3223 left_ticks: 
+:I'm here(mlfqs-load-60) After 22 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3423 left_ticks: 
+:I'm here(mlfqs-load-60) After 24 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3623 left_ticks: 
+:I'm here(mlfqs-load-60) After 26 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3823 left_ticks: 
+:I'm here(mlfqs-load-60) After 28 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4023 left_ticks: 
+:I'm here(mlfqs-load-60) After 30 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4223 left_ticks: 
+:I'm here(mlfqs-load-60) After 32 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4423 left_ticks: 
+:I'm here(mlfqs-load-60) After 34 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4623 left_ticks: 
+:I'm here(mlfqs-load-60) After 36 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4823 left_ticks: 
+:I'm here(mlfqs-load-60) After 38 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5023 left_ticks: 
+:I'm here(mlfqs-load-60) After 40 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5223 left_ticks: 
+:I'm here(mlfqs-load-60) After 42 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5423 left_ticks: 
+:I'm here(mlfqs-load-60) After 44 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5623 left_ticks: 
+:I'm here(mlfqs-load-60) After 46 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5823 left_ticks: 
+:I'm here(mlfqs-load-60) After 48 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6023 left_ticks: 
+:I'm here(mlfqs-load-60) After 50 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6223 left_ticks: 
+:I'm here(mlfqs-load-60) After 52 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6423 left_ticks: 
+:I'm here(mlfqs-load-60) After 54 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6623 left_ticks: 
+:I'm here(mlfqs-load-60) After 56 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6823 left_ticks: 
+:I'm here(mlfqs-load-60) After 58 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+7023 left_ticks: 
+:I'm here(mlfqs-load-60) After 60 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+7223 left_ticks: 
+:I'm here(mlfqs-load-60) After 62 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+7423 left_ticks: 
+:I'm here(mlfqs-load-60) After 64 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+7623 left_ticks: 
+:I'm here(mlfqs-load-60) After 66 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+7823 left_ticks: 
+:I'm here(mlfqs-load-60) After 68 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+8023 left_ticks: 
+:I'm here(mlfqs-load-60) After 70 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+8223 left_ticks: 
+:I'm here(mlfqs-load-60) After 72 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+8423 left_ticks: 
+:I'm here(mlfqs-load-60) After 74 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+8623 left_ticks: 
+:I'm here(mlfqs-load-60) After 76 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+8823 left_ticks: 
+:I'm here(mlfqs-load-60) After 78 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+9023 left_ticks: 
+:I'm here(mlfqs-load-60) After 80 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+9223 left_ticks: 
+:I'm here(mlfqs-load-60) After 82 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+9423 left_ticks: 
+:I'm here(mlfqs-load-60) After 84 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+9623 left_ticks: 
+:I'm here(mlfqs-load-60) After 86 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+9823 left_ticks: 
+:I'm here(mlfqs-load-60) After 88 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+10023 left_ticks: 
+:I'm here(mlfqs-load-60) After 90 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+10223 left_ticks: 
+:I'm here(mlfqs-load-60) After 92 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+10423 left_ticks: 
+:I'm here(mlfqs-load-60) After 94 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+10623 left_ticks: 
+:I'm here(mlfqs-load-60) After 96 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+10823 left_ticks: 
+:I'm here(mlfqs-load-60) After 98 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+11023 left_ticks: 
+:I'm here(mlfqs-load-60) After 100 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+11223 left_ticks: 
+:I'm here(mlfqs-load-60) After 102 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+11423 left_ticks: 
+:I'm here(mlfqs-load-60) After 104 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+11623 left_ticks: 
+:I'm here(mlfqs-load-60) After 106 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+11823 left_ticks: 
+:I'm here(mlfqs-load-60) After 108 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm here(mlfqs-load-60) After 110 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12223 left_ticks: 
+:I'm here(mlfqs-load-60) After 112 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12423 left_ticks: 
+:I'm here(mlfqs-load-60) After 114 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12623 left_ticks: 
+:I'm here(mlfqs-load-60) After 116 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12823 left_ticks: 
+:I'm here(mlfqs-load-60) After 118 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:I'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm here(mlfqs-load-60) After 120 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13223 left_ticks: 
+:I'm here(mlfqs-load-60) After 122 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13423 left_ticks: 
+:I'm here(mlfqs-load-60) After 124 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13623 left_ticks: 
+:I'm here(mlfqs-load-60) After 126 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13823 left_ticks: 
+:I'm here(mlfqs-load-60) After 128 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+14023 left_ticks: 
+:I'm here(mlfqs-load-60) After 130 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+14223 left_ticks: 
+:I'm here(mlfqs-load-60) After 132 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+14423 left_ticks: 
+:I'm here(mlfqs-load-60) After 134 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+14623 left_ticks: 
+:I'm here(mlfqs-load-60) After 136 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+14823 left_ticks: 
+:I'm here(mlfqs-load-60) After 138 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+15023 left_ticks: 
+:I'm here(mlfqs-load-60) After 140 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+15223 left_ticks: 
+:I'm here(mlfqs-load-60) After 142 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+15423 left_ticks: 
+:I'm here(mlfqs-load-60) After 144 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+15623 left_ticks: 
+:I'm here(mlfqs-load-60) After 146 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+15823 left_ticks: 
+:I'm here(mlfqs-load-60) After 148 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+16023 left_ticks: 
+:I'm here(mlfqs-load-60) After 150 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+16223 left_ticks: 
+:I'm here(mlfqs-load-60) After 152 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+16423 left_ticks: 
+:I'm here(mlfqs-load-60) After 154 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+16623 left_ticks: 
+:I'm here(mlfqs-load-60) After 156 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+16823 left_ticks: 
+:I'm here(mlfqs-load-60) After 158 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+17023 left_ticks: 
+:I'm here(mlfqs-load-60) After 160 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+17223 left_ticks: 
+:I'm here(mlfqs-load-60) After 162 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+17423 left_ticks: 
+:I'm here(mlfqs-load-60) After 164 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+17623 left_ticks: 
+:I'm here(mlfqs-load-60) After 166 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+17823 left_ticks: 
+:I'm here(mlfqs-load-60) After 168 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+18023 left_ticks: 
+:I'm here(mlfqs-load-60) After 170 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+18223 left_ticks: 
+:I'm here(mlfqs-load-60) After 172 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+18423 left_ticks: 
+:I'm here(mlfqs-load-60) After 174 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+18623 left_ticks: 
+:I'm here(mlfqs-load-60) After 176 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+18823 left_ticks: 
+:I'm here(mlfqs-load-60) After 178 seconds, load average=0.00.
 (mlfqs-load-60) end
 Execution of 'mlfqs-load-60' complete.
-Timer: 18838 ticks
-Thread: 0 idle ticks, 18841 kernel ticks, 0 user ticks
-Console: 5295 characters output
+Timer: 18839 ticks
+Thread: 11854 idle ticks, 6988 kernel ticks, 0 user ticks
+Console: 22413 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -1242,20 +2076,20 @@ Some load average values were missing or differed from those expected by more th
      6     0.00  =  0.34     
      8     0.00  =  0.58     
     10     0.00  =  0.87     
-    12     0.00  =  1.22     
-    14     0.00  =  1.63     
-    16     0.00  =  2.09     
-    18     0.00 <<< 2.60     Too small, by 0.10.
-    20     0.00 <<< 3.16     Too small, by 0.66.
-    22     0.00 <<< 3.76     Too small, by 1.26.
-    24     0.00 <<< 4.42     Too small, by 1.92.
-    26     0.00 <<< 5.11     Too small, by 2.61.
-    28     0.00 <<< 5.85     Too small, by 3.35.
-    30     0.00 <<< 6.63     Too small, by 4.13.
-    32     0.00 <<< 7.46     Too small, by 4.96.
-    34     0.00 <<< 8.32     Too small, by 5.82.
-    36     0.00 <<< 9.22     Too small, by 6.72.
-    38     0.00 <<< 10.15    Too small, by 7.65.
+    12    undef     1.22     Missing value.
+    14    undef     1.63     Missing value.
+    16    undef     2.09     Missing value.
+    18    undef     2.60     Missing value.
+    20    undef     3.16     Missing value.
+    22    undef     3.76     Missing value.
+    24    undef     4.42     Missing value.
+    26    undef     5.11     Missing value.
+    28    undef     5.85     Missing value.
+    30    undef     6.63     Missing value.
+    32    undef     7.46     Missing value.
+    34    undef     8.32     Missing value.
+    36    undef     9.22     Missing value.
+    38    undef     10.15    Missing value.
     40     0.00 <<< 11.12    Too small, by 8.62.
     42     0.00 <<< 12.13    Too small, by 9.63.
     44     0.00 <<< 13.16    Too small, by 10.66.
@@ -1329,7 +2163,7 @@ Some load average values were missing or differed from those expected by more th
 
 OUTPUT FROM tests/threads/mlfqs-load-avg:
 
-Writing command line to /tmp/Nb8y6qBpy4.dsk...
+Writing command line to /tmp/6gTbYgjWBW.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-load-avg
@@ -1341,102 +2175,732 @@ Boot complete.
 Executing 'mlfqs-load-avg':
 (mlfqs-load-avg) begin
 (mlfqs-load-avg) Starting 60 load threads...
-(mlfqs-load-avg) Starting threads took 2 seconds.
-(mlfqs-load-avg) After 0 seconds, load average=0.00.
-(mlfqs-load-avg) After 2 seconds, load average=0.00.
-(mlfqs-load-avg) After 4 seconds, load average=0.00.
-(mlfqs-load-avg) After 6 seconds, load average=0.00.
-(mlfqs-load-avg) After 8 seconds, load average=0.00.
-(mlfqs-load-avg) After 10 seconds, load average=0.00.
-(mlfqs-load-avg) After 12 seconds, load average=0.00.
-(mlfqs-load-avg) After 14 seconds, load average=0.00.
-(mlfqs-load-avg) After 16 seconds, load average=0.00.
-(mlfqs-load-avg) After 18 seconds, load average=0.00.
-(mlfqs-load-avg) After 20 seconds, load average=0.00.
-(mlfqs-load-avg) After 22 seconds, load average=0.00.
-(mlfqs-load-avg) After 24 seconds, load average=0.00.
-(mlfqs-load-avg) After 26 seconds, load average=0.00.
-(mlfqs-load-avg) After 28 seconds, load average=0.00.
-(mlfqs-load-avg) After 30 seconds, load average=0.00.
-(mlfqs-load-avg) After 32 seconds, load average=0.00.
-(mlfqs-load-avg) After 34 seconds, load average=0.00.
-(mlfqs-load-avg) After 36 seconds, load average=0.00.
-(mlfqs-load-avg) After 38 seconds, load average=0.00.
-(mlfqs-load-avg) After 40 seconds, load average=0.00.
-(mlfqs-load-avg) After 42 seconds, load average=0.00.
-(mlfqs-load-avg) After 44 seconds, load average=0.00.
-(mlfqs-load-avg) After 46 seconds, load average=0.00.
-(mlfqs-load-avg) After 48 seconds, load average=0.00.
-(mlfqs-load-avg) After 50 seconds, load average=0.00.
-(mlfqs-load-avg) After 52 seconds, load average=0.00.
-(mlfqs-load-avg) After 54 seconds, load average=0.00.
-(mlfqs-load-avg) After 56 seconds, load average=0.00.
-(mlfqs-load-avg) After 58 seconds, load average=0.00.
-(mlfqs-load-avg) After 60 seconds, load average=0.00.
-(mlfqs-load-avg) After 62 seconds, load average=0.00.
-(mlfqs-load-avg) After 64 seconds, load average=0.00.
-(mlfqs-load-avg) After 66 seconds, load average=0.00.
-(mlfqs-load-avg) After 68 seconds, load average=0.00.
-(mlfqs-load-avg) After 70 seconds, load average=0.00.
-(mlfqs-load-avg) After 72 seconds, load average=0.00.
-(mlfqs-load-avg) After 74 seconds, load average=0.00.
-(mlfqs-load-avg) After 76 seconds, load average=0.00.
-(mlfqs-load-avg) After 78 seconds, load average=0.00.
-(mlfqs-load-avg) After 80 seconds, load average=0.00.
-(mlfqs-load-avg) After 82 seconds, load average=0.00.
-(mlfqs-load-avg) After 84 seconds, load average=0.00.
-(mlfqs-load-avg) After 86 seconds, load average=0.00.
-(mlfqs-load-avg) After 88 seconds, load average=0.00.
-(mlfqs-load-avg) After 90 seconds, load average=0.00.
-(mlfqs-load-avg) After 92 seconds, load average=0.00.
-(mlfqs-load-avg) After 94 seconds, load average=0.00.
-(mlfqs-load-avg) After 96 seconds, load average=0.00.
-(mlfqs-load-avg) After 98 seconds, load average=0.00.
-(mlfqs-load-avg) After 100 seconds, load average=0.00.
-(mlfqs-load-avg) After 102 seconds, load average=0.00.
-(mlfqs-load-avg) After 104 seconds, load average=0.00.
-(mlfqs-load-avg) After 106 seconds, load average=0.00.
-(mlfqs-load-avg) After 108 seconds, load average=0.00.
-(mlfqs-load-avg) After 110 seconds, load average=0.00.
-(mlfqs-load-avg) After 112 seconds, load average=0.00.
-(mlfqs-load-avg) After 114 seconds, load average=0.00.
-(mlfqs-load-avg) After 116 seconds, load average=0.00.
-(mlfqs-load-avg) After 118 seconds, load average=0.00.
-(mlfqs-load-avg) After 120 seconds, load average=0.00.
-(mlfqs-load-avg) After 122 seconds, load average=0.00.
-(mlfqs-load-avg) After 124 seconds, load average=0.00.
-(mlfqs-load-avg) After 126 seconds, load average=0.00.
-(mlfqs-load-avg) After 128 seconds, load average=0.00.
-(mlfqs-load-avg) After 130 seconds, load average=0.00.
-(mlfqs-load-avg) After 132 seconds, load average=0.00.
-(mlfqs-load-avg) After 134 seconds, load average=0.00.
-(mlfqs-load-avg) After 136 seconds, load average=0.00.
-(mlfqs-load-avg) After 138 seconds, load average=0.00.
-(mlfqs-load-avg) After 140 seconds, load average=0.00.
-(mlfqs-load-avg) After 142 seconds, load average=0.00.
-(mlfqs-load-avg) After 144 seconds, load average=0.00.
-(mlfqs-load-avg) After 146 seconds, load average=0.00.
-(mlfqs-load-avg) After 148 seconds, load average=0.00.
-(mlfqs-load-avg) After 150 seconds, load average=0.00.
-(mlfqs-load-avg) After 152 seconds, load average=0.00.
-(mlfqs-load-avg) After 154 seconds, load average=0.00.
-(mlfqs-load-avg) After 156 seconds, load average=0.00.
-(mlfqs-load-avg) After 158 seconds, load average=0.00.
-(mlfqs-load-avg) After 160 seconds, load average=0.00.
-(mlfqs-load-avg) After 162 seconds, load average=0.00.
-(mlfqs-load-avg) After 164 seconds, load average=0.00.
-(mlfqs-load-avg) After 166 seconds, load average=0.00.
-(mlfqs-load-avg) After 168 seconds, load average=0.00.
-(mlfqs-load-avg) After 170 seconds, load average=0.00.
-(mlfqs-load-avg) After 172 seconds, load average=0.00.
-(mlfqs-load-avg) After 174 seconds, load average=0.00.
-(mlfqs-load-avg) After 176 seconds, load average=0.00.
-(mlfqs-load-avg) After 178 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1123 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1223 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1323 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1423 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1623 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1723 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1823 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1923 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2123 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2223 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2323 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2423 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2623 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2723 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2823 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2923 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3123 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3223 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3323 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3423 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3623 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3723 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3823 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3923 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4123 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4223 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4323 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4423 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4623 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4723 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4823 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4923 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5123 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5223 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5323 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5423 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5623 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5723 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5823 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5923 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6123 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6223 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6323 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6423 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6623 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6723 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6823 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6923 left_ticks: 
+:(mlfqs-load-avg) Starting threads took 2 seconds.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1023 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 0 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1223 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 2 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1423 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 4 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1623 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 6 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1823 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 8 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2023 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 10 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2223 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 12 seconds, I'm hereload average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2423 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 14 seconds, I'm hereload average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2623 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 16 seconds,I'm here load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2823 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 18 seconds,I'm here load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3023 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 20 seconds,I'm here load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3223 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 22 secondsI'm here, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3423 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 24 I'm hereseconds, load average=0.I'm here00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3623 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 26 secondsI'm here, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+3823 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 28 secondI'm hereI'm heres, load average=0.00.
+I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+4023 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 30 secondI'm hereI'm heres, load average=0.00.
+I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+4223 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 32 seconI'm hereds, load average=0.00.I'm hereI'm here
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4423 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 34 secoI'm hereI'm herends, load average=0.00I'm hereI'm here.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4623 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 36 secoI'm hereI'm herends, load average=0.0I'm hereI'm here0.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4823 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-load-avg) After 38 secI'm hereI'm hereonds, load average=0I'm here.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5023 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 40 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5223 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 42 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5423 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 44 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5623 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 46 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+5823 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 48 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6023 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 50 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6223 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 52 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6423 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 54 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6623 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 56 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+6823 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 58 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+7023 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 60 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+7223 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 62 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+7423 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 64 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+7623 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:(mlfqs-load-avg) After 66 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+7823 left_ticks: 
+:I'm hereI'm hereI'm hereI'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm here(mlfqs-load-avg) After 68 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+8023 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm hereI'm here(mlfqs-load-avg) After 70 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+8223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 72 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+8423 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 74 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+8623 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 76 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+8823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 78 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+9023 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 80 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+9223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 82 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+9423 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 84 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+9623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 86 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+9823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 88 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+10023 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 90 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+10223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 92 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+10423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 94 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+10623 left_ticks: 
+:I'm hereintr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 96 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+10823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 98 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+11023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 100 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+11223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 102 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+11423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 104 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+11623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 106 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+11823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 108 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12023 left_ticks: 
+:I'm here(I'm heremlfqs-load-avg) After 110 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 112 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 114 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 116 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+12823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 118 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 120 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 122 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 124 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 126 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+13823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 128 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+14023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 130 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+14223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 132 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+14423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 134 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+14623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 136 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+14823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 138 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+15023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 140 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+15223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 142 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+15423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 144 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+15623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 146 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+15823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 148 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+16023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 150 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+16223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 152 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+16423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 154 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+16623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 156 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+16823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 158 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+17023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 160 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+17223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 162 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+17423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 164 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+17623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 166 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+17823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 168 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+18023 left_ticks: 
+:I'm here(mlfqs-load-avg) After 170 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+18223 left_ticks: 
+:I'm here(mlfqs-load-avg) After 172 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+18423 left_ticks: 
+:I'm here(mlfqs-load-avg) After 174 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+18623 left_ticks: 
+:I'm here(mlfqs-load-avg) After 176 seconds, load average=0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+18823 left_ticks: 
+:I'm here(mlfqs-load-avg) After 178 seconds, load average=0.00.
 (mlfqs-load-avg) end
 Execution of 'mlfqs-load-avg' complete.
-Timer: 18838 ticks
-Thread: 0 idle ticks, 18841 kernel ticks, 0 user ticks
-Console: 5386 characters output
+Timer: 18839 ticks
+Thread: 6417 idle ticks, 12425 kernel ticks, 0 user ticks
+Console: 22504 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -1539,7 +3003,7 @@ Some recent_cpu values were missing or differed from those expected by more than
 
 OUTPUT FROM tests/threads/mlfqs-recent-1:
 
-Writing command line to /tmp/cQJdTeLK1O.dsk...
+Writing command line to /tmp/5a2mCzvpRE.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-recent-1
@@ -1551,7 +3015,10 @@ Boot complete.
 Executing 'mlfqs-recent-1':
 (mlfqs-recent-1) begin
 (mlfqs-recent-1) Sleeping 10 seconds to allow recent_cpu to decay, please wait...
-(mlfqs-recent-1) After 2 seconds, recent_cpu is 0.00, load_avg is 0.00.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+1001 left_ticks: 
+:I'm here(mlfqs-recent-1) After 2 seconds, recent_cpu is 0.00, load_avg is 0.00.
 (mlfqs-recent-1) After 4 seconds, recent_cpu is 0.00, load_avg is 0.00.
 (mlfqs-recent-1) After 6 seconds, recent_cpu is 0.00, load_avg is 0.00.
 (mlfqs-recent-1) After 8 seconds, recent_cpu is 0.00, load_avg is 0.00.
@@ -1644,8 +3111,8 @@ Executing 'mlfqs-recent-1':
 (mlfqs-recent-1) end
 Execution of 'mlfqs-recent-1' complete.
 Timer: 19018 ticks
-Thread: 0 idle ticks, 19021 kernel ticks, 0 user ticks
-Console: 7085 characters output
+Thread: 967 idle ticks, 18055 kernel ticks, 0 user ticks
+Console: 7168 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -1656,12 +3123,12 @@ DETAILS OF tests/threads/mlfqs-nice-2 FAILURE:
 Some tick counts were missing or differed from those expected by more than 50.
 thread   actual <-> expected explanation
 ------ -------- --- -------- ----------------------------------------
-     0     1500 <<< 1904     Too small, by 354.
-     1     1500 >>> 1096     Too big, by 354.
+     0     1501 <<< 1904     Too small, by 353.
+     1     1501 >>> 1096     Too big, by 355.
 
 OUTPUT FROM tests/threads/mlfqs-nice-2:
 
-Writing command line to /tmp/EXhr5D1Wwo.dsk...
+Writing command line to /tmp/tLeO3PPdkE.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-nice-2
@@ -1673,15 +3140,24 @@ Boot complete.
 Executing 'mlfqs-nice-2':
 (mlfqs-nice-2) begin
 (mlfqs-nice-2) Starting 2 threads...
-(mlfqs-nice-2) Starting threads took 10 ticks.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:(mlfqs-nice-2) Starting threads took 12 ticks.
 (mlfqs-nice-2) Sleeping 40 seconds to let threads run, please wait...
-(mlfqs-nice-2) Thread 0 received 1500 ticks.
-(mlfqs-nice-2) Thread 1 received 1500 ticks.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4049 left_ticks: 
+:I'm hereI'm hereI'm here(mlfqs-nice-2) Thread 0 received 1501 ticks.
+(mlfqs-nice-2) Thread 1 received 1501 ticks.
 (mlfqs-nice-2) end
 Execution of 'mlfqs-nice-2' complete.
-Timer: 4069 ticks
-Thread: 0 idle ticks, 4072 kernel ticks, 0 user ticks
-Console: 628 characters output
+Timer: 4070 ticks
+Thread: 999 idle ticks, 3074 kernel ticks, 0 user ticks
+Console: 871 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -1692,20 +3168,20 @@ DETAILS OF tests/threads/mlfqs-nice-10 FAILURE:
 Some tick counts were missing or differed from those expected by more than 25.
 thread   actual <-> expected explanation
 ------ -------- --- -------- ----------------------------------------
-     0      301 <<< 672      Too small, by 346.
-     1      301 <<< 588      Too small, by 262.
-     2      301 <<< 492      Too small, by 166.
+     0      304 <<< 672      Too small, by 343.
+     1      300 <<< 588      Too small, by 263.
+     2      299 <<< 492      Too small, by 168.
      3      301 <<< 408      Too small, by 82.
      4      301  =  316      
-     5      300 >>> 232      Too big, by 43.
-     6      301 >>> 152      Too big, by 124.
+     5      301 >>> 232      Too big, by 44.
+     6      300 >>> 152      Too big, by 123.
      7      301 >>> 92       Too big, by 184.
      8      300 >>> 40       Too big, by 235.
-     9      300 >>> 8        Too big, by 267.
+     9      297 >>> 8        Too big, by 264.
 
 OUTPUT FROM tests/threads/mlfqs-nice-10:
 
-Writing command line to /tmp/w0ycxtx5px.dsk...
+Writing command line to /tmp/Y_4pQXuZyX.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-nice-10
@@ -1717,23 +3193,56 @@ Boot complete.
 Executing 'mlfqs-nice-10':
 (mlfqs-nice-10) begin
 (mlfqs-nice-10) Starting 10 threads...
-(mlfqs-nice-10) Starting threads took 31 ticks.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:intr_get_level ()==INTR_ON identify: 
+ end of indent 
+523 left_ticks: 
+:(mlfqs-nice-10) Starting threads took 42 ticks.
 (mlfqs-nice-10) Sleeping 40 seconds to let threads run, please wait...
-(mlfqs-nice-10) Thread 0 received 301 ticks.
-(mlfqs-nice-10) Thread 1 received 301 ticks.
-(mlfqs-nice-10) Thread 2 received 301 ticks.
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+4081 left_ticks: 
+:I'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm here(mlfqs-nice-10) Thread 0 received 304 ticks.
+(mlfqs-nice-10) Thread 1 received 300 ticks.
+(mlfqs-nice-10) Thread 2 received 299 ticks.
 (mlfqs-nice-10) Thread 3 received 301 ticks.
 (mlfqs-nice-10) Thread 4 received 301 ticks.
-(mlfqs-nice-10) Thread 5 received 300 ticks.
-(mlfqs-nice-10) Thread 6 received 301 ticks.
+(mlfqs-nice-10) Thread 5 received 301 ticks.
+(mlfqs-nice-10) Thread 6 received 300 ticks.
 (mlfqs-nice-10) Thread 7 received 301 ticks.
 (mlfqs-nice-10) Thread 8 received 300 ticks.
-(mlfqs-nice-10) Thread 9 received 300 ticks.
+(mlfqs-nice-10) Thread 9 received 297 ticks.
 (mlfqs-nice-10) end
 Execution of 'mlfqs-nice-10' complete.
-Timer: 4139 ticks
-Thread: 0 idle ticks, 4142 kernel ticks, 0 user ticks
-Console: 997 characters output
+Timer: 4150 ticks
+Thread: 991 idle ticks, 3162 kernel ticks, 0 user ticks
+Console: 1880 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -1759,8 +3268,13 @@ Differences in `diff -u' format:
   (mlfqs-block) Main thread acquiring lock.
   (mlfqs-block) Main thread creating block thread, sleeping 25 seconds...
   (mlfqs-block) Block thread spinning for 20 seconds...
-  (mlfqs-block) Block thread acquiring lock...
-  (mlfqs-block) Main thread spinning for 5 seconds...
+- (mlfqs-block) Block thread acquiring lock...
+- (mlfqs-block) Main thread spinning for 5 seconds...
++ intr_get_level ()==INTR_ON identify: 
++  end of indent 
++ 2543 left_ticks: 
++ :(mlfqs-block) Block thread acquiring lock...
++ I'm here(mlfqs-block) Main thread spinning for 5 seconds...
   (mlfqs-block) Main thread releasing lock.
 - (mlfqs-block) ...got it.
   (mlfqs-block) Block thread should have already acquired lock.
@@ -1768,7 +3282,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/mlfqs-block:
 
-Writing command line to /tmp/yG5WBkxzKD.dsk...
+Writing command line to /tmp/fBcgNfqXyA.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-block
@@ -1782,14 +3296,17 @@ Executing 'mlfqs-block':
 (mlfqs-block) Main thread acquiring lock.
 (mlfqs-block) Main thread creating block thread, sleeping 25 seconds...
 (mlfqs-block) Block thread spinning for 20 seconds...
-(mlfqs-block) Block thread acquiring lock...
-(mlfqs-block) Main thread spinning for 5 seconds...
+intr_get_level ()==INTR_ON identify: 
+ end of indent 
+2543 left_ticks: 
+:(mlfqs-block) Block thread acquiring lock...
+I'm here(mlfqs-block) Main thread spinning for 5 seconds...
 (mlfqs-block) Main thread releasing lock.
 (mlfqs-block) Block thread should have already acquired lock.
 (mlfqs-block) end
 Execution of 'mlfqs-block' complete.
-Timer: 3066 ticks
-Thread: 0 idle ticks, 3069 kernel ticks, 0 user ticks
-Console: 748 characters output
+Timer: 3071 ticks
+Thread: 492 idle ticks, 2582 kernel ticks, 0 user ticks
+Console: 831 characters output
 Keyboard: 0 keys pressed
 Powering off...
