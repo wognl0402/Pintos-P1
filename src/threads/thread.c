@@ -82,6 +82,14 @@ bool high_pri_func (const struct list_elem *a,
   return list_entry (a, struct thread, elem)->priority >
 	list_entry (b, struct thread, elem)->priority;
 }
+
+void time_to_yield (void){
+  if (list_empty (&ready_list))
+    return;
+
+  if (thread_current ()->priority < list_entry (list_begin (&ready_list), struct thread, elem))
+    thread_yield();
+}
 /*
 typedef bool less_tick_func (const struct list_elem *a,
 			     const struct list_elem *b,
@@ -218,8 +226,9 @@ thread_create (const char *name, int priority,
   /* Add to run queue. */
   thread_unblock (t);
 
+  
   if(!list_empty (&ready_list)){
-    if(thread_current()->priority < list_entry (list_begin (&ready_list),
+    if(thread_current()->priority < list_entry (list_front (&ready_list),
 						struct thread,
 						elem)){
       thread_yield();
@@ -267,6 +276,8 @@ thread_unblock (struct thread *t)
   //list_push_back (&ready_list, &t->elem);
   t->status = THREAD_READY;
   intr_set_level (old_level);
+
+  
 }
 
 /* Returns the name of the running thread. */
@@ -345,7 +356,9 @@ void
 thread_set_priority (int new_priority) 
 {
   thread_current ()->priority = new_priority;
-  if(new_priority < list_entry (list_begin (&ready_list), struct thread, elem))
+
+  list_sort (&ready_list, high_pri_func, NULL);
+  if(!list_empty (&ready_list) && new_priority < list_entry (list_front (&ready_list), struct thread, elem))
     thread_yield();
 }
 

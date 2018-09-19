@@ -1,4 +1,4 @@
-Writing command line to /tmp/dkhnxEtdbw.dsk...
+Writing command line to /tmp/elKR9SvLqt.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run alarm-priority
@@ -51,8 +51,8 @@ intr_get_level ()==INTR_ON identify:
 (alarm-priority) Thread priority 21 woke up.
 (alarm-priority) end
 Execution of 'alarm-priority' complete.
-Timer: 608 ticks
-Thread: 454 idle ticks, 157 kernel ticks, 0 user ticks
+Timer: 610 ticks
+Thread: 454 idle ticks, 159 kernel ticks, 0 user ticks
 Console: 1637 characters output
 Keyboard: 0 keys pressed
 Powering off...

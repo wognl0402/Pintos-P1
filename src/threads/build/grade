@@ -191,7 +191,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/alarm-simultaneous:
 
-Writing command line to /tmp/EQb2ibummV.dsk...
+Writing command line to /tmp/oVt88tMeZt.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run alarm-simultaneous
@@ -351,7 +351,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/alarm-priority:
 
-Writing command line to /tmp/dkhnxEtdbw.dsk...
+Writing command line to /tmp/elKR9SvLqt.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run alarm-priority
@@ -404,8 +404,8 @@ intr_get_level ()==INTR_ON identify:
 (alarm-priority) Thread priority 21 woke up.
 (alarm-priority) end
 Execution of 'alarm-priority' complete.
-Timer: 608 ticks
-Thread: 454 idle ticks, 157 kernel ticks, 0 user ticks
+Timer: 610 ticks
+Thread: 454 idle ticks, 159 kernel ticks, 0 user ticks
 Console: 1637 characters output
 Keyboard: 0 keys pressed
 Powering off...
@@ -431,7 +431,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/alarm-zero:
 
-Writing command line to /tmp/tqL4bmlLGQ.dsk...
+Writing command line to /tmp/7JwAdBorHR.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run alarm-zero
@@ -475,7 +475,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/alarm-negative:
 
-Writing command line to /tmp/dgaCu_w6NN.dsk...
+Writing command line to /tmp/LYqmxKGK1Y.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run alarm-negative
@@ -553,7 +553,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/priority-sema:
 
-Writing command line to /tmp/fkMO89hm7I.dsk...
+Writing command line to /tmp/0EyJIgKz2Q.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-sema
@@ -576,9 +576,19 @@ Executing 'priority-sema':
 (priority-sema) Back in main thread.
 (priority-sema) end
 Execution of 'priority-sema' complete.
-Timer: 113 ticks
-Thread: 0 idle ticks, 116 kernel ticks, 0 user ticks
-Console: 750 characters output
+(priority-sema) Thread priority 30 woke up.
+(priority-sema) Thread priority 29 woke up.
+(priority-sema) Thread priority 28 woke up.
+(priority-sema) Thread priority 27 woke up.
+(priority-sema) Thread priority 26 woke up.
+(priority-sema) Thread priority 25 woke up.
+(priority-sema) Thread priority 24 woke up.
+(priority-sema) Thread priority 23 woke up.
+(priority-sema) Thread priority 22 woke up.
+(priority-sema) Thread priority 21 woke up.
+Timer: 188 ticks
+Thread: 0 idle ticks, 191 kernel ticks, 0 user ticks
+Console: 1190 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -641,12 +651,19 @@ Differences in `diff -u' format:
 - (priority-condvar) Thread priority 28 woke up.
   (priority-condvar) Signaling...
 - (priority-condvar) Thread priority 27 woke up.
++ (priority-condvar) Thread priority 30 woke up.
++ (priority-condvar) Thread priority 23 woke up.
++ (priority-condvar) Thread priority 22 woke up.
++ (priority-condvar) Thread priority 21 woke up.
   (priority-condvar) Signaling...
 - (priority-condvar) Thread priority 26 woke up.
   (priority-condvar) Signaling...
 - (priority-condvar) Thread priority 25 woke up.
   (priority-condvar) Signaling...
 - (priority-condvar) Thread priority 24 woke up.
++ (priority-condvar) Thread priority 29 woke up.
++ (priority-condvar) Thread priority 28 woke up.
++ (priority-condvar) Thread priority 27 woke up.
   (priority-condvar) Signaling...
 - (priority-condvar) Thread priority 23 woke up.
   (priority-condvar) Signaling...
@@ -657,7 +674,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/priority-condvar:
 
-Writing command line to /tmp/cQHQ_l4O8M.dsk...
+Writing command line to /tmp/_HTUc2Ttt7.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-condvar
@@ -682,17 +699,24 @@ Executing 'priority-condvar':
 (priority-condvar) Signaling...
 (priority-condvar) Signaling...
 (priority-condvar) Signaling...
+(priority-condvar) Thread priority 30 woke up.
+(priority-condvar) Thread priority 23 woke up.
+(priority-condvar) Thread priority 22 woke up.
+(priority-condvar) Thread priority 21 woke up.
 (priority-condvar) Signaling...
 (priority-condvar) Signaling...
 (priority-condvar) Signaling...
+(priority-condvar) Thread priority 29 woke up.
+(priority-condvar) Thread priority 28 woke up.
+(priority-condvar) Thread priority 27 woke up.
 (priority-condvar) Signaling...
 (priority-condvar) Signaling...
 (priority-condvar) Signaling...
 (priority-condvar) end
 Execution of 'priority-condvar' complete.
-Timer: 170 ticks
-Thread: 0 idle ticks, 173 kernel ticks, 0 user ticks
-Console: 1195 characters output
+Timer: 220 ticks
+Thread: 0 idle ticks, 223 kernel ticks, 0 user ticks
+Console: 1524 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -729,7 +753,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/priority-donate-one:
 
-Writing command line to /tmp/aiOdfNup7y.dsk...
+Writing command line to /tmp/fqR20XjcBk.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-one
@@ -790,7 +814,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/priority-donate-multiple:
 
-Writing command line to /tmp/HYRa9snZej.dsk...
+Writing command line to /tmp/3meNCPT62V.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-multiple
@@ -810,7 +834,7 @@ Executing 'priority-donate-multiple':
 (priority-donate-multiple) end
 Execution of 'priority-donate-multiple' complete.
 Timer: 104 ticks
-Thread: 0 idle ticks, 107 kernel ticks, 0 user ticks
+Thread: 0 idle ticks, 108 kernel ticks, 0 user ticks
 Console: 905 characters output
 Keyboard: 0 keys pressed
 Powering off...
@@ -853,7 +877,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/priority-donate-multiple2:
 
-Writing command line to /tmp/yYMZgP4UIc.dsk...
+Writing command line to /tmp/sKIaTW8dpd.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-multiple2
@@ -916,7 +940,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/priority-donate-nest:
 
-Writing command line to /tmp/gUn5KYWXDi.dsk...
+Writing command line to /tmp/NiCAHUQZnC.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-nest
@@ -1047,7 +1071,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/priority-donate-chain:
 
-Writing command line to /tmp/zKgslsDemk.dsk...
+Writing command line to /tmp/JAhxK7y6rj.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-chain
@@ -1076,8 +1100,8 @@ Executing 'priority-donate-chain':
 (priority-donate-chain) main finishing with priority 0.
 (priority-donate-chain) end
 Execution of 'priority-donate-chain' complete.
-Timer: 198 ticks
-Thread: 0 idle ticks, 201 kernel ticks, 0 user ticks
+Timer: 199 ticks
+Thread: 0 idle ticks, 202 kernel ticks, 0 user ticks
 Console: 1366 characters output
 Keyboard: 0 keys pressed
 Powering off...
@@ -1111,7 +1135,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/priority-donate-sema:
 
-Writing command line to /tmp/Jk3Yr0oSDQ.dsk...
+Writing command line to /tmp/9sVj4k7st1.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-sema
@@ -1163,7 +1187,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/priority-donate-lower:
 
-Writing command line to /tmp/_BPT6dCesM.dsk...
+Writing command line to /tmp/xuO2g_cqNa.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-lower
@@ -1198,7 +1222,7 @@ Translation of call stack:
 
 OUTPUT FROM tests/threads/mlfqs-load-1:
 
-Writing command line to /tmp/rjE1XyBQcC.dsk...
+Writing command line to /tmp/sYbNyNpDDp.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-load-1
@@ -1212,7 +1236,7 @@ Executing 'mlfqs-load-1':
 (mlfqs-load-1) spinning for up to 45 seconds, please wait...
 (mlfqs-load-1) FAIL: load average stayed below 0.5 for more than 45 seconds
 Kernel PANIC at ../../tests/threads/tests.c:94 in fail(): test failed
-Call stack: 0xc002fed8Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105382
+Call stack: 0xc002fed8Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105392
  cr2=0000005e error=00000000
  eax=0000005e ebx=0000005e ecx=c002fe04 edx=000003d4
  esi=c010c2a0 edi=c010dac9 esp=c010d527 ebp=c002fe98
@@ -1323,7 +1347,7 @@ Some load average values were missing or differed from those expected by more th
 
 OUTPUT FROM tests/threads/mlfqs-load-60:
 
-Writing command line to /tmp/nyurVnpiE8.dsk...
+Writing command line to /tmp/DxcjqfGcVL.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-load-60
@@ -2059,7 +2083,7 @@ intr_get_level ()==INTR_ON identify:
 (mlfqs-load-60) end
 Execution of 'mlfqs-load-60' complete.
 Timer: 18839 ticks
-Thread: 11854 idle ticks, 6988 kernel ticks, 0 user ticks
+Thread: 11852 idle ticks, 6990 kernel ticks, 0 user ticks
 Console: 22413 characters output
 Keyboard: 0 keys pressed
 Powering off...
@@ -2163,7 +2187,7 @@ Some load average values were missing or differed from those expected by more th
 
 OUTPUT FROM tests/threads/mlfqs-load-avg:
 
-Writing command line to /tmp/6gTbYgjWBW.dsk...
+Writing command line to /tmp/d4HDMzW1i3.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-load-avg
@@ -2642,13 +2666,13 @@ intr_get_level ()==INTR_ON identify:
 intr_get_level ()==INTR_ON identify: 
  end of indent 
 7823 left_ticks: 
-:I'm hereI'm hereI'm hereI'm hereintr_get_level ()==INTR_ON identify: 
+:I'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereintr_get_level ()==INTR_ON identify: 
  end of indent 
 12023 left_ticks: 
 :intr_get_level ()==INTR_ON identify: 
  end of indent 
 12023 left_ticks: 
-:I'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm here(mlfqs-load-avg) After 68 seconds, load average=0.00.
+:I'm hereI'm here(mI'm herelfqI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm heres-load-avg) After 68 seconds, load average=0.00.
 intr_get_level ()==INTR_ON identify: 
  end of indent 
 8023 left_ticks: 
@@ -2658,7 +2682,7 @@ intr_get_level ()==INTR_ON identify:
 :intr_get_level ()==INTR_ON identify: 
  end of indent 
 12023 left_ticks: 
-:I'm hereI'm here(mlfqs-load-avg) After 70 seconds, load average=0.00.
+:I'm here(mI'm herelfqs-load-avg) After 70 seconds, load average=0.00.
 intr_get_level ()==INTR_ON identify: 
  end of indent 
 8223 left_ticks: 
@@ -3003,7 +3027,7 @@ Some recent_cpu values were missing or differed from those expected by more than
 
 OUTPUT FROM tests/threads/mlfqs-recent-1:
 
-Writing command line to /tmp/5a2mCzvpRE.dsk...
+Writing command line to /tmp/MwmXXbs7DS.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-recent-1
@@ -3128,7 +3152,7 @@ thread   actual <-> expected explanation
 
 OUTPUT FROM tests/threads/mlfqs-nice-2:
 
-Writing command line to /tmp/tLeO3PPdkE.dsk...
+Writing command line to /tmp/gnIBX7O3gA.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-nice-2
@@ -3181,7 +3205,7 @@ thread   actual <-> expected explanation
 
 OUTPUT FROM tests/threads/mlfqs-nice-10:
 
-Writing command line to /tmp/Y_4pQXuZyX.dsk...
+Writing command line to /tmp/ztYlqgenS2.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-nice-10
@@ -3282,7 +3306,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/mlfqs-block:
 
-Writing command line to /tmp/fBcgNfqXyA.dsk...
+Writing command line to /tmp/viQy8h0p2_.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-block

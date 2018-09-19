@@ -1,4 +1,4 @@
-Writing command line to /tmp/rjE1XyBQcC.dsk...
+Writing command line to /tmp/sYbNyNpDDp.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-load-1
@@ -12,7 +12,7 @@ Executing 'mlfqs-load-1':
 (mlfqs-load-1) spinning for up to 45 seconds, please wait...
 (mlfqs-load-1) FAIL: load average stayed below 0.5 for more than 45 seconds
 Kernel PANIC at ../../tests/threads/tests.c:94 in fail(): test failed
-Call stack: 0xc002fed8Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105382
+Call stack: 0xc002fed8Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105392
  cr2=0000005e error=00000000
  eax=0000005e ebx=0000005e ecx=c002fe04 edx=000003d4
  esi=c010c2a0 edi=c010dac9 esp=c010d527 ebp=c002fe98

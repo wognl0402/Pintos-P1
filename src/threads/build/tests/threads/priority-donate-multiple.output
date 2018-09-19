@@ -1,4 +1,4 @@
-Writing command line to /tmp/HYRa9snZej.dsk...
+Writing command line to /tmp/3meNCPT62V.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-multiple
@@ -18,7 +18,7 @@ Executing 'priority-donate-multiple':
 (priority-donate-multiple) end
 Execution of 'priority-donate-multiple' complete.
 Timer: 104 ticks
-Thread: 0 idle ticks, 107 kernel ticks, 0 user ticks
+Thread: 0 idle ticks, 108 kernel ticks, 0 user ticks
 Console: 905 characters output
 Keyboard: 0 keys pressed
 Powering off...

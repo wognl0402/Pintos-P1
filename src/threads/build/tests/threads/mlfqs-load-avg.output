@@ -1,4 +1,4 @@
-Writing command line to /tmp/6gTbYgjWBW.dsk...
+Writing command line to /tmp/d4HDMzW1i3.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-load-avg
@@ -477,13 +477,13 @@ intr_get_level ()==INTR_ON identify:
 intr_get_level ()==INTR_ON identify: 
  end of indent 
 7823 left_ticks: 
-:I'm hereI'm hereI'm hereI'm hereintr_get_level ()==INTR_ON identify: 
+:I'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereintr_get_level ()==INTR_ON identify: 
  end of indent 
 12023 left_ticks: 
 :intr_get_level ()==INTR_ON identify: 
  end of indent 
 12023 left_ticks: 
-:I'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm here(mlfqs-load-avg) After 68 seconds, load average=0.00.
+:I'm hereI'm here(mI'm herelfqI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm hereI'm heres-load-avg) After 68 seconds, load average=0.00.
 intr_get_level ()==INTR_ON identify: 
  end of indent 
 8023 left_ticks: 
@@ -493,7 +493,7 @@ intr_get_level ()==INTR_ON identify:
 :intr_get_level ()==INTR_ON identify: 
  end of indent 
 12023 left_ticks: 
-:I'm hereI'm here(mlfqs-load-avg) After 70 seconds, load average=0.00.
+:I'm here(mI'm herelfqs-load-avg) After 70 seconds, load average=0.00.
 intr_get_level ()==INTR_ON identify: 
  end of indent 
 8223 left_ticks: 
