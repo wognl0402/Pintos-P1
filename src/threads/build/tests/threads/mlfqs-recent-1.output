@@ -1,19 +1,16 @@
-Writing command line to /tmp/MwmXXbs7DS.dsk...
+Writing command line to /tmp/Kd_naesMZl.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-recent-1
 Pintos booting with 4,096 kB RAM...
-375 pages available in kernel pool.
+374 pages available in kernel pool.
 374 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 Boot complete.
 Executing 'mlfqs-recent-1':
 (mlfqs-recent-1) begin
 (mlfqs-recent-1) Sleeping 10 seconds to allow recent_cpu to decay, please wait...
-intr_get_level ()==INTR_ON identify: 
- end of indent 
-1001 left_ticks: 
-:I'm here(mlfqs-recent-1) After 2 seconds, recent_cpu is 0.00, load_avg is 0.00.
+(mlfqs-recent-1) After 2 seconds, recent_cpu is 0.00, load_avg is 0.00.
 (mlfqs-recent-1) After 4 seconds, recent_cpu is 0.00, load_avg is 0.00.
 (mlfqs-recent-1) After 6 seconds, recent_cpu is 0.00, load_avg is 0.00.
 (mlfqs-recent-1) After 8 seconds, recent_cpu is 0.00, load_avg is 0.00.
@@ -107,6 +104,6 @@ intr_get_level ()==INTR_ON identify:
 Execution of 'mlfqs-recent-1' complete.
 Timer: 19018 ticks
 Thread: 967 idle ticks, 18055 kernel ticks, 0 user ticks
-Console: 7168 characters output
+Console: 7087 characters output
 Keyboard: 0 keys pressed
 Powering off...

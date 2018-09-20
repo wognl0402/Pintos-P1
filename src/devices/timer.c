@@ -125,7 +125,7 @@ block_ticks (void){
   ASSERT (t->status == THREAD_BLOCKED);
   //printf("WHEN PANIC 3\n");
   if(t->left_ticks <= ticks){
-    printf("I'm here");
+    //printf("I'm here");
     list_pop_front (&block_list);
     thread_unblock(t);
     //list_remove(e);
@@ -152,10 +152,10 @@ timer_sleep (int64_t ticks)
   enum intr_level old_level;
   old_level = intr_disable();
 
-  printf("intr_get_level ()==INTR_ON identify: ");
-  printf("\n end of indent \n");
+  //printf("intr_get_level ()==INTR_ON identify: ");
+  //printf("\n end of indent \n");
   t->left_ticks = start+ticks;
-  printf("%d left_ticks: \n:", t->left_ticks);
+  //printf("%d left_ticks: \n:", t->left_ticks);
   list_insert_ordered (&block_list, &t->elem, less_tick_func, NULL); 
   thread_block ();
 

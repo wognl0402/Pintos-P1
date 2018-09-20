@@ -27,7 +27,7 @@ Differences in `diff -u' format:
   (alarm-simultaneous) Creating 3 threads to sleep 5 times each.
   (alarm-simultaneous) Each thread sleeps 10 ticks each time.
   (alarm-simultaneous) Within an iteration, all threads should wake up on the same tick.
-- (alarm-simultaneous) iteration 0, thread 0: woke up after 10 ticks
+  (alarm-simultaneous) iteration 0, thread 0: woke up after 10 ticks
 - (alarm-simultaneous) iteration 0, thread 1: woke up 0 ticks later
 - (alarm-simultaneous) iteration 0, thread 2: woke up 0 ticks later
 - (alarm-simultaneous) iteration 1, thread 0: woke up 10 ticks later
@@ -41,64 +41,7 @@ Differences in `diff -u' format:
 - (alarm-simultaneous) iteration 3, thread 2: woke up 0 ticks later
 - (alarm-simultaneous) iteration 4, thread 0: woke up 10 ticks later
 - (alarm-simultaneous) iteration 4, thread 1: woke up 0 ticks later
-+ intr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 55 left_ticks: 
-+ :I'm hereintr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 161 left_ticks: 
-+ :intr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 61 left_ticks: 
-+ :I'm hereintr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 161 left_ticks: 
-+ :intr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 66 left_ticks: 
-+ :I'm hereintr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 316 left_ticks: 
-+ :intr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 161 left_ticks: 
-+ :I'm hereintr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 171 left_ticks: 
-+ :I'm hereintr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 171 left_ticks: 
-+ :I'm hereintr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 171 left_ticks: 
-+ :I'm hereintr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 181 left_ticks: 
-+ :I'm hereintr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 181 left_ticks: 
-+ :I'm hereintr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 181 left_ticks: 
-+ :I'm hereintr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 191 left_ticks: 
-+ :I'm hereintr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 191 left_ticks: 
-+ :I'm hereintr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 191 left_ticks: 
-+ :I'm hereintr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 201 left_ticks: 
-+ :I'm hereintr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 201 left_ticks: 
-+ :I'm hereintr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ 201 left_ticks: 
-+ :I'm hereI'm hereI'm hereI'm here(alarm-simultaneous) iteration 0, thread 0: woke up after 10 ticks
+- (alarm-simultaneous) iteration 4, thread 2: woke up 0 ticks later
 + (alarm-simultaneous) iteration 0, thread 1: woke up 1 ticks later
 + (alarm-simultaneous) iteration 0, thread 2: woke up 1 ticks later
 + (alarm-simultaneous) iteration 1, thread 0: woke up 8 ticks later
@@ -111,6 +54,6 @@ Differences in `diff -u' format:
 + (alarm-simultaneous) iteration 3, thread 1: woke up 1 ticks later
 + (alarm-simultaneous) iteration 3, thread 2: woke up 1 ticks later
 + (alarm-simultaneous) iteration 4, thread 0: woke up 8 ticks later
-+ (alarm-simultaneous) iteration 4, thread 1: woke up 3 ticks later
-  (alarm-simultaneous) iteration 4, thread 2: woke up 0 ticks later
++ (alarm-simultaneous) iteration 4, thread 1: woke up 1 ticks later
++ (alarm-simultaneous) iteration 4, thread 2: woke up 1 ticks later
   (alarm-simultaneous) end

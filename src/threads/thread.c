@@ -355,11 +355,20 @@ thread_yield (void)
 void
 thread_set_priority (int new_priority) 
 {
-  thread_current ()->priority = new_priority;
-
+  struct thread *curr = thread_current ();
+  if(list_empty (&curr->lock_list)){
+    curr->priority = new_priority;
+    curr->priority_ori = new_priority;
+  }else if(new_priority<list_entry (list_front (&curr->lock_list), struct lock, lock_list_elem)->high_pri){
+    curr->priority_ori = new_priority;
+  }else{
+    curr->priority_ori = new_priority;
+    curr->priority = new_priority;
+    time_to_yield();
+  }
   list_sort (&ready_list, high_pri_func, NULL);
   if(!list_empty (&ready_list) && new_priority < list_entry (list_front (&ready_list), struct thread, elem))
-    thread_yield();
+    time_to_yield();    //thread_yield();
 }
 
 
@@ -485,6 +494,10 @@ init_thread (struct thread *t, const char *name, int priority)
   strlcpy (t->name, name, sizeof t->name);
   t->stack = (uint8_t *) t + PGSIZE;
   t->priority = priority;
+
+  t->priority_ori = priority;
+  list_init (&t->donation_list);
+  list_init (&t->lock_list);
   t->magic = THREAD_MAGIC;
 }
 

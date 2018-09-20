@@ -1,15 +1,1 @@
-FAIL
-Test output failed to match any acceptable form.
-
-Acceptable output:
-  (alarm-negative) begin
-  (alarm-negative) PASS
-  (alarm-negative) end
-Differences in `diff -u' format:
-  (alarm-negative) begin
-- (alarm-negative) PASS
-+ intr_get_level ()==INTR_ON identify: 
-+  end of indent 
-+ -77 left_ticks: 
-+ :I'm here(alarm-negative) PASS
-  (alarm-negative) end
+PASS
