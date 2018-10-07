@@ -95,13 +95,9 @@ struct thread
 
     /* Shared between thread.c and synch.c. */
     struct list_elem elem;              /* List element. */
-    struct list_elem donation_list_elem;
-    struct list donation_list;
-    struct list_elem wait_t_elem;
     struct list lock_list;
 
     struct lock *wait_on;
-    struct list_elem sema_elem;
 //    struct lock wait_on;
 #ifdef USERPROG
     /* Owned by userprog/process.c. */

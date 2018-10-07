@@ -119,17 +119,39 @@ block_ticks (void){
     count++;
   }*/ 
   //printf("WHEN PANIC 2\n");
-  e = list_begin (&block_list);
-  struct thread *t = list_entry (e,struct thread, elem);
+  //e = list_begin (&block_list);
+  //struct thread *t = list_entry (e,struct thread, elem);
 
-  ASSERT (t->status == THREAD_BLOCKED);
+  //ASSERT (t->status == THREAD_BLOCKED);
   //printf("WHEN PANIC 3\n");
+  
+  enum intr_level old_level;
+
+  old_level = intr_disable();
+
+  struct list_elem *temp;
+
+  for (e = list_begin (&block_list); e!= list_end (&block_list); e=temp){
+    struct thread *t = list_entry (e,struct thread, elem);
+    temp = list_next (e);
+    if(t->left_ticks <= ticks){
+      list_remove(e);
+      thread_unblock(t);
+      //t->status = THREAD_READY;
+    }else{
+      break;
+    }
+  }
+  intr_yield_on_return ();
+  intr_set_level (old_level);
+/*
   if(t->left_ticks <= ticks){
     //printf("I'm here");
     list_pop_front (&block_list);
     thread_unblock(t);
     //list_remove(e);
-  } 
+  }
+*/
 }
 
 /* Returns the number of timer ticks elapsed since THEN, which
@@ -208,7 +230,10 @@ timer_interrupt (struct intr_frame *args UNUSED)
 {
   ticks++;
   thread_tick ();
-  block_ticks ();
+  if(!list_empty (&block_list) &&
+     list_entry (list_front (&block_list), struct thread, elem)->left_ticks <= ticks) 
+    block_ticks ();
+
 }
 
 /* Returns true if LOOPS iterations waits for more than one timer

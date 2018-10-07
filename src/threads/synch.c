@@ -201,7 +201,6 @@ void
 lock_init (struct lock *lock)
 {
   ASSERT (lock != NULL);
-  list_init (&lock->wait_t);
   lock->holder = NULL;
   sema_init (&lock->semaphore, 1);
 }
@@ -215,36 +214,6 @@ lock_init (struct lock *lock)
    interrupts disabled, but interrupts will be turned back on if
    we need to sleep. */
 
-void donate_one (struct lock *lock){
-  if(thread_mlfqs)
-    return;
-  if(lock->holder == NULL)
-    return;
-  struct thread *seeker = thread_current ();
-  struct thread *keeper = lock->holder;
-
-  if(keeper->priority < seeker->priority){
-     keeper->priority = seeker->priority;
-  }
-  
-
-}
-void donate_mul (struct lock *lock){
-  if(thread_mlfqs)
-    return;
-  if(lock->holder == NULL) 
-    return;
-  struct thread *seeker = thread_current ();
-  struct thread *keeper = lock->holder;
-
-  if(keeper->priority_ori < seeker->priority){
-    if(keeper->priority < seeker->priority) keeper->priority = seeker->priority;
-    list_insert_ordered (&keeper->donation_list, &seeker->donation_list_elem,
-			high_pri_func, NULL);
-  //  list_insert_ordered (&lock->wait_t, &seeker->wait_t_elem, high_pri_func, NULL);
-    list_push_front (&keeper->lock_list, &lock->lock_list_elem);
-  }
-}
 void donate_new (struct lock *lock){
   if(thread_mlfqs) return;
   if(lock->holder == NULL) return;
@@ -309,59 +278,6 @@ lock_try_acquire (struct lock *lock)
    An interrupt handler cannot acquire a lock, so it does not
    make sense to try to release a lock within an interrupt
    handler. */
-void undonate_one (struct lock *lock){
-  if(thread_mlfqs)
-    return;
-  /*if(lock->holder == NULL)
-    return;
-  */
-  //if(lock->holder == NULL){
-    thread_current ()-> priority = thread_current ()->priority_ori; 
-    time_to_yield();
-  //}
-}
-void undonate_mul (struct lock *lock){
-  if(thread_mlfqs)
-    return;
-  struct thread *keeper = thread_current ();
-
-  if(list_empty (&keeper->donation_list))
-    return;
-  if(!list_empty (&lock->wait_t)){
-    list_sort (&lock->wait_t, high_pri_func, NULL);
-    struct thread *seeker = list_entry (list_pop_front( &lock->wait_t), struct thread, wait_t_elem);
-    struct list_elem *e;
-    for (e = list_begin (&keeper->donation_list) ;
-	e != list_end (&keeper->donation_list) ;
-	e = list_next (e)){
-
-      
-      //struct thread *t = list_entry (e, struct thread, wait_t_elem);
-      if(seeker == list_entry (e, struct thread, donation_list_elem)){
-	list_remove(e);
-        
-      }
-    }
-    if(list_empty (&keeper->donation_list)){
-      thread_set_priority(keeper->priority_ori);
-
-    }else{
-      list_sort (&keeper->donation_list, high_pri_func, NULL);
-      seeker = list_entry (list_front( &keeper->donation_list), struct thread, donation_list_elem);
-      //keeper->priority = seeker->priority; 
-      thread_set_priority(seeker->priority);
-
-    }
-  }else{
-    //thread_set_priority(keeper->priority_ori);
-  } 
-}
-void undonate_mul2 (struct lock *lock){
-  if(thread_mlfqs) return;
-  struct thread *keeper = thread_current;
-}
-  
-
 void undonate_new (struct lock *lock){
   if(thread_mlfqs) return;
   struct thread *keeper = thread_current ();
