@@ -87,7 +87,7 @@ void time_to_yield (void){
   if (list_empty (&ready_list))
     return;
 
-  if (thread_current ()->priority < list_entry (list_begin (&ready_list), struct thread, elem))
+  if (thread_current ()->priority < list_entry (list_begin (&ready_list), struct thread, elem)->priority)
     thread_yield();
 }
 /*
