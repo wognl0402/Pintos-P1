@@ -4,7 +4,7 @@
 #include <debug.h>
 #include <list.h>
 #include <stdint.h>
-#include <synch.h>
+#include "synch.h"
 
 /* States in a thread's life cycle. */
 enum thread_status
@@ -98,6 +98,13 @@ struct thread
     struct list lock_list;
 
     struct lock *wait_on;
+
+	//P2 addition//
+	struct thread *parent;
+	struct list ch_list;
+	struct semaphore pa_sema;
+	int exit_status;
+
 //    struct lock wait_on;
 #ifdef USERPROG
     /* Owned by userprog/process.c. */
@@ -107,12 +114,20 @@ struct thread
     /* Owned by thread.c. */
     unsigned magic;                     /* Detects stack overflow. */
   };
-
+struct dead_body
+  {
+	tid_t ch_tid;
+	int exit_status;
+	bool is_waiting;
+	struct semaphore ch_sema;
+	struct list_elem ch_elem;
+  };
 /* If false (default), use round-robin scheduler.
    If true, use multi-level feedback queue scheduler.
    Controlled by kernel command-line option "-o mlfqs". */
 extern bool thread_mlfqs;
 
+struct lock filesys_lock;
 void thread_init (void);
 void thread_start (void);
 
@@ -144,4 +159,6 @@ void thread_set_nice (int);
 int thread_get_recent_cpu (void);
 int thread_get_load_avg (void);
 
+void acquire_filesys_lock (void);
+void release_filesys_lock (void);
 #endif /* threads/thread.h */

@@ -1,0 +1,89 @@
+Copying tests/userprog/multi-recurse into /tmp/TVCXyuOA2x.dsk...
+Writing command line to /tmp/ITx1l9e3Jx.dsk...
+warning: can't find squish-pty, so terminal input will fail
+bochs -q
+Kernel command line: -q -f put multi-recurse run 'multi-recurse 15'
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+374 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+Formatting file system...done.
+Boot complete.
+Putting 'multi-recurse' into the file system...
+Executing 'multi-recurse 15':
+(multi-recurse) begin 15
+(multi-recurse) exec("multi-recurse 14")
+(multi-recurse) begin 14
+(multi-recurse) exec("multi-recurse 13")
+(multi-recurse) begin 13
+(multi-recurse) exec("multi-recurse 12")
+(multi-recurse) begin 12
+(multi-recurse) exec("multi-recurse 11")
+(multi-recurse) begin 11
+(multi-recurse) exec("multi-recurse 10")
+(multi-recurse) begin 10
+(multi-recurse) exec("multi-recurse 9")
+(multi-recurse) begin 9
+(multi-recurse) exec("multi-recurse 8")
+(multi-recurse) begin 8
+(multi-recurse) exec("multi-recurse 7")
+(multi-recurse) begin 7
+(multi-recurse) exec("multi-recurse 6")
+(multi-recurse) begin 6
+(multi-recurse) exec("multi-recurse 5")
+(multi-recurse) begin 5
+(multi-recurse) exec("multi-recurse 4")
+(multi-recurse) begin 4
+(multi-recurse) exec("multi-recurse 3")
+(multi-recurse) begin 3
+(multi-recurse) exec("multi-recurse 2")
+(multi-recurse) begin 2
+(multi-recurse) exec("multi-recurse 1")
+(multi-recurse) begin 1
+(multi-recurse) exec("multi-recurse 0")
+(multi-recurse) begin 0
+(multi-recurse) end 0
+multi-recurse: exit(0)
+(multi-recurse) wait(exec("multi-recurse 0")) returned 18: FAILED
+multi-recurse: exit(1)
+(multi-recurse) wait(exec("multi-recurse 1")) returned 17: FAILED
+multi-recurse: exit(1)
+(multi-recurse) wait(exec("multi-recurse 2")) returned 16: FAILED
+multi-recurse: exit(1)
+(multi-recurse) wait(exec("multi-recurse 3")) returned 15: FAILED
+multi-recurse: exit(1)
+(multi-recurse) wait(exec("multi-recurse 4")) returned 14: FAILED
+multi-recurse: exit(1)
+(multi-recurse) wait(exec("multi-recurse 5")) returned 13: FAILED
+multi-recurse: exit(1)
+(multi-recurse) wait(exec("multi-recurse 6")) returned 12: FAILED
+multi-recurse: exit(1)
+(multi-recurse) wait(exec("multi-recurse 7")) returned 11: FAILED
+multi-recurse: exit(1)
+(multi-recurse) wait(exec("multi-recurse 8")) returned 10: FAILED
+multi-recurse: exit(1)
+(multi-recurse) end 10
+multi-recurse: exit(10)
+(multi-recurse) wait(exec("multi-recurse 10")) returned 8: FAILED
+multi-recurse: exit(1)
+(multi-recurse) wait(exec("multi-recurse 11")) returned 7: FAILED
+multi-recurse: exit(1)
+(multi-recurse) wait(exec("multi-recurse 12")) returned 6: FAILED
+multi-recurse: exit(1)
+(multi-recurse) wait(exec("multi-recurse 13")) returned 5: FAILED
+multi-recurse: exit(1)
+(multi-recurse) wait(exec("multi-recurse 14")) returned 4: FAILED
+multi-recurse: exit(1)
+Execution of 'multi-recurse 15' complete.
+Timer: 1639 ticks
+Thread: 30 idle ticks, 616 kernel ticks, 1000 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 699 reads, 240 writes
+hd1:0: 116 reads, 0 writes
+Console: 3121 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...

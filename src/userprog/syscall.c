@@ -4,6 +4,7 @@
 #include "threads/interrupt.h"
 #include "threads/thread.h"
 #include "threads/vaddr.h"
+#include "threads/init.h"
 
 #define PHYS_TOP ((void *) 0x08048000)
 
@@ -11,28 +12,100 @@ static int (*syscall_case[20]) (struct intr_frame *f);
 
 static void syscall_handler (struct intr_frame *);
 static void valid_usrptr (const void *uaddr);
+void valid_multiple (int *esp, int num);
 
 static int syscall_halt_ (struct intr_frame *f){
+  power_off ();
   return -1;
 }
-static int syscall_exit_ (struct intr_frame *f){
-  
+void exit (int status){  
+  printf("%s: exit(%d)\n", thread_current ()->name, status);
+  thread_exit ();
+}
+static int syscall_exit_ (struct intr_frame *f){  
+  valid_usrptr(f->esp+4);
+  int status = * (int *) (f->esp+4);
+
+  //printf("Given child status = %d\n", status);
+  struct list_elem *e;
+  for (e=list_begin (&thread_current ()->parent->ch_list);
+	  e!=list_end (&thread_current ()->parent->ch_list);
+	  e=list_next(e)){
+	struct dead_body *temp = list_entry (e, struct dead_body, ch_elem);
+	if (temp->ch_tid == thread_current ()->tid){
+	  temp->exit_status = status;
+	}
+  }
+  exit (status);
   return -1;
 }
 static int syscall_exec_ (struct intr_frame *f){
-  return -1;
+  valid_multiple(f->esp,1);
+  valid_usrptr(*(uint32_t *) (f->esp+4));
+  //printf("GOOD ESP\n");
+  char * file = * (char **) (f->esp+4);
+
+  acquire_filesys_lock ();
+  char *f_name = malloc (strlen(file)+1);
+  strlcpy (f_name, file, strlen(file)+1);
+  char *save_ptr;
+  f_name = strtok_r (f_name, " ", &save_ptr);
+  struct file* ff = filesys_open (f_name);
+
+  if(ff==NULL){
+	release_filesys_lock ();
+	return -1;
+  }
+  file_close (ff);
+  release_filesys_lock ();
+  free(f_name);
+  f->eax = process_execute(file);
+  return 0;
 }
+
 static int syscall_wait_ (struct intr_frame *f){
-  return -1;
+  valid_multiple (f->esp, 1);
+  tid_t child_tid = * (int *) (f->esp+4);
+  
+
+  return process_wait(child_tid);
 }
 static int syscall_create_ (struct intr_frame *f){
-  return -1;
+  valid_multiple(f->esp, 2);
+  valid_usrptr (*(uint32_t *) (f->esp+4));
+  char *file = * (char **) (f->esp+4);
+  unsigned size = * (unsigned *) (f->esp+8);
+  bool success = false;
+  acquire_filesys_lock ();
+
+  success = filesys_create (file, size);
+  f->eax = success;
+
+  release_filesys_lock ();
+  return 0;
 } 
 static int syscall_remove_ (struct intr_frame *f){
-  return -1;
+  valid_multiple(f->esp, 1);
+  valid_usrptr(*(uint32_t *) (f->esp+4));
+  char *file = * (char **) (f->esp+4);
+  bool success = false;
+
+  acquire_filesys_lock ();
+
+  success = filesys_remove (file);
+  f->eax = success;
+  release_filesys_lock ();
+  
+  return 0;
 } 
 
 static int syscall_open_ (struct intr_frame *f){
+  valid_multiple (f->esp, 1);
+  valid_usrptr (* (uint32_t *) (f->esp+4));
+  char *file = * (char **) (f->esp+4);
+  int fd ;
+
+
   return -1;
 }
 
@@ -41,10 +114,25 @@ static int syscall_filesize_ (struct intr_frame *f){
 }
 
 static int syscall_read_ (struct intr_frame *f){
+  valid_multiple (f->esp, 1);
+  valid_usrptr (* (uint32_t *) (f->esp+4));
+  char *file = * (char **) (f->esp+4);
   return -1;
 }
 
 static int syscall_write_ (struct intr_frame *f){
+  valid_multiple (f->esp, 3);
+  int fd = *(int *) (f->esp+4);
+  char *buffer = * (char **) (f->esp+8);
+  unsigned size = *(unsigned *) (f->esp+12);
+  acquire_filesys_lock ();
+
+  if (fd==1){
+	putbuf(buffer ,size);
+	release_filesys_lock ();
+	return (int) size;
+  }
+  release_filesys_lock ();
   return -1;
 }
 
@@ -131,34 +219,57 @@ syscall_init (void)
   intr_register_int (0x30, 3, INTR_ON, syscall_handler, "syscall");
 }
 
+static int syscall_write(struct intr_frame *f)
+{
+ int fd = *(int *)(f->esp + 4);
+ void *buffer = *(char**)(f->esp +8);
+ unsigned size = *(unsigned *)(f->esp + 12);
+
+}
 static void
 syscall_handler (struct intr_frame *f) 
 {
-
+  valid_usrptr(f->esp);
   int syscall_num = * (int *) f->esp;
 //  int syscall_num;
 /*  asm volatile ("movl %0, %%esp; popl %%eax" : "=a" (syscall_num) : "g" (f->esp));
-*/	
+*/
+  //printf("STARTING %d function call\n", syscall_num);
+ 
   if (syscall_case[syscall_num] (f) == -1){
-	printf("%d call made\n", syscall_num);
+	exit(-1);
 	return;
   }
-  printf ("system call!\n");
-  thread_exit ();
+  //thread_exit ();
 }
 
 static void valid_usrptr (const void *uaddr){
   if (uaddr >= PHYS_BASE){
+	exit(-1);
 	//SOMETHING preventing 'leak' should be inserted
 	return;
   }
-
+  /*
   if (uaddr < PHYS_TOP){
+	exit(-1);
 	return;
-  }
+  }*/
 
-  if ((pagedir_get_page (thread_current ()->pagedir, uaddr))==NULL){
+  //printf("CHECKING VALIDITY\n"); 
+  void *temp = pagedir_get_page (thread_current ()->pagedir, uaddr);
+  if ( !temp){
+	//printf("BAAAAAAAD\n");
+	exit(-1);
 	//SOEMTHING preventing 'leak'
 	return;
+  }
+}
+void valid_multiple (int * esp, int num){
+  //int *ptr;
+  int i;
+  //printf("CHECKING MULTIPLES\n");
+  for (i =0; i < num; i++){
+	//ptr = (int *) f->esp + i + 1;
+	valid_usrptr( esp + i + 1);
   }
 }

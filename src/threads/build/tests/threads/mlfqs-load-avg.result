@@ -1,5 +1,0 @@
-FAIL
-Kernel panic in run: PANIC at ../../lib/kernel/list.c:290 in list_front(): assertion `!list_empty (list)' failed.
-Call stack: 0xc002fe98
-Translation of call stack:
-0xc002fe98: (unknown)

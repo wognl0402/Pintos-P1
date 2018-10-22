@@ -118,6 +118,7 @@ thread_init (void)
 
   lock_init (&tid_lock);
   list_init (&ready_list);
+  lock_init (&filesys_lock);
   //list_init (&block_list);
   /* Set up a thread structure for the running thread. */
   initial_thread = running_thread ();
@@ -208,6 +209,14 @@ thread_create (const char *name, int priority,
   /* Initialize thread. */
   init_thread (t, name, priority);
   tid = t->tid = allocate_tid ();
+
+  struct dead_body *db = malloc(sizeof(*db));
+  db->ch_tid = tid;
+  db->exit_status = -1;
+  sema_init(&db->ch_sema, 0);
+  db->is_waiting = false;
+  list_push_back (&running_thread ()->ch_list, &db->ch_elem);
+
 
   /* Stack frame for kernel_thread(). */
   kf = alloc_frame (t, sizeof *kf);
@@ -320,6 +329,17 @@ thread_exit (void)
 {
   ASSERT (!intr_context ());
 
+  if(running_thread ()->parent != NULL){
+	struct list_elem *e;
+	for (e=list_begin (&running_thread ()->parent->ch_list);
+		e!=list_end (&running_thread ()->parent->ch_list);
+		e=list_next (e)){
+	  struct dead_body *temp = list_entry (e, struct dead_body, ch_elem);
+	  if (temp->ch_tid == running_thread ()->tid){
+		sema_up(&temp->ch_sema);
+	  }
+	}
+  }
 #ifdef USERPROG
   process_exit ();
 #endif
@@ -498,6 +518,12 @@ init_thread (struct thread *t, const char *name, int priority)
 
   t->priority_ori = priority;
   list_init (&t->lock_list);
+
+  //P2 addition
+  t->parent = running_thread ();
+  sema_init(&t->pa_sema, 0);
+  list_init(&t->ch_list);
+  t->exit_status = -1;
   t->magic = THREAD_MAGIC;
 }
 
@@ -616,3 +642,10 @@ allocate_tid (void)
 /* Offset of `stack' member within `struct thread'.
    Used by switch.S, which can't figure it out on its own. */
 uint32_t thread_stack_ofs = offsetof (struct thread, stack);
+
+void acquire_filesys_lock (void){
+  lock_acquire (&filesys_lock);
+}
+void release_filesys_lock (void){
+  lock_release (&filesys_lock);
+}

@@ -18,6 +18,9 @@
 #include "threads/thread.h"
 #include "threads/vaddr.h"
 
+#define MAX_ARG 64
+#define MAX_COM 128
+
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
 
@@ -63,9 +66,18 @@ process_execute (const char *file_name)
   printf("save_arg: '%s'\n", save_arg+1);
   */
   /* Create a new thread to execute FILE_NAME. */
-  tid = thread_create (file_name, PRI_DEFAULT, start_process, fn_copy);
+  char *save_ptr;
+  char *f_name;
+  f_name = malloc(strlen(file_name)+1);
+  strlcpy (f_name, file_name, strlen(file_name)+1);
+  f_name = strtok_r (f_name, " ",&save_ptr);
+
+  tid = thread_create (f_name, PRI_DEFAULT, start_process, fn_copy);
   if (tid == TID_ERROR)
     palloc_free_page (fn_copy); 
+  //printf("sema_down pa_sema\n"); 
+  sema_down (&thread_current ()->pa_sema);
+  //printf("sema_down done\n");
   return tid;
 }
 
@@ -85,21 +97,21 @@ start_process (void *f_name)
   if_.eflags = FLAG_IF | FLAG_MBS;
   success = load (file_name, &if_.eip, &if_.esp);
 
-  printf("LOAD is done\n");
   /* If load failed, quit. */
   palloc_free_page (file_name);
   if (!success){ 
     printf("BAD LOADING...\n");
    	thread_exit ();
   }
-
+  
+  sema_up (&thread_current ()->parent->pa_sema);
   /* Start the user process by simulating a return from an
      interrupt, implemented by intr_exit (in
      threads/intr-stubs.S).  Because intr_exit takes all of its
      arguments on the stack in the form of a `struct intr_frame',
      we just point the stack pointer (%esp) to our stack frame
      and jump to it. */
-  printf("So... here?\n");
+  //printf("So... here?\n");
   asm volatile ("movl %0, %%esp; jmp intr_exit" : : "g" (&if_) : "memory");
   NOT_REACHED ();
 }
@@ -116,8 +128,29 @@ start_process (void *f_name)
 int
 process_wait (tid_t child_tid UNUSED) 
 {
-  while(1){}
-  return -1;
+  struct list_elem *e;
+  struct dead_body *ch;
+  int child_status = 0;
+  for (e=list_begin (&thread_current ()->ch_list);
+	  e!=list_end (&thread_current ()->ch_list);
+	  e=list_next(e)){
+	struct dead_body *temp = list_entry (e, struct dead_body, ch_elem);
+	if(temp->ch_tid == child_tid){
+	  if(temp->is_waiting){
+		return -1;
+	  }
+	  temp->is_waiting = true;
+	  sema_down (&temp->ch_sema);
+	  child_status = temp->exit_status; 
+	  //printf("##### child_status = %d / temp->exit_status = %d\n", child_status, temp->exit_status);
+	  list_remove (e);
+	}
+
+  }
+
+
+	  //while(1){}
+  return child_status;
 }
 
 /* Free the current process's resources. */
@@ -127,7 +160,7 @@ process_exit (void)
   struct thread *curr = thread_current ();
   uint32_t *pd;
 
-  printf("IT'S exiting\n");
+  //printf("IT'S exiting\n");
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
   pd = curr->pagedir;
@@ -245,20 +278,19 @@ load (const char *f_name, void (**eip) (void), void **esp)
   bool success = false;
   int i;
 
-  char f_copy[16] ;
-  strlcpy(f_copy, f_name, 16);
+  char f_copy[MAX_COM] ;
+  strlcpy(f_copy, f_name, strlen(f_name)+1);
   char *save_arg;
-  char *argv[4];
+  char *argv[MAX_ARG];
   argv[0] = strtok_r (f_copy, " ", &save_arg);
   int argc = 1;
-  while( argc < 4 ){
+  while( argc < MAX_ARG ){
 	if ((argv[argc] = strtok_r (NULL, " ", &save_arg))==NULL){
 	  argc -=1;
 	  break;
     }
 	argc +=1;
   }
-  printf("file_name = %s\n", argv[0]); 
 
   /* Allocate and activate page directory. */
   t->pagedir = pagedir_create ();
@@ -268,14 +300,18 @@ load (const char *f_name, void (**eip) (void), void **esp)
   }
   process_activate ();
   
+  acquire_filesys_lock ();
   /* Open executable file. */
+  
   file = filesys_open (argv[0]);
   if (file == NULL) 
     {
       printf ("load: %s: open failed\n", argv[0]);
       goto done; 
     }
-  
+  release_filesys_lock ();
+
+  acquire_filesys_lock ();
   /* Read and verify executable header. */
   if (file_read (file, &ehdr, sizeof ehdr) != sizeof ehdr
       || memcmp (ehdr.e_ident, "\177ELF\1\1\1", 7)
@@ -293,7 +329,6 @@ load (const char *f_name, void (**eip) (void), void **esp)
   file_ofs = ehdr.e_phoff;
   for (i = 0; i < ehdr.e_phnum; i++) 
     {
-	  printf("???\n");
 	  struct Elf32_Phdr phdr;
 
       if (file_ofs < 0 || file_ofs > file_length (file))
@@ -353,7 +388,7 @@ load (const char *f_name, void (**eip) (void), void **esp)
   /* Set up stack. */
   if (!setup_stack (esp, argc, argv))
     goto done;
-
+  
   /* Start address. */
   *eip = (void (*) (void)) ehdr.e_entry;
 
@@ -362,6 +397,8 @@ load (const char *f_name, void (**eip) (void), void **esp)
  done:
   /* We arrive here whether the load is successful or not. */
   file_close (file);
+  release_filesys_lock ();
+  //test_stack(*esp);
   return success;
 }
 
@@ -538,13 +575,13 @@ setup_stack (void **esp, int argc, char *argv[])
 		memcpy(*esp,&argc,sizeof(int));
 
 		//*(int *) *esp = argc+1;
-		printf("%d\n", *(int *) *esp);
-		printf("LENGTH from top: %zu\n", (uint32_t) PHYS_BASE - (uint32_t) *esp);
+		//printf("%d\n", *(int *) *esp);
+		//printf("LENGTH from top: %zu\n", (uint32_t) PHYS_BASE - (uint32_t) *esp);
 	    
 		*esp = *esp -4;
 		*(uint32_t *) *esp = (uint32_t) 0;
-		printf("%d\n", * (int * ) *esp);
-		printf("LENGTH from top: %zu\n", (uint32_t) PHYS_BASE - (uint32_t) *esp);
+		//printf("%d\n", * (int * ) *esp);
+		//printf("LENGTH from top: %zu\n", (uint32_t) PHYS_BASE - (uint32_t) *esp);
         //*esp = PHYS_BASE;
 	  }
       else
@@ -571,4 +608,16 @@ install_page (void *upage, void *kpage, bool writable)
      address, then map our page there. */
   return (pagedir_get_page (t->pagedir, upage) == NULL
           && pagedir_set_page (t->pagedir, upage, kpage, writable));
+}
+
+void test_stack (int *t)
+{
+  int i;
+  int argc = t[1];
+  char ** argv;
+
+  argv = (char **) t[2];
+  printf("ARGC:%d ARGV:%x\n", argc, (unsigned int)argv);
+  for (i = 0; i<argc; i++)
+	printf("Argv[%d] = %x pointing at %s\n", i, (unsigned int)argv[i], argv[i]);
 }
