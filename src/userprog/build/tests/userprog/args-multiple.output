@@ -1,5 +1,5 @@
-Copying tests/userprog/args-multiple into /tmp/AC6Dar4S8F.dsk...
-Writing command line to /tmp/qsfkvqgBoH.dsk...
+Copying tests/userprog/args-multiple into /tmp/j_V7hWNE9R.dsk...
+Writing command line to /tmp/_XsPIR8Nbb.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put args-multiple run 'args-multiple some arguments for you!'
@@ -26,7 +26,7 @@ Executing 'args-multiple some arguments for you!':
 args-multiple: exit(0)
 Execution of 'args-multiple some arguments for you!' complete.
 Timer: 330 ticks
-Thread: 30 idle ticks, 239 kernel ticks, 68 user ticks
+Thread: 30 idle ticks, 240 kernel ticks, 67 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 214 writes
 hd1:0: 103 reads, 0 writes

@@ -104,7 +104,7 @@ struct thread
 	struct list ch_list;
 	struct semaphore pa_sema;
 	int exit_status;
-
+	struct list fd_list;
 //    struct lock wait_on;
 #ifdef USERPROG
     /* Owned by userprog/process.c. */
@@ -121,6 +121,12 @@ struct dead_body
 	bool is_waiting;
 	struct semaphore ch_sema;
 	struct list_elem ch_elem;
+  };
+struct file_desc
+  {
+	int fd;
+	char *file;
+	struct list_elem fd_elem;
   };
 /* If false (default), use round-robin scheduler.
    If true, use multi-level feedback queue scheduler.

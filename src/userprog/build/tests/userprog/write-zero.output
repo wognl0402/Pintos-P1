@@ -1,6 +1,6 @@
-Copying tests/userprog/write-zero into /tmp/xkDb6UkkDU.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/xkDb6UkkDU.dsk...
-Writing command line to /tmp/Gefy5DBOhp.dsk...
+Copying tests/userprog/write-zero into /tmp/8ANnkBUFAU.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/8ANnkBUFAU.dsk...
+Writing command line to /tmp/518mRpEA8s.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put write-zero put sample.txt run write-zero
@@ -20,10 +20,10 @@ Executing 'write-zero':
 (write-zero) open "sample.txt"
 write-zero: exit(-1)
 Execution of 'write-zero' complete.
-Timer: 329 ticks
-Thread: 30 idle ticks, 263 kernel ticks, 43 user ticks
+Timer: 330 ticks
+Thread: 30 idle ticks, 257 kernel ticks, 46 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 86 reads, 222 writes
+hd0:1: 90 reads, 222 writes
 hd1:0: 106 reads, 0 writes
 Console: 889 characters output
 Keyboard: 0 keys pressed

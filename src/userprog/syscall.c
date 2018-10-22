@@ -8,6 +8,13 @@
 
 #define PHYS_TOP ((void *) 0x08048000)
 
+bool low_fd_func (const struct list_elem *a,
+	const struct list_elem *b,
+	void *aux){
+  return list_entry (a, struct file_desc, fd_elem)->fd <
+	
+	list_entry (b, struct file_desc, fd_elem)->fd;
+}
 static int (*syscall_case[20]) (struct intr_frame *f);
 
 static void syscall_handler (struct intr_frame *);
@@ -103,8 +110,46 @@ static int syscall_open_ (struct intr_frame *f){
   valid_multiple (f->esp, 1);
   valid_usrptr (* (uint32_t *) (f->esp+4));
   char *file = * (char **) (f->esp+4);
-  int fd ;
+  acquire_filesys_lock ();
+  struct file *ff = filesys_open (file);
+  if (ff==NULL){
+	release_filesys_lock ();
+	f->eax=-1;
+	return 0;
+  }
+  
+  struct file_desc *fd_ = malloc(sizeof(*fd_));
+  fd_->file = ff;
+  if (list_empty (&thread_current ()->fd_list)){
+	  ///sdfsdfsdf
+	  fd_->fd=2;
+	  list_push_back (&thread_current ()->fd_list, &fd_->fd_elem);
+	  release_filesys_lock ();
+	  f->eax=fd_->fd;
+	  return fd_->fd;
+  }else{
+	struct list_elem *e;
+	int temp_fd = 2;
+	for (e=list_begin (&thread_current ()->fd_list);
+		e!=list_end (&thread_current ()->fd_list);
+		e=list_next(e)){
+	  struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
+	  if (temp_fd != temp->fd){
+		fd_->fd=temp_fd;
+		list_insert_ordered (&thread_current ()->fd_list, &fd_->fd_elem, low_fd_func, NULL);
+		release_filesys_lock ();
+		f->eax = fd_->fd;
+		return fd_->fd;
+	  }
+	  temp_fd++;
+	}
+	fd_->fd=temp_fd+1;
+	list_insert_ordered (&thread_current ()->fd_list, &fd_->fd_elem, low_fd_func, NULL);
+	release_filesys_lock ();
+	f->eax = fd_->fd;
+	return fd_->fd;
 
+  }
 
   return -1;
 }
@@ -147,6 +192,25 @@ static int syscall_tell_ (struct intr_frame *f){
 
 
 static int syscall_close_ (struct intr_frame *f){
+  
+  valid_multiple (f->esp, 1);
+  //valid_usrptr (* (uint32_t *) (f->esp+4));
+  int fd  = * (int *) (f->esp+4);
+  
+  struct list_elem *e;
+  for (e=list_begin (&thread_current ()->fd_list);
+	  e!=list_end (&thread_current ()->fd_list);
+	  e=list_next(e)){
+	struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
+	if (temp->fd == fd){
+	  acquire_filesys_lock ();
+	  file_close (temp->file);
+	  release_filesys_lock ();
+	  list_remove(e);
+	  return 0;
+	}
+  }
+  
   return -1;
 }
 
@@ -246,23 +310,43 @@ syscall_handler (struct intr_frame *f)
 static void valid_usrptr (const void *uaddr){
   if (uaddr >= PHYS_BASE){
 	exit(-1);
-	//SOMETHING preventing 'leak' should be inserted
 	return;
   }
-  /*
   if (uaddr < PHYS_TOP){
 	exit(-1);
 	return;
-  }*/
+  }
+
+  if ((pagedir_get_page (thread_current ()->pagedir, uaddr))==NULL){
+	exit(-1);
+	return;
+  }
+  /*
+  if (!is_user_vaddr (uaddr)){
+	exit(-1);
+	return;
+  }
+  
+  if (uaddr >= PHYS_BASE){
+	exit(-1);
+	//SOMETHING preventing 'leak' should be inserted
+	return;
+  }
+  
+  if (uaddr < PHYS_TOP){
+	exit(-1);
+	return;
+  }
 
   //printf("CHECKING VALIDITY\n"); 
   void *temp = pagedir_get_page (thread_current ()->pagedir, uaddr);
-  if ( !temp){
+  if ( temp == NULL){
 	//printf("BAAAAAAAD\n");
 	exit(-1);
 	//SOEMTHING preventing 'leak'
 	return;
   }
+  */
 }
 void valid_multiple (int * esp, int num){
   //int *ptr;

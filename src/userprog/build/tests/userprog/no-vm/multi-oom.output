@@ -1,5 +1,5 @@
-Copying tests/userprog/no-vm/multi-oom into /tmp/LVJ_7gNi2E.dsk...
-Writing command line to /tmp/d28zy8WAc3.dsk...
+Copying tests/userprog/no-vm/multi-oom into /tmp/TVVzlV8flP.dsk...
+Writing command line to /tmp/WRANSpJDtt.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put multi-oom run multi-oom
@@ -34,12 +34,12 @@ multi-oom: exit(-1)
 multi-oom: exit(-1)
 multi-oom: exit(-1)
 Execution of 'multi-oom' complete.
-Timer: 1506 ticks
-Thread: 30 idle ticks, 670 kernel ticks, 816 user ticks
+Timer: 1949 ticks
+Thread: 30 idle ticks, 662 kernel ticks, 1271 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 711 reads, 250 writes
+hd0:1: 964 reads, 250 writes
 hd1:0: 121 reads, 0 writes
-Console: 1134 characters output
+Console: 1135 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

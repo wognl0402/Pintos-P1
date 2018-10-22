@@ -5,25 +5,6 @@ Acceptable output:
   (multi-child-fd) begin
   (multi-child-fd) open "sample.txt"
   (child-close) begin
-  child-close: exit(-1)
-  (multi-child-fd) wait(exec()) = -1
-  (multi-child-fd) verified contents of "sample.txt"
-  (multi-child-fd) end
-  multi-child-fd: exit(0)
-Differences in `diff -u' format:
-  (multi-child-fd) begin
-  (multi-child-fd) open "sample.txt"
-- (child-close) begin
-- child-close: exit(-1)
-- (multi-child-fd) wait(exec()) = -1
-- (multi-child-fd) verified contents of "sample.txt"
-- (multi-child-fd) end
-- multi-child-fd: exit(0)
-+ multi-child-fd: exit(-1)
-Acceptable output:
-  (multi-child-fd) begin
-  (multi-child-fd) open "sample.txt"
-  (child-close) begin
   (child-close) end
   child-close: exit(0)
   (multi-child-fd) wait(exec()) = 0
@@ -33,10 +14,30 @@ Acceptable output:
 Differences in `diff -u' format:
   (multi-child-fd) begin
   (multi-child-fd) open "sample.txt"
-- (child-close) begin
+  (child-close) begin
 - (child-close) end
 - child-close: exit(0)
 - (multi-child-fd) wait(exec()) = 0
+- (multi-child-fd) verified contents of "sample.txt"
+- (multi-child-fd) end
+- multi-child-fd: exit(0)
++ child-close: exit(-1)
++ multi-child-fd: exit(-1)
+Acceptable output:
+  (multi-child-fd) begin
+  (multi-child-fd) open "sample.txt"
+  (child-close) begin
+  child-close: exit(-1)
+  (multi-child-fd) wait(exec()) = -1
+  (multi-child-fd) verified contents of "sample.txt"
+  (multi-child-fd) end
+  multi-child-fd: exit(0)
+Differences in `diff -u' format:
+  (multi-child-fd) begin
+  (multi-child-fd) open "sample.txt"
+  (child-close) begin
+  child-close: exit(-1)
+- (multi-child-fd) wait(exec()) = -1
 - (multi-child-fd) verified contents of "sample.txt"
 - (multi-child-fd) end
 - multi-child-fd: exit(0)

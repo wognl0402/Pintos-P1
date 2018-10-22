@@ -1,5 +1,5 @@
-Copying tests/filesys/base/lg-random into /tmp/HuKX_p0zaR.dsk...
-Writing command line to /tmp/cqKBYl6htI.dsk...
+Copying tests/filesys/base/lg-random into /tmp/3KYH_54LEB.dsk...
+Writing command line to /tmp/3xuP_zgV94.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put lg-random run lg-random
@@ -17,14 +17,15 @@ Executing 'lg-random':
 (lg-random) begin
 (lg-random) create "bazzle"
 (lg-random) open "bazzle"
+(lg-random) write "bazzle" in random order
 lg-random: exit(-1)
 Execution of 'lg-random' complete.
-Timer: 584 ticks
-Thread: 30 idle ticks, 235 kernel ticks, 326 user ticks
+Timer: 593 ticks
+Thread: 30 idle ticks, 227 kernel ticks, 339 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 83 reads, 382 writes
+hd0:1: 87 reads, 382 writes
 hd1:0: 110 reads, 0 writes
-Console: 846 characters output
+Console: 889 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

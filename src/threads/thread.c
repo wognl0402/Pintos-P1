@@ -523,6 +523,7 @@ init_thread (struct thread *t, const char *name, int priority)
   t->parent = running_thread ();
   sema_init(&t->pa_sema, 0);
   list_init(&t->ch_list);
+  list_init(&t->fd_list);
   t->exit_status = -1;
   t->magic = THREAD_MAGIC;
 }

@@ -1,6 +1,6 @@
-Copying tests/filesys/base/syn-write into /tmp/fI40JLYjVq.dsk...
-Copying tests/filesys/base/child-syn-wrt into /tmp/fI40JLYjVq.dsk...
-Writing command line to /tmp/UwWTgfGKTX.dsk...
+Copying tests/filesys/base/syn-write into /tmp/nI2H4f9MFS.dsk...
+Copying tests/filesys/base/child-syn-wrt into /tmp/nI2H4f9MFS.dsk...
+Writing command line to /tmp/xhPD80D6Dp.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put syn-write put child-syn-wrt run syn-write
@@ -20,31 +20,28 @@ Executing 'syn-write':
 (syn-write) create "stuff"
 (syn-write) exec child 1 of 10: "child-syn-wrt 0"
 (syn-write) exec child 2 of 10: "child-syn-wrt 1"
-child-syn-wrt: exit(-1)
-(syn-write) exec child 3 of 10: "child-syn-wrt 2"
-child-syn-wrt: exit(-1)
-(syn-write) exec child 4 of 10: "child-syn-wrt 3"
-child-syn-wrt: exit(-1)
-(syn-write) exec child 5 of 10: "child-syn-wrt 4"
-child-syn-wrt: exit(-1)
-(syn-write) exec child 6 of 10: "child-syn-wrt 5"
-child-syn-wrt: exit(-1)
-(syn-write) exec child 7 of 10: "child-syn-wrt 6"
-child-syn-wrt: exit(-1)
-(syn-write) exec child 8 of 10: "child-syn-wrt 7"
-child-syn-wrt: exit(-1)
-(syn-write) exec child 9 of 10: "child-syn-wrt 8"
-child-syn-wrt: exit(-1)
-(syn-write) exec child 10 of 10: "child-syn-wrt 9"
-child-syn-wrt: exit(-1)
-syn-write: exit(-1)
-Execution of 'syn-write' complete.
-Timer: 1340 ticks
-Thread: 30 idle ticks, 582 kernel ticks, 736 user ticks
+Page fault at 0x1c: not present error reading page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc010276e
+ cr2=0000001c error=00000000
+ eax=00000000 ebx=c0111f00 ecx=c011c000 edx=0000001f
+ esi=c0120fb0 edi=00000000 esp=c0121000 ebp=c0120f04
+ cs=0008 ds=0010 es=0010 ss=1f00
+Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc0120e18Page fault at 0x64: not present error reading page in kern(syn-write) exec child 3 of 1el context.
+Interrupt 0x0e (#0: "child-syn-wrt 2"
+PF Page-Fault Exception) at eip=0xc0105852
+ cr2=00000064 error=00000000
+ eax=00000064 ebx=00000064 ecx=c0120d44 echild-syn-wrt: exit(-1)
+dx=000003d4
+ esi=c010d7b3 edi=c010f1a9 esp=c010ea3f ebp=c0120dd8
+ cs=0008 ds=0010 es=0010 ss=0e18
+Kernel PANIC recursion at ../../userprog/exception.c:100 in kill().
+Timer: 691 ticks
+Thread: 30 idle ticks, 349 kernel ticks, 312 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 480 reads, 480 writes
+hd0:1: 207 reads, 480 writes
 hd1:0: 228 reads, 0 writes
-Console: 1604 characters output
+Console: 1793 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 2 page faults
 Powering off...

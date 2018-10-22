@@ -1,6 +1,6 @@
-Copying tests/filesys/base/syn-read into /tmp/ZFPM9bUKkd.dsk...
-Copying tests/filesys/base/child-syn-read into /tmp/ZFPM9bUKkd.dsk...
-Writing command line to /tmp/2csjTdWhCj.dsk...
+Copying tests/filesys/base/syn-read into /tmp/jK9Lopqxjh.dsk...
+Copying tests/filesys/base/child-syn-read into /tmp/jK9Lopqxjh.dsk...
+Writing command line to /tmp/ZBCFP07dOk.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put syn-read put child-syn-read run syn-read
@@ -19,14 +19,15 @@ Executing 'syn-read':
 (syn-read) begin
 (syn-read) create "data"
 (syn-read) open "data"
+(syn-read) write "data"
 syn-read: exit(-1)
 Execution of 'syn-read' complete.
-Timer: 444 ticks
-Thread: 30 idle ticks, 349 kernel ticks, 72 user ticks
+Timer: 453 ticks
+Thread: 30 idle ticks, 342 kernel ticks, 84 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 110 reads, 474 writes
+hd0:1: 115 reads, 474 writes
 hd1:0: 229 reads, 0 writes
-Console: 901 characters output
+Console: 925 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

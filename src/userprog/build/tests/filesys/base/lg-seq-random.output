@@ -1,5 +1,5 @@
-Copying tests/filesys/base/lg-seq-random into /tmp/ZgZ7gTSglb.dsk...
-Writing command line to /tmp/T7UcWc2_EQ.dsk...
+Copying tests/filesys/base/lg-seq-random into /tmp/9bCvnBa9WQ.dsk...
+Writing command line to /tmp/XRBwDtYCs_.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put lg-seq-random run lg-seq-random
@@ -17,14 +17,15 @@ Executing 'lg-seq-random':
 (lg-seq-random) begin
 (lg-seq-random) create "nibble"
 (lg-seq-random) open "nibble"
+(lg-seq-random) writing "nibble"
 lg-seq-random: exit(-1)
 Execution of 'lg-seq-random' complete.
-Timer: 584 ticks
-Thread: 30 idle ticks, 235 kernel ticks, 322 user ticks
+Timer: 586 ticks
+Thread: 30 idle ticks, 232 kernel ticks, 331 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 82 reads, 376 writes
+hd0:1: 86 reads, 376 writes
 hd1:0: 108 reads, 0 writes
-Console: 882 characters output
+Console: 915 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
