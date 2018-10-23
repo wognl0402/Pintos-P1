@@ -1,6 +1,6 @@
-Copying tests/userprog/exec-once into /tmp/HnqgixX6vj.dsk...
-Copying tests/userprog/child-simple into /tmp/HnqgixX6vj.dsk...
-Writing command line to /tmp/tJoVNVGFLY.dsk...
+Copying tests/userprog/exec-once into /tmp/jmlmoEZD2J.dsk...
+Copying tests/userprog/child-simple into /tmp/jmlmoEZD2J.dsk...
+Writing command line to /tmp/c3rhWxr96B.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put exec-once put child-simple run exec-once
@@ -22,10 +22,10 @@ child-simple: exit(81)
 (exec-once) end
 exec-once: exit(0)
 Execution of 'exec-once' complete.
-Timer: 488 ticks
-Thread: 30 idle ticks, 368 kernel ticks, 93 user ticks
+Timer: 485 ticks
+Thread: 30 idle ticks, 369 kernel ticks, 89 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 126 reads, 424 writes
+hd0:1: 122 reads, 424 writes
 hd1:0: 207 reads, 0 writes
 Console: 913 characters output
 Keyboard: 0 keys pressed

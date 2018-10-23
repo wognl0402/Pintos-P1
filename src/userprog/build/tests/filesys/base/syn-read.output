@@ -1,6 +1,6 @@
-Copying tests/filesys/base/syn-read into /tmp/dP2VDpQiEW.dsk...
-Copying tests/filesys/base/child-syn-read into /tmp/dP2VDpQiEW.dsk...
-Writing command line to /tmp/T_ctVVh8ja.dsk...
+Copying tests/filesys/base/syn-read into /tmp/HDA82qvOPY.dsk...
+Copying tests/filesys/base/child-syn-read into /tmp/HDA82qvOPY.dsk...
+Writing command line to /tmp/uId62DDvF4.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put syn-read put child-syn-read run syn-read
@@ -27,27 +27,26 @@ Executing 'syn-read':
 (syn-read) exec child 4 of 10: "child-syn-read 3"
 (syn-read) exec child 5 of 10: "child-syn-read 4"
 (syn-read) exec child 6 of 10: "child-syn-read 5"
-(syn-read) exec child 7 of 10: "child-syn-read 6"
 Page fault at 0x1c: not present error reading page in kernel context.
 Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc010276e
  cr2=0000001c error=00000000
- eax=00000000 ebx=c0111f00 ecx=c0121000 edx=0000001f
- esi=c013a000 edi=c011b011 esp=c013a000 ebp=c013ad10
+ eax=00000000 ebx=c0111f00 ecx=c0136000 edx=0000001f
+ esi=00000002 edi=bfffffa7 esp=c0123000 ebp=c0121f04
  cs=0008 ds=0010 es=0010 ss=1f00
 Kernel PANIC at ../../userprog/exception.c:102 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc013ac24Page fault at 0x66: not present error reading page in kernel context.
+Call stack: 0xc0121e18Page fault at 0x66: not present error reading page in kernel context.
 Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105852
  cr2=00000066 error=00000000
- eax=00000066 ebx=00000066 ecx=c013ab50 edx=000003d4
- esi=c010dbd3 edi=c010f5d9 esp=c010ee5f ebp=c013abe4
- cs=0008 ds=0010 es=0010 ss=ac24
+ eax=00000066 ebx=00000066 ecx=c0121d44 edx=000003d4
+ esi=c010db13 edi=c010f519 esp=c010ed9f ebp=c0121dd8
+ cs=0008 ds=0010 es=0010 ss=1e18
 Kernel PANIC recursion at ../../userprog/exception.c:102 in kill().
-Timer: 3082 ticks
-Thread: 30 idle ticks, 344 kernel ticks, 2708 user ticks
+Timer: 2070 ticks
+Thread: 30 idle ticks, 347 kernel ticks, 1693 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 2000 reads, 476 writes
+hd0:1: 1232 reads, 476 writes
 hd1:0: 229 reads, 0 writes
-Console: 2038 characters output
+Console: 1988 characters output
 Keyboard: 0 keys pressed
 Exception: 2 page faults
 Powering off...

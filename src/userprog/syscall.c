@@ -59,25 +59,26 @@ static int syscall_exec_ (struct intr_frame *f){
   valid_multiple(f->esp,1);
   valid_usrptr(*(uint32_t *) (f->esp+4));
   //printf("GOOD ESP\n");
-  char * file = * (char **) (f->esp+4);
-
-  acquire_filesys_lock ();
-  char *f_name = malloc (strlen(file)+1);
-  strlcpy (f_name, file, strlen(file)+1);
+  char * file_name = * (char **) (f->esp+4);
+  
+  char *f_name = malloc (strlen(file_name)+1);
+  strlcpy (f_name, file_name, strlen(file_name)+1);
   char *save_ptr;
   f_name = strtok_r (f_name, " ", &save_ptr);
+  acquire_filesys_lock ();
   struct file* ff = filesys_open (f_name);
-
+  release_filesys_lock ();
   if(ff==NULL){
-	release_filesys_lock ();
 	f->eax = -1;
 	return 0;
   }
+  acquire_filesys_lock ();
   file_close (ff);
   release_filesys_lock ();
   free(f_name);
-  f->eax = process_execute(file);
-  return 0;
+  
+  f->eax = process_execute(file_name);
+  return f->eax;
 }
 
 static int syscall_wait_ (struct intr_frame *f){
@@ -121,12 +122,12 @@ static int syscall_open_ (struct intr_frame *f){
   char *file_name = * (char **) (f->esp+4);
   acquire_filesys_lock ();
   struct file *ff = filesys_open (file_name);
+  release_filesys_lock ();
   if (ff==NULL){
-	release_filesys_lock ();
+	//printf("NOFILE\n");
 	f->eax=-1;
 	return 0;
   }
-  release_filesys_lock (); 
   struct file_desc *fd_ = malloc(sizeof(*fd_));
   fd_->file = ff;
   if (list_empty (&thread_current ()->fd_list)){
@@ -197,7 +198,7 @@ static int syscall_read_ (struct intr_frame *f){
 	  i++;
 	}
 	release_filesys_lock ();
-	f->eax=(int) size;
+	f->eax= size;
 	return 0;
   }else{
 	struct file_desc *temp;
@@ -207,6 +208,10 @@ static int syscall_read_ (struct intr_frame *f){
 		e=list_next(e)){
 	  temp = list_entry (e, struct file_desc, fd_elem);
 	  if (fd==temp->fd){
+		if (temp->file == NULL){
+		  f->eax = -1;
+		  return 0;
+		}
 		acquire_filesys_lock ();
 		f->eax=file_read (temp->file, buffer, size);
 		release_filesys_lock ();

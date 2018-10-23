@@ -69,17 +69,19 @@ process_execute (const char *file_name)
   */
   /* Create a new thread to execute FILE_NAME. */
   char *save_ptr;
-  char *f_name;
-  f_name = malloc(strlen(file_name)+1);
-  strlcpy (f_name, file_name, strlen(file_name)+1);
-  f_name = strtok_r (f_name, " ",&save_ptr);
+  char *t_name;
+  t_name = malloc(strlen(file_name)+1);
+  strlcpy (t_name, file_name, strlen(file_name)+1);
+  t_name = strtok_r (t_name, " ",&save_ptr);
 
-  tid = thread_create (f_name, PRI_DEFAULT, start_process, fn_copy);
+  tid = thread_create (t_name, PRI_DEFAULT, start_process, fn_copy);
+  free(t_name);
   if (tid == TID_ERROR)
     palloc_free_page (fn_copy); 
   //printf("sema_down pa_sema\n"); 
   sema_down (&thread_current ()->pa_sema);
   //printf("sema_down done\n");
+  
   return tid;
 }
 
@@ -99,6 +101,7 @@ start_process (void *f_name)
   if_.eflags = FLAG_IF | FLAG_MBS;
   success = load (file_name, &if_.eip, &if_.esp);
 
+  sema_up (&thread_current ()->parent->pa_sema);
   /* If load failed, quit. */
   palloc_free_page (file_name);
   if (!success){ 
@@ -106,7 +109,6 @@ start_process (void *f_name)
    	thread_exit ();
   }
   
-  sema_up (&thread_current ()->parent->pa_sema);
   /* Start the user process by simulating a return from an
      interrupt, implemented by intr_exit (in
      threads/intr-stubs.S).  Because intr_exit takes all of its
@@ -170,8 +172,10 @@ process_exit (void)
   }
   */
   acquire_filesys_lock ();
+  if (thread_current ()->proc != NULL){
   file_allow_write (thread_current ()->proc);
   file_close (thread_current ()->proc);
+  }
   file_close_all ();
   release_filesys_lock ();
   child_close_all ();
@@ -295,6 +299,30 @@ load (const char *f_name, void (**eip) (void), void **esp)
   bool success = false;
   int i;
 
+  acquire_filesys_lock ();
+/*
+  char *file_name = malloc (strlen(f_name)+1);
+  char *save_arg;
+  file_name = strlcpy (file_name, f_name, strlen (f_name)+1);
+  file_name = strtok_r (file_name, " ", &save_arg);
+*/
+  char **argv = palloc_get_page (0);
+
+  //printf("PALLOCPALLOC\n");
+  if (argv == NULL)
+	goto done;
+
+  char *temp;
+  char *save_ptr;
+  int argc = -1;
+  for (temp = strtok_r (f_name, " ", &save_ptr);
+	  temp != NULL;
+	  temp = strtok_r (NULL, " ", &save_ptr)){
+	argc++;
+	argv[argc] = temp;
+  }
+  //printf("TOKENTOKEN\n");
+/*
   char f_copy[MAX_COM] ;
   strlcpy(f_copy, f_name, strlen(f_name)+1);
   char *save_arg;
@@ -308,7 +336,7 @@ load (const char *f_name, void (**eip) (void), void **esp)
     }
 	argc +=1;
   }
-
+*/
   /* Allocate and activate page directory. */
   t->pagedir = pagedir_create ();
   if (t->pagedir == NULL){
@@ -317,11 +345,11 @@ load (const char *f_name, void (**eip) (void), void **esp)
   }
   process_activate ();
   
-  acquire_filesys_lock ();
   /* Open executable file. */
   
   file = filesys_open (argv[0]);
-  release_filesys_lock ();
+  //free (file_name);
+
   if (file == NULL) 
     {
       printf ("load: %s: open failed\n", argv[0]);
@@ -329,7 +357,6 @@ load (const char *f_name, void (**eip) (void), void **esp)
 	  goto done; 
     }
 
-  acquire_filesys_lock ();
   /* Read and verify executable header. */
   if (file_read (file, &ehdr, sizeof ehdr) != sizeof ehdr
       || memcmp (ehdr.e_ident, "\177ELF\1\1\1", 7)
@@ -410,16 +437,21 @@ load (const char *f_name, void (**eip) (void), void **esp)
   /* Start address. */
   *eip = (void (*) (void)) ehdr.e_entry;
 
+  //printf("LOADINGLOADING\n");
   success = true;
+  thread_current ()->proc = file;
+  file_deny_write (file);
 
   done:
   
+  palloc_free_page (argv);
+  /*
   thread_current ()->proc = file; 
   file_deny_write (file);
+  */
   /* We arrive here whether the load is successful or not. */
   //file_close (file);
   release_filesys_lock ();
-  
   //test_stack(*esp);
   return success;
 }
@@ -539,18 +571,21 @@ setup_stack (void **esp, int argc, char *argv[])
 {
   uint8_t *kpage;
   bool success = false;
+  /*
   int j;
   char sp = '\0';
-  //printf("NUM ARG %d \n", argc);
+  printf("NUM ARG %d \n", argc);
   for(j = argc; j > -1; j--){
-	//printf("PASSED %d arg: %s\n", j, argv[j]);
+	printf("PASSED %d arg: %s\n", j, argv[j]);
   }
+  */
   //printf("SETTING UP?\n");
   kpage = palloc_get_page (PAL_USER | PAL_ZERO);
   if (kpage != NULL) 
     {
       success = install_page (((uint8_t *) PHYS_BASE) - PGSIZE, kpage, true);
       if (success){
+		//printf("STARTSETUP\n");
 		*esp = PHYS_BASE;
 		//printf("SIZE of UINT32_T: %d, int: %d , int8: %d \n", sizeof(uint32_t), sizeof(int), sizeof(uint8_t));
 		uint32_t ref_arg[argc];
@@ -605,6 +640,7 @@ setup_stack (void **esp, int argc, char *argv[])
 		//printf("%d\n", * (int * ) *esp);
 		//printf("LENGTH from top: %zu\n", (uint32_t) PHYS_BASE - (uint32_t) *esp);
         //*esp = PHYS_BASE;
+		//printf("SETUPSETUP\n");
 	  }
       else
         palloc_free_page (kpage);
@@ -654,6 +690,7 @@ void file_close_all (void){
 	list_remove(e);
 	free(temp);
   }
+  //printf("THISPROB??\n");
 }
 
 void child_close_all (void){

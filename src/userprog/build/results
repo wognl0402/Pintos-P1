@@ -17,7 +17,7 @@ pass tests/userprog/create-long
 pass tests/userprog/create-exists
 pass tests/userprog/create-bound
 pass tests/userprog/open-normal
-pass tests/userprog/open-missing
+FAIL tests/userprog/open-missing
 pass tests/userprog/open-boundary
 pass tests/userprog/open-empty
 pass tests/userprog/open-null
@@ -43,7 +43,7 @@ pass tests/userprog/write-bad-fd
 pass tests/userprog/exec-once
 pass tests/userprog/exec-arg
 pass tests/userprog/exec-multiple
-pass tests/userprog/exec-missing
+FAIL tests/userprog/exec-missing
 pass tests/userprog/exec-bad-ptr
 pass tests/userprog/wait-simple
 pass tests/userprog/wait-twice
@@ -67,10 +67,10 @@ pass tests/filesys/base/lg-random
 pass tests/filesys/base/lg-seq-block
 pass tests/filesys/base/lg-seq-random
 pass tests/filesys/base/sm-create
-pass tests/filesys/base/sm-full
+FAIL tests/filesys/base/sm-full
 pass tests/filesys/base/sm-random
 pass tests/filesys/base/sm-seq-block
 pass tests/filesys/base/sm-seq-random
 FAIL tests/filesys/base/syn-read
 pass tests/filesys/base/syn-remove
-pass tests/filesys/base/syn-write
+FAIL tests/filesys/base/syn-write

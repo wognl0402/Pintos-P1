@@ -1,5 +1,5 @@
-Copying tests/filesys/base/sm-full into /tmp/8Du4On4sRC.dsk...
-Writing command line to /tmp/VhDnIMo4v1.dsk...
+Copying tests/filesys/base/sm-full into /tmp/CwrD5uLTxL.dsk...
+Writing command line to /tmp/_8nbswLV8e.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put sm-full run sm-full
@@ -25,12 +25,25 @@ Executing 'sm-full':
 (sm-full) end
 sm-full: exit(0)
 Execution of 'sm-full' complete.
-Timer: 413 ticks
-Thread: 30 idle ticks, 246 kernel ticks, 140 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 103 reads, 252 writes
-hd1:0: 108 reads, 0 writes
-Console: 986 characters output
-Keyboard: 0 keys pressed
-Exception: 0 page faults
+Page fault at 0xccccccac: not present error reading page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0100df9
+ cr2=ccccccac error=00000000
+ eax=c002f054 ebx=cccccccc ecx=c002f02c edx=00000001
+ esi=c011c000 edi=c011704c esp=c002f04c ebp=c011cf34
+ cs=0008 ds=0010 es=0010 ss=d2ee
+Kernel PANIC at ../../userprog/exception.c:102 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc011ce28Page fault at 0x6Timer: 414 ticks
+Thread: 30 6: not present error reading page in keidle ticks, 290 kernel ticks,rnel context.
+Interrupt 0x0e  141 user ticks
+hd0:0: 0 read(#PF Page-Fault Exception) at eip=0xc0s, 0 writes
+hd0:1: 103 reads105852
+ cr2=00000066 error=00, 252 writes
+hd1:0: 108 read000000
+ eax=00000066 ebx=0000s, 0 writes
+Console: 1595 ch0066 ecx=c011cd54 edx=000003d4
+aracters output
+Keyboard:  esi=c010db13 edi=c010f519 esp=c0100 keys pressed
+Exception: 2 ped9f ebp=c011cde8
+ cs=0008 dage faults
 Powering off...
+s=0010 es=0010 ss=ce28
