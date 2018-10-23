@@ -1,5 +1,5 @@
-Copying tests/userprog/create-long into /tmp/ksPzsffhl3.dsk...
-Writing command line to /tmp/mXlVFA_Y78.dsk...
+Copying tests/userprog/create-long into /tmp/Uxzh_9cBIR.dsk...
+Writing command line to /tmp/AmGeSeB2Hl.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put create-long run create-long
@@ -19,8 +19,8 @@ Executing 'create-long':
 (create-long) end
 create-long: exit(0)
 Execution of 'create-long' complete.
-Timer: 313 ticks
-Thread: 30 idle ticks, 232 kernel ticks, 54 user ticks
+Timer: 324 ticks
+Thread: 30 idle ticks, 243 kernel ticks, 54 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 63 reads, 220 writes
 hd1:0: 104 reads, 0 writes

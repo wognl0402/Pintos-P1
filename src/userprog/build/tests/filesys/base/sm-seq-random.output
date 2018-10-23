@@ -1,5 +1,5 @@
-Copying tests/filesys/base/sm-seq-random into /tmp/ySjLy4KhlN.dsk...
-Writing command line to /tmp/oXTMQT8M61.dsk...
+Copying tests/filesys/base/sm-seq-random into /tmp/mmJ6E_UDML.dsk...
+Writing command line to /tmp/exWfiFVLNf.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put sm-seq-random run sm-seq-random
@@ -18,14 +18,19 @@ Executing 'sm-seq-random':
 (sm-seq-random) create "nibble"
 (sm-seq-random) open "nibble"
 (sm-seq-random) writing "nibble"
-sm-seq-random: exit(-1)
+(sm-seq-random) close "nibble"
+(sm-seq-random) open "nibble" for verification
+(sm-seq-random) verified contents of "nibble"
+(sm-seq-random) close "nibble"
+(sm-seq-random) end
+sm-seq-random: exit(0)
 Execution of 'sm-seq-random' complete.
-Timer: 354 ticks
-Thread: 30 idle ticks, 232 kernel ticks, 99 user ticks
+Timer: 437 ticks
+Thread: 30 idle ticks, 249 kernel ticks, 161 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 86 reads, 240 writes
+hd0:1: 117 reads, 260 writes
 hd1:0: 108 reads, 0 writes
-Console: 914 characters output
+Console: 1090 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

@@ -144,13 +144,14 @@ process_wait (tid_t child_tid UNUSED)
 	  child_status = temp->exit_status; 
 	  //printf("##### child_status = %d / temp->exit_status = %d\n", child_status, temp->exit_status);
 	  list_remove (e);
+	  return child_status;
 	}
 
   }
 
 
 	  //while(1){}
-  return child_status;
+  return -1;
 }
 
 /* Free the current process's resources. */
@@ -159,7 +160,18 @@ process_exit (void)
 {
   struct thread *curr = thread_current ();
   uint32_t *pd;
-
+  /*
+  if (curr->exit_status==NULL){
+	printf("?? why NULL \n");
+	curr->exit_status=-1;
+  }
+  */
+  acquire_filesys_lock ();
+  file_allow_write (thread_current ()->proc);
+  file_close (thread_current ()->proc);
+  release_filesys_lock ();
+  
+  printf("%s: exit(%d)\n", curr->name, curr->exit_status);
   //printf("IT'S exiting\n");
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
@@ -304,12 +316,13 @@ load (const char *f_name, void (**eip) (void), void **esp)
   /* Open executable file. */
   
   file = filesys_open (argv[0]);
+  release_filesys_lock ();
   if (file == NULL) 
     {
       printf ("load: %s: open failed\n", argv[0]);
-      goto done; 
+      
+	  goto done; 
     }
-  release_filesys_lock ();
 
   acquire_filesys_lock ();
   /* Read and verify executable header. */
@@ -394,10 +407,14 @@ load (const char *f_name, void (**eip) (void), void **esp)
 
   success = true;
 
- done:
+  done:
+  
+  thread_current ()->proc = file; 
+  file_deny_write (file);
   /* We arrive here whether the load is successful or not. */
-  file_close (file);
+  //file_close (file);
   release_filesys_lock ();
+  
   //test_stack(*esp);
   return success;
 }

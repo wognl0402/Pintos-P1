@@ -1,6 +1,6 @@
-Copying tests/filesys/base/syn-read into /tmp/jK9Lopqxjh.dsk...
-Copying tests/filesys/base/child-syn-read into /tmp/jK9Lopqxjh.dsk...
-Writing command line to /tmp/ZBCFP07dOk.dsk...
+Copying tests/filesys/base/syn-read into /tmp/R2_L6077oR.dsk...
+Copying tests/filesys/base/child-syn-read into /tmp/R2_L6077oR.dsk...
+Writing command line to /tmp/ggE2gTuXMV.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put syn-read put child-syn-read run syn-read
@@ -20,14 +20,34 @@ Executing 'syn-read':
 (syn-read) create "data"
 (syn-read) open "data"
 (syn-read) write "data"
-syn-read: exit(-1)
-Execution of 'syn-read' complete.
-Timer: 453 ticks
-Thread: 30 idle ticks, 342 kernel ticks, 84 user ticks
+(syn-read) close "data"
+(syn-read) exec child 1 of 10: "child-syn-read 0"
+(syn-read) exec child 2 of 10: "child-syn-read 1"
+(syn-read) exec child 3 of 10: "child-syn-read 2"
+(syn-read) exec child 4 of 10: "child-syn-read 3"
+(syn-read) exec child 5 of 10: "child-syn-read 4"
+(syn-read) exec child 6 of 10: "child-syn-read 5"
+(syn-read) exec child 7 of 10: "child-syn-read 6"
+Page fault at 0x1c: not present error reading page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc010276e
+ cr2=0000001c error=00000000
+ eax=00000000 ebx=c0111f00 ecx=c0126000 edx=0000001f
+ esi=c013a000 edi=c011b011 esp=c013a000 ebp=c013ad10
+ cs=0008 ds=0010 es=0010 ss=1f00
+Kernel PANIC at ../../userprog/exception.c:102 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc013ac24Page fault at 0x66: not present error reading page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105852
+ cr2=00000066 error=00000000
+ eax=00000066 ebx=00000066 ecx=c013ab50 edx=000003d4
+ esi=c010db13 edi=c010f519 esp=c010ed9f ebp=c013abe4
+ cs=0008 ds=0010 es=0010 ss=ac24
+Kernel PANIC recursion at ../../userprog/exception.c:102 in kill().
+Timer: 3336 ticks
+Thread: 30 idle ticks, 345 kernel ticks, 2961 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 115 reads, 474 writes
+hd0:1: 2201 reads, 476 writes
 hd1:0: 229 reads, 0 writes
-Console: 925 characters output
+Console: 2038 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 2 page faults
 Powering off...

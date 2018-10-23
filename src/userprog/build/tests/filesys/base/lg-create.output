@@ -1,5 +1,5 @@
-Copying tests/filesys/base/lg-create into /tmp/Pe6Z6pi4fp.dsk...
-Writing command line to /tmp/MD86X2kw6N.dsk...
+Copying tests/filesys/base/lg-create into /tmp/pRysOgewX2.dsk...
+Writing command line to /tmp/JOP2KWgdMG.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put lg-create run lg-create
@@ -17,14 +17,17 @@ Executing 'lg-create':
 (lg-create) begin
 (lg-create) create "blargle"
 (lg-create) open "blargle" for verification
-lg-create: exit(-1)
+(lg-create) verified contents of "blargle"
+(lg-create) close "blargle"
+(lg-create) end
+lg-create: exit(0)
 Execution of 'lg-create' complete.
-Timer: 411 ticks
-Thread: 30 idle ticks, 223 kernel ticks, 161 user ticks
+Timer: 567 ticks
+Thread: 30 idle ticks, 283 kernel ticks, 257 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 86 reads, 374 writes
+hd0:1: 234 reads, 374 writes
 hd1:0: 107 reads, 0 writes
-Console: 865 characters output
+Console: 952 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

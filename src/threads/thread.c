@@ -329,6 +329,10 @@ thread_exit (void)
 {
   ASSERT (!intr_context ());
 
+  
+#ifdef USERPROG
+  process_exit ();
+#endif
   if(running_thread ()->parent != NULL){
 	struct list_elem *e;
 	for (e=list_begin (&running_thread ()->parent->ch_list);
@@ -340,10 +344,6 @@ thread_exit (void)
 	  }
 	}
   }
-#ifdef USERPROG
-  process_exit ();
-#endif
-
   /* Just set our status to dying and schedule another process.
      We will be destroyed during the call to schedule_tail(). */
   intr_disable ();

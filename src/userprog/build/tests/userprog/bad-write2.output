@@ -1,5 +1,5 @@
-Copying tests/userprog/bad-write2 into /tmp/7VUMoQfzfG.dsk...
-Writing command line to /tmp/XqegMlLyHf.dsk...
+Copying tests/userprog/bad-write2 into /tmp/JY22MEa39e.dsk...
+Writing command line to /tmp/Inkr9sBHFk.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put bad-write2 run bad-write2
@@ -22,13 +22,14 @@ Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x80480a6
  eax=00000027 ebx=00000000 ecx=000000ad edx=0000000e
  esi=00000000 edi=00000000 esp=bfffffb0 ebp=bfffffb8
  cs=001b ds=0023 es=0023 ss=0023
+bad-write2: exit(-1)
 Execution of 'bad-write2' complete.
-Timer: 336 ticks
-Thread: 30 idle ticks, 230 kernel ticks, 83 user ticks
+Timer: 356 ticks
+Thread: 30 idle ticks, 243 kernel ticks, 86 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 216 writes
 hd1:0: 104 reads, 0 writes
-Console: 1151 characters output
+Console: 1172 characters output
 Keyboard: 0 keys pressed
 Exception: 1 page faults
 Powering off...

@@ -105,7 +105,8 @@ struct thread
 	struct semaphore pa_sema;
 	int exit_status;
 	struct list fd_list;
-//    struct lock wait_on;
+	struct file *proc;
+	//    struct lock wait_on;
 #ifdef USERPROG
     /* Owned by userprog/process.c. */
     uint32_t *pagedir;                  /* Page directory. */
@@ -125,7 +126,8 @@ struct dead_body
 struct file_desc
   {
 	int fd;
-	char *file;
+	//char *file;
+	struct file *file;
 	struct list_elem fd_elem;
   };
 /* If false (default), use round-robin scheduler.

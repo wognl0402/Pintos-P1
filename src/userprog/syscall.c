@@ -20,19 +20,26 @@ static int (*syscall_case[20]) (struct intr_frame *f);
 static void syscall_handler (struct intr_frame *);
 static void valid_usrptr (const void *uaddr);
 void valid_multiple (int *esp, int num);
+struct file* fd_find (int fd);
 
 static int syscall_halt_ (struct intr_frame *f){
   power_off ();
   return -1;
 }
-void exit (int status){  
-  printf("%s: exit(%d)\n", thread_current ()->name, status);
+void exit_ (int status){  
+  thread_current ()->exit_status = status;
+  //printf("exit_ call with %d\n", status);
+  //printf("%s: exit(%d)\n", thread_current ()->name, status);
   thread_exit ();
 }
 static int syscall_exit_ (struct intr_frame *f){  
+
   valid_usrptr(f->esp+4);
   int status = * (int *) (f->esp+4);
-
+  //printf("EXIT CALL WITH %d\n", status);
+  if (status == NULL){
+	status = 0;
+  }
   //printf("Given child status = %d\n", status);
   struct list_elem *e;
   for (e=list_begin (&thread_current ()->parent->ch_list);
@@ -43,8 +50,9 @@ static int syscall_exit_ (struct intr_frame *f){
 	  temp->exit_status = status;
 	}
   }
-  exit (status);
+  exit_ (status);
   return -1;
+  
 }
 static int syscall_exec_ (struct intr_frame *f){
   valid_multiple(f->esp,1);
@@ -61,7 +69,8 @@ static int syscall_exec_ (struct intr_frame *f){
 
   if(ff==NULL){
 	release_filesys_lock ();
-	return -1;
+	f->eax = -1;
+	return 0;
   }
   file_close (ff);
   release_filesys_lock ();
@@ -73,9 +82,8 @@ static int syscall_exec_ (struct intr_frame *f){
 static int syscall_wait_ (struct intr_frame *f){
   valid_multiple (f->esp, 1);
   tid_t child_tid = * (int *) (f->esp+4);
-  
-
-  return process_wait(child_tid);
+  f->eax = process_wait(child_tid);
+  return 0;
 }
 static int syscall_create_ (struct intr_frame *f){
   valid_multiple(f->esp, 2);
@@ -109,22 +117,22 @@ static int syscall_remove_ (struct intr_frame *f){
 static int syscall_open_ (struct intr_frame *f){
   valid_multiple (f->esp, 1);
   valid_usrptr (* (uint32_t *) (f->esp+4));
-  char *file = * (char **) (f->esp+4);
+  char *file_name = * (char **) (f->esp+4);
   acquire_filesys_lock ();
-  struct file *ff = filesys_open (file);
+  struct file *ff = filesys_open (file_name);
   if (ff==NULL){
 	release_filesys_lock ();
 	f->eax=-1;
 	return 0;
   }
-  
+  release_filesys_lock (); 
   struct file_desc *fd_ = malloc(sizeof(*fd_));
   fd_->file = ff;
   if (list_empty (&thread_current ()->fd_list)){
 	  ///sdfsdfsdf
 	  fd_->fd=2;
 	  list_push_back (&thread_current ()->fd_list, &fd_->fd_elem);
-	  release_filesys_lock ();
+	  //release_filesys_lock ();
 	  f->eax=fd_->fd;
 	  return fd_->fd;
   }else{
@@ -137,15 +145,15 @@ static int syscall_open_ (struct intr_frame *f){
 	  if (temp_fd != temp->fd){
 		fd_->fd=temp_fd;
 		list_insert_ordered (&thread_current ()->fd_list, &fd_->fd_elem, low_fd_func, NULL);
-		release_filesys_lock ();
+		//release_filesys_lock ();
 		f->eax = fd_->fd;
 		return fd_->fd;
 	  }
 	  temp_fd++;
 	}
-	fd_->fd=temp_fd+1;
+	fd_->fd=temp_fd;
 	list_insert_ordered (&thread_current ()->fd_list, &fd_->fd_elem, low_fd_func, NULL);
-	release_filesys_lock ();
+	//release_filesys_lock ();
 	f->eax = fd_->fd;
 	return fd_->fd;
 
@@ -155,39 +163,140 @@ static int syscall_open_ (struct intr_frame *f){
 }
 
 static int syscall_filesize_ (struct intr_frame *f){
+  valid_multiple (f->esp, 1);
+  int fd = * (int *) (f->esp+4);
+  struct list_elem *e;
+  for (e=list_begin (&thread_current ()->fd_list);
+	  e!=list_end (&thread_current ()->fd_list);
+	  e=list_next(e)){
+	struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
+	if (fd==temp->fd){
+	  acquire_filesys_lock ();
+	  f->eax = file_length (temp->file);
+	  release_filesys_lock ();
+	  return 0;
+	}
+  }
   return -1;
 }
 
 static int syscall_read_ (struct intr_frame *f){
-  valid_multiple (f->esp, 1);
-  valid_usrptr (* (uint32_t *) (f->esp+4));
-  char *file = * (char **) (f->esp+4);
+  valid_multiple (f->esp, 3);
+  valid_usrptr (* (uint32_t *) (f->esp+8));
+  int fd = * (int *) (f->esp+4);
+  char *buffer = * (char **) (f->esp+8);
+  unsigned size = * (unsigned *) (f->esp+12);
+  if (fd==0){
+	acquire_filesys_lock ();
+	int i = 0;
+	while(i< (int) size){
+	  * (buffer + i) = input_getc();
+	  i++;
+	}
+	release_filesys_lock ();
+	f->eax=(int) size;
+	return 0;
+  }else{
+	struct list_elem *e;
+	for (e=list_begin (&thread_current ()->fd_list);
+		e!=list_end (&thread_current ()->fd_list);
+		e=list_next(e)){
+	  struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
+	  if (fd==temp->fd){
+		acquire_filesys_lock ();
+		f->eax=file_read (temp->file, buffer, size);
+		release_filesys_lock ();
+		return 0;
+	  }
+	}
+  }
+  
   return -1;
 }
 
 static int syscall_write_ (struct intr_frame *f){
   valid_multiple (f->esp, 3);
+  valid_usrptr (* (uint32_t *) (f->esp+8));
   int fd = *(int *) (f->esp+4);
   char *buffer = * (char **) (f->esp+8);
   unsigned size = *(unsigned *) (f->esp+12);
-  acquire_filesys_lock ();
 
   if (fd==1){
+	acquire_filesys_lock ();
 	putbuf(buffer ,size);
+	f->eax = (int) size;
 	release_filesys_lock ();
-	return (int) size;
+	return 0;
+  }else{
+	struct list_elem *e;
+	for (e=list_begin (&thread_current ()->fd_list);
+		e!=list_end (&thread_current ()->fd_list);
+		e=list_next(e)){
+	  struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
+	  if (fd==temp->fd){
+		acquire_filesys_lock ();
+		f->eax=file_write(temp->file, buffer, size);
+		release_filesys_lock ();
+		return 0;
+	  }
+	}
   }
+  return -1;
   release_filesys_lock ();
   return -1;
 }
 
 static int syscall_seek_ (struct intr_frame *f){
-  return -1;
+  valid_multiple (f->esp, 2);
+  int fd = * (int *) (f->esp+4);
+  unsigned position = * (unsigned *) (f->esp+8);
+  struct file *temp = fd_find(fd);
+  if (temp == NULL){
+	//f->eax = -1;
+	return 0;
+  }
+  acquire_filesys_lock ();
+  file_seek (temp, position);
+  release_filesys_lock ();
+  /*struct list_elem *temp = fd_find(fd);
+  if (e==NULL){
+	f->eax = -1;
+	return 0;
+  }
+  struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
+  acquire_filesys_lock ();
+  f->eax = file_seek (temp->file, position);
+  release_filesys_lock ();
+  */
+  return 0;
 }
 
 
 static int syscall_tell_ (struct intr_frame *f){
-  return -1;
+  valid_multiple (f->esp, 1);
+  int fd = * (int *) (f->esp+4);
+  /*
+   * struct list_elem *e = fd_find(fd);
+  if (e==NULL){
+	f->eax =-1;
+	return 0;
+  }
+  struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
+  */
+  struct list_elem *e;
+  for (e=list_begin (&thread_current ()->fd_list);
+	  e!=list_end (&thread_current ()->fd_list);
+	  e=list_next(e)){
+	struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
+	if (fd == temp->fd){
+	  acquire_filesys_lock ();
+	  f->eax = file_tell (temp->file);
+	  release_filesys_lock ();
+	  return 0;
+	}
+  }
+  f->eax = -1;
+  return 0;
 }
 
 
@@ -301,7 +410,7 @@ syscall_handler (struct intr_frame *f)
   //printf("STARTING %d function call\n", syscall_num);
  
   if (syscall_case[syscall_num] (f) == -1){
-	exit(-1);
+	exit_(-1);
 	return;
   }
   //thread_exit ();
@@ -309,16 +418,16 @@ syscall_handler (struct intr_frame *f)
 
 static void valid_usrptr (const void *uaddr){
   if (uaddr >= PHYS_BASE){
-	exit(-1);
+	exit_(-1);
 	return;
   }
   if (uaddr < PHYS_TOP){
-	exit(-1);
+	exit_(-1);
 	return;
   }
 
   if ((pagedir_get_page (thread_current ()->pagedir, uaddr))==NULL){
-	exit(-1);
+	exit_(-1);
 	return;
   }
   /*
@@ -356,4 +465,18 @@ void valid_multiple (int * esp, int num){
 	//ptr = (int *) f->esp + i + 1;
 	valid_usrptr( esp + i + 1);
   }
+}
+
+struct file* fd_find (int fd){
+  struct list_elem *e;
+  for (e=list_begin (&thread_current ()->fd_list);
+	  e!=list_end (&thread_current ()->fd_list);
+	  e=list_next (e)){
+	struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
+	if (fd==temp->fd){
+	  return temp->file;
+	}
+  }
+  return NULL;
+
 }

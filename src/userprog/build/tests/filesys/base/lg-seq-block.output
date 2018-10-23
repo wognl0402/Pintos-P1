@@ -1,5 +1,5 @@
-Copying tests/filesys/base/lg-seq-block into /tmp/4NSQLubn2D.dsk...
-Writing command line to /tmp/mofdktGwKg.dsk...
+Copying tests/filesys/base/lg-seq-block into /tmp/7f8QN5CGpb.dsk...
+Writing command line to /tmp/U_UtSvgnTe.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put lg-seq-block run lg-seq-block
@@ -18,14 +18,19 @@ Executing 'lg-seq-block':
 (lg-seq-block) create "noodle"
 (lg-seq-block) open "noodle"
 (lg-seq-block) writing "noodle"
-lg-seq-block: exit(-1)
+(lg-seq-block) close "noodle"
+(lg-seq-block) open "noodle" for verification
+(lg-seq-block) verified contents of "noodle"
+(lg-seq-block) close "noodle"
+(lg-seq-block) end
+lg-seq-block: exit(0)
 Execution of 'lg-seq-block' complete.
-Timer: 586 ticks
-Thread: 30 idle ticks, 231 kernel ticks, 331 user ticks
+Timer: 1072 ticks
+Thread: 30 idle ticks, 285 kernel ticks, 761 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 86 reads, 376 writes
+hd0:1: 532 reads, 671 writes
 hd1:0: 108 reads, 0 writes
-Console: 905 characters output
+Console: 1076 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

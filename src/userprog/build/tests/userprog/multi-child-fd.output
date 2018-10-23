@@ -1,7 +1,7 @@
-Copying tests/userprog/multi-child-fd into /tmp/cQl2d0lBeX.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/cQl2d0lBeX.dsk...
-Copying tests/userprog/child-close into /tmp/cQl2d0lBeX.dsk...
-Writing command line to /tmp/N2C2dRv8v4.dsk...
+Copying tests/userprog/multi-child-fd into /tmp/WKkaTCRXv8.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/WKkaTCRXv8.dsk...
+Copying tests/userprog/child-close into /tmp/WKkaTCRXv8.dsk...
+Writing command line to /tmp/rO39QsgseY.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put multi-child-fd put sample.txt put child-close run multi-child-fd
@@ -22,14 +22,17 @@ Executing 'multi-child-fd':
 (multi-child-fd) open "sample.txt"
 (child-close) begin
 child-close: exit(-1)
-multi-child-fd: exit(-1)
+(multi-child-fd) wait(exec()) = -1
+(multi-child-fd) verified contents of "sample.txt"
+(multi-child-fd) end
+multi-child-fd: exit(0)
 Execution of 'multi-child-fd' complete.
-Timer: 517 ticks
-Thread: 30 idle ticks, 396 kernel ticks, 102 user ticks
+Timer: 561 ticks
+Thread: 30 idle ticks, 418 kernel ticks, 116 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 172 reads, 456 writes
+hd0:1: 173 reads, 456 writes
 hd1:0: 222 reads, 0 writes
-Console: 1027 characters output
+Console: 1133 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

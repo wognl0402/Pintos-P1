@@ -1,6 +1,6 @@
-Copying tests/userprog/wait-twice into /tmp/P4WADSxoDW.dsk...
-Copying tests/userprog/child-simple into /tmp/P4WADSxoDW.dsk...
-Writing command line to /tmp/QnoRvcX6WE.dsk...
+Copying tests/userprog/wait-twice into /tmp/wH8f69YZZO.dsk...
+Copying tests/userprog/child-simple into /tmp/wH8f69YZZO.dsk...
+Writing command line to /tmp/CIoI1d7gK6.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put wait-twice put child-simple run wait-twice
@@ -19,17 +19,17 @@ Executing 'wait-twice':
 (wait-twice) begin
 (child-simple) run
 child-simple: exit(81)
-(wait-twice) wait(exec()) = 4
-(wait-twice) wait(exec()) = 4
+(wait-twice) wait(exec()) = 81
+(wait-twice) wait(exec()) = -1
 (wait-twice) end
 wait-twice: exit(0)
 Execution of 'wait-twice' complete.
-Timer: 478 ticks
-Thread: 30 idle ticks, 357 kernel ticks, 94 user ticks
+Timer: 497 ticks
+Thread: 30 idle ticks, 369 kernel ticks, 101 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 126 reads, 424 writes
 hd1:0: 207 reads, 0 writes
-Console: 981 characters output
+Console: 984 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
