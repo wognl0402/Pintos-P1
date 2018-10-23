@@ -24,8 +24,6 @@
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
 
-void child_close_all (void);
-void file_close_all (void);
 /* Starts a new thread running a user program loaded from
    FILENAME.  The new thread may be scheduled (and may even exit)
    before process_execute() returns.  Returns the new process's
@@ -75,6 +73,7 @@ process_execute (const char *file_name)
   f_name = strtok_r (f_name, " ",&save_ptr);
 
   tid = thread_create (f_name, PRI_DEFAULT, start_process, fn_copy);
+  free(f_name);
   if (tid == TID_ERROR)
     palloc_free_page (fn_copy); 
   //printf("sema_down pa_sema\n"); 
@@ -131,12 +130,12 @@ int
 process_wait (tid_t child_tid UNUSED) 
 {
   struct list_elem *e;
-  struct dead_body *temp;
+  struct dead_body *ch;
   int child_status = 0;
   for (e=list_begin (&thread_current ()->ch_list);
 	  e!=list_end (&thread_current ()->ch_list);
 	  e=list_next(e)){
-	temp = list_entry (e, struct dead_body, ch_elem);
+	struct dead_body *temp = list_entry (e, struct dead_body, ch_elem);
 	if(temp->ch_tid == child_tid){
 	  if(temp->is_waiting){
 		return -1;
@@ -146,7 +145,6 @@ process_wait (tid_t child_tid UNUSED)
 	  child_status = temp->exit_status; 
 	  //printf("##### child_status = %d / temp->exit_status = %d\n", child_status, temp->exit_status);
 	  list_remove (e);
-	  free (temp); 
 	  return child_status;
 	}
 
@@ -172,10 +170,8 @@ process_exit (void)
   acquire_filesys_lock ();
   file_allow_write (thread_current ()->proc);
   file_close (thread_current ()->proc);
-  file_close_all ();
   release_filesys_lock ();
-  child_close_all ();
-
+  
   printf("%s: exit(%d)\n", curr->name, curr->exit_status);
   //printf("IT'S exiting\n");
   /* Destroy the current process's page directory and switch back
@@ -295,13 +291,14 @@ load (const char *f_name, void (**eip) (void), void **esp)
   bool success = false;
   int i;
 
-  char f_copy[MAX_COM] ;
+  char *f_copy = malloc (strlen(f_name)+1);
   strlcpy(f_copy, f_name, strlen(f_name)+1);
   char *save_arg;
   char *argv[MAX_ARG];
   argv[0] = strtok_r (f_copy, " ", &save_arg);
   int argc = 1;
   while( argc < MAX_ARG ){
+	
 	if ((argv[argc] = strtok_r (NULL, " ", &save_arg))==NULL){
 	  argc -=1;
 	  break;
@@ -413,7 +410,9 @@ load (const char *f_name, void (**eip) (void), void **esp)
   success = true;
 
   done:
-  
+  free(f_copy);
+  //free(argv);
+
   thread_current ()->proc = file; 
   file_deny_write (file);
   /* We arrive here whether the load is successful or not. */
@@ -642,27 +641,4 @@ void test_stack (int *t)
   printf("ARGC:%d ARGV:%x\n", argc, (unsigned int)argv);
   for (i = 0; i<argc; i++)
 	printf("Argv[%d] = %x pointing at %s\n", i, (unsigned int)argv[i], argv[i]);
-}
-
-void file_close_all (void){
-  struct list_elem *e;
-  struct file_desc *temp;
-  while(!list_empty (&thread_current ()->fd_list)){
-	e = list_pop_back (&thread_current ()->fd_list);
-	temp = list_entry (e, struct file_desc, fd_elem);
-	file_close (temp->file);
-	list_remove(e);
-	free(temp);
-  }
-}
-
-void child_close_all (void){
-  struct list_elem *e;
-  struct dead_body *temp;
-  while(!list_empty (&thread_current ()->ch_list)){
-	e=list_pop_back (&thread_current ()->ch_list);
-	temp=list_entry (e, struct dead_body, ch_elem);
-	list_remove (e);
-	free (temp);
-  }
 }

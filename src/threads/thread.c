@@ -335,10 +335,11 @@ thread_exit (void)
 #endif
   if(running_thread ()->parent != NULL){
 	struct list_elem *e;
+    struct dead_body *temp;	
 	for (e=list_begin (&running_thread ()->parent->ch_list);
 		e!=list_end (&running_thread ()->parent->ch_list);
 		e=list_next (e)){
-	  struct dead_body *temp = list_entry (e, struct dead_body, ch_elem);
+	  temp = list_entry (e, struct dead_body, ch_elem);
 	  if (temp->ch_tid == running_thread ()->tid){
 		sema_up(&temp->ch_sema);
 	  }

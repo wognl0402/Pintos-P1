@@ -164,12 +164,15 @@ Functionality of base file system (tests/filesys/base/Rubric):
 
 DETAILS OF tests/userprog/no-vm/multi-oom FAILURE:
 
-run: TIMEOUT after 360 seconds of host CPU time
+Kernel panic in run: PANIC at ../../userprog/exception.c:102 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc01ace08
+Translation of call stack:
+0xc01ace08: (unknown)
 
 OUTPUT FROM tests/userprog/no-vm/multi-oom:
 
-Copying tests/userprog/no-vm/multi-oom into /tmp/3colMTY06r.dsk...
-Writing command line to /tmp/Kty6OQX7Kd.dsk...
+Copying tests/userprog/no-vm/multi-oom into /tmp/UjMbeJI1p0.dsk...
+Writing command line to /tmp/lQ2HLRQhH0.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put multi-oom run multi-oom
@@ -289,197 +292,44 @@ Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804810e
  esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
  cs=001b ds=0023 es=0023 ss=0023
 multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804811c
- cr2=c0000000 error=00000007
- eax=00000003 ebx=00000025 ecx=a9b17537 edx=a9b17534
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048115
- cr2=c0000000 error=00000005
- eax=00000002 ebx=00000026 ecx=7c730a08 edx=7c730a06
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804810e
- cr2=00000000 error=00000004
- eax=00000001 ebx=00000027 ecx=a9616da1 edx=a9616da0
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048104
- cr2=00000000 error=00000006
- eax=00000000 ebx=00000028 ecx=f4a478ed edx=f4a478ed
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804810e
- cr2=00000000 error=00000004
- eax=00000001 ebx=0000002a ecx=5bba4177 edx=5bba4176
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804810e
- cr2=00000000 error=00000004
- eax=00000001 ebx=0000002b ecx=f737833f edx=f737833e
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804810e
- cr2=00000000 error=00000004
- eax=00000001 ebx=0000002c ecx=f47150d6 edx=f47150d5
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804811c
- cr2=c0000000 error=00000007
- eax=00000003 ebx=0000002d ecx=e970177d edx=e970177a
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804811c
- cr2=c0000000 error=00000007
- eax=00000003 ebx=0000002e ecx=fcf35a3a edx=fcf35a37
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804811c
- cr2=c0000000 error=00000007
- eax=00000003 ebx=0000002f ecx=727aa97b edx=727aa978
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0: not present error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048104
- cr2=00000000 error=00000006
- eax=00000000 ebx=00000031 ecx=42e7a251 edx=42e7a251
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048115
- cr2=c0000000 error=00000005
- eax=00000002 ebx=00000032 ecx=c75a0756 edx=c75a0754
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048115
- cr2=c0000000 error=00000005
- eax=00000002 ebx=00000033 ecx=cda21275 edx=cda21273
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804810e
- cr2=00000000 error=00000004
- eax=00000001 ebx=00000035 ecx=a8fca93e edx=a8fca93d
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804811c
- cr2=c0000000 error=00000007
- eax=00000003 ebx=00000036 ecx=9178f01c edx=9178f019
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804810e
- cr2=00000000 error=00000004
- eax=00000001 ebx=00000037 ecx=311f5fce edx=311f5fcd
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0: not present error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048104
- cr2=00000000 error=00000006
- eax=00000000 ebx=00000039 ecx=f107ff7f edx=f107ff7f
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804810e
- cr2=00000000 error=00000004
- eax=00000001 ebx=0000003a ecx=91917b30 edx=91917b2f
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804810e
- cr2=00000000 error=00000004
- eax=00000001 ebx=0000003b ecx=7e49a0ca edx=7e49a0c9
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804811c
- cr2=c0000000 error=00000007
- eax=00000003 ebx=0000003c ecx=7fbd9c5b edx=7fbd9c58
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048115
- cr2=c0000000 error=00000005
- eax=00000002 ebx=0000003d ecx=e919c278 edx=e919c276
- esi=c0000000 edi=0804afbb esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-BAD LOADING...
-multi-oom: exit(-1)
-
-TIMEOUT after 360 seconds of host CPU time
+Page fault at 0xccccccac: not present error reading page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0100df9
+ cr2=ccccccac error=00000000
+ eax=c01a8054 ebx=cccccccc ecx=c01a802c edx=00000001
+ esi=c01ac000 edi=c01acfb0 esp=c01a804c ebp=c01acf14
+ cs=0008 ds=0010 es=0010 ss=001b
+Kernel PANIC at ../../userprog/exception.c:102 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc01ace08Page fault at 0x66: not present error reading page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105852
+ cr2=00000066 error=00000000
+ eax=00000066 ebx=00000066 ecx=c01acd34 edx=000003d4
+ esi=c010db73 edi=c010f579 esp=c010edff ebp=c01acdc8
+ cs=0008 ds=0010 es=0010 ss=ce08
+Kernel PANIC recursion at ../../userprog/exception.c:102 in kill().
+Timer: 14188 ticks
+Thread: 30 idle ticks, 903 kernel ticks, 13255 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 7140 reads, 250 writes
+hd1:0: 121 reads, 0 writes
+Console: 6343 characters output
+Keyboard: 0 keys pressed
+Exception: 14 page faults
+Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/base/syn-read FAILURE:
 
 Kernel panic in run: PANIC at ../../userprog/exception.c:102 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc013ac24
+Call stack: 0xc0121e18
 Translation of call stack:
-0xc013ac24: (unknown)
+0xc0121e18: (unknown)
 
 OUTPUT FROM tests/filesys/base/syn-read:
 
-Copying tests/filesys/base/syn-read into /tmp/R2_L6077oR.dsk...
-Copying tests/filesys/base/child-syn-read into /tmp/R2_L6077oR.dsk...
-Writing command line to /tmp/ggE2gTuXMV.dsk...
+Copying tests/filesys/base/syn-read into /tmp/6qU7wzp4Wh.dsk...
+Copying tests/filesys/base/child-syn-read into /tmp/6qU7wzp4Wh.dsk...
+Writing command line to /tmp/z40pmwPpOz.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put syn-read put child-syn-read run syn-read
@@ -506,25 +356,25 @@ Executing 'syn-read':
 (syn-read) exec child 4 of 10: "child-syn-read 3"
 (syn-read) exec child 5 of 10: "child-syn-read 4"
 (syn-read) exec child 6 of 10: "child-syn-read 5"
-(syn-read) exec child 7 of 10: "child-syn-read 6"
 Page fault at 0x1c: not present error reading page in kernel context.
 Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc010276e
  cr2=0000001c error=00000000
- eax=00000000 ebx=c0111f00 ecx=c0126000 edx=0000001f
- esi=c013a000 edi=c011b011 esp=c013a000 ebp=c013ad10
+ eax=00000000 ebx=c0111f00 ecx=c0136000 edx=0000001f
+ esi=00000002 edi=bfffffa7 esp=c0122000 ebp=c0121f04
  cs=0008 ds=0010 es=0010 ss=1f00
 Kernel PANIC at ../../userprog/exception.c:102 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc013ac24Page fault at 0x66: not present error reading page in kernel context.
+Call stack: 0xc0121e18Page fault at 0x66: not present error reading page in kernel context.
 Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105852
  cr2=00000066 error=00000000
- eax=00000066 ebx=00000066 ecx=c013ab50 edx=000003d4
- esi=c010db13 edi=c010f519 esp=c010ed9f ebp=c013abe4
- cs=0008 ds=0010 es=0010 ss=ac24
+ eax=00000066 ebx=00000066 ecx=c0121d44 edx=000003d4
+ esi=c010db73 edi=c010f579 esp=c010edff ebp=c0121dd8
+ cs=0008 (syn-read) exec child 7 of 10: "child-syds=0010 es=0010 ss=1e18
+n-read 6"
 Kernel PANIC recursion at ../../userprog/exception.c:102 in kill().
-Timer: 3336 ticks
-Thread: 30 idle ticks, 345 kernel ticks, 2961 user ticks
+Timer: 3291 ticks
+Thread: 30 idle ticks, 342 kernel ticks, 2919 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 2201 reads, 476 writes
+hd0:1: 2159 reads, 476 writes
 hd1:0: 229 reads, 0 writes
 Console: 2038 characters output
 Keyboard: 0 keys pressed
@@ -536,15 +386,15 @@ Powering off...
 DETAILS OF tests/filesys/base/syn-write FAILURE:
 
 Kernel panic in run: PANIC at ../../userprog/exception.c:102 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc0125c24
+Call stack: 0xc0121e18
 Translation of call stack:
-0xc0125c24: (unknown)
+0xc0121e18: (unknown)
 
 OUTPUT FROM tests/filesys/base/syn-write:
 
-Copying tests/filesys/base/syn-write into /tmp/gzPUCcBJS_.dsk...
-Copying tests/filesys/base/child-syn-wrt into /tmp/gzPUCcBJS_.dsk...
-Writing command line to /tmp/YPZy_KcZ7_.dsk...
+Copying tests/filesys/base/syn-write into /tmp/IOhXyAaRRA.dsk...
+Copying tests/filesys/base/child-syn-wrt into /tmp/IOhXyAaRRA.dsk...
+Writing command line to /tmp/n8JqjwFrAI.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put syn-write put child-syn-wrt run syn-write
@@ -568,27 +418,31 @@ child-syn-wrt: exit(0)
 (syn-write) exec child 3 of 10: "child-syn-wrt 2"
 child-syn-wrt: exit(1)
 (syn-write) exec child 4 of 10: "child-syn-wrt 3"
-Page fault at 0x1c: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc010276e
- cr2=0000001c error=00000000
- eax=00000000 ebx=c0111f00 ecx=c0121000 edx=0000001f
- esi=c0125000 edi=c011b010 esp=c0125000 ebp=c0125d10
- cs=0008 ds=0010 es=0010 ss=1f00
 child-syn-wrt: exit(2)
+(syn-write) exec child 5 of 10: "child-syn-wrt 4"
+child-syn-wrt: exit(3)
+(syn-write) exec child 6 of 10: "child-syn-wrt 5"
+Page fault at 0x1c: not present error reading page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc010275f
+ cr2=0000001c error=00000000
+ eax=0000001f ebx=c0111f00 ecx=00000000 edx=00000001
+ esi=c0121fb0 edi=00000004 esp=c0123000 ebp=c0121f04
+ cs=0008 ds=0010 es=0010 ss=1f00
 Kernel PANIC at ../../userprog/exception.c:102 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc0125c24Page fault at 0x66: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105852
+Call stack: 0xc0121e18Page fault at 0x66: not present error reading page in kernel context.(syn-write) exec child 7 of 10: "c
+Interrupt 0x0e (#PF Page-Fauhild-syn-wrt 6"
+lt Exception) at eip=0xc0105852
  cr2=00000066 error=00000000
- eax=00000066 ebx=00000066 ecx=c0125b50 edx=000003d4
- esi=c010db13 edi=c010f519 esp=c010ed9f ebp=c0125be4
- cs=0008 ds=0010 es=0010 ss=5c24
+ eax=00000066 ebx=00000066 ecx=c0121d44 edx=000003d4
+ esi=c010db73 edi=c010f579 esp=c010edff ebp=c0121dd8
+ cs=0008 ds=0010 es=0010 ss=1e18
 Kernel PANIC recursion at ../../userprog/exception.c:102 in kill().
-Timer: 835 ticks
-Thread: 30 idle ticks, 411 kernel ticks, 394 user ticks
+Timer: 1075 ticks
+Thread: 30 idle ticks, 440 kernel ticks, 605 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 237 reads, 483 writes
+hd0:1: 372 reads, 484 writes
 hd1:0: 228 reads, 0 writes
-Console: 1888 characters output
+Console: 2062 characters output
 Keyboard: 0 keys pressed
 Exception: 2 page faults
 Powering off...

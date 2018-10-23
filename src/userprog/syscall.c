@@ -42,10 +42,11 @@ static int syscall_exit_ (struct intr_frame *f){
   }
   //printf("Given child status = %d\n", status);
   struct list_elem *e;
+  struct dead_body *temp;
   for (e=list_begin (&thread_current ()->parent->ch_list);
 	  e!=list_end (&thread_current ()->parent->ch_list);
 	  e=list_next(e)){
-	struct dead_body *temp = list_entry (e, struct dead_body, ch_elem);
+	temp = list_entry (e, struct dead_body, ch_elem);
 	if (temp->ch_tid == thread_current ()->tid){
 	  temp->exit_status = status;
 	}
@@ -138,10 +139,11 @@ static int syscall_open_ (struct intr_frame *f){
   }else{
 	struct list_elem *e;
 	int temp_fd = 2;
+	struct file_desc *temp;
 	for (e=list_begin (&thread_current ()->fd_list);
 		e!=list_end (&thread_current ()->fd_list);
 		e=list_next(e)){
-	  struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
+	  temp = list_entry (e, struct file_desc, fd_elem);
 	  if (temp_fd != temp->fd){
 		fd_->fd=temp_fd;
 		list_insert_ordered (&thread_current ()->fd_list, &fd_->fd_elem, low_fd_func, NULL);
@@ -166,10 +168,11 @@ static int syscall_filesize_ (struct intr_frame *f){
   valid_multiple (f->esp, 1);
   int fd = * (int *) (f->esp+4);
   struct list_elem *e;
+  struct file_desc *temp;
   for (e=list_begin (&thread_current ()->fd_list);
 	  e!=list_end (&thread_current ()->fd_list);
 	  e=list_next(e)){
-	struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
+	temp = list_entry (e, struct file_desc, fd_elem);
 	if (fd==temp->fd){
 	  acquire_filesys_lock ();
 	  f->eax = file_length (temp->file);
@@ -197,11 +200,12 @@ static int syscall_read_ (struct intr_frame *f){
 	f->eax=(int) size;
 	return 0;
   }else{
+	struct file_desc *temp;
 	struct list_elem *e;
 	for (e=list_begin (&thread_current ()->fd_list);
 		e!=list_end (&thread_current ()->fd_list);
 		e=list_next(e)){
-	  struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
+	  temp = list_entry (e, struct file_desc, fd_elem);
 	  if (fd==temp->fd){
 		acquire_filesys_lock ();
 		f->eax=file_read (temp->file, buffer, size);
@@ -229,10 +233,11 @@ static int syscall_write_ (struct intr_frame *f){
 	return 0;
   }else{
 	struct list_elem *e;
+	struct file_desc *temp;
 	for (e=list_begin (&thread_current ()->fd_list);
 		e!=list_end (&thread_current ()->fd_list);
 		e=list_next(e)){
-	  struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
+	  temp = list_entry (e, struct file_desc, fd_elem);
 	  if (fd==temp->fd){
 		acquire_filesys_lock ();
 		f->eax=file_write(temp->file, buffer, size);
@@ -284,10 +289,11 @@ static int syscall_tell_ (struct intr_frame *f){
   struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
   */
   struct list_elem *e;
+  struct file_desc *temp;
   for (e=list_begin (&thread_current ()->fd_list);
 	  e!=list_end (&thread_current ()->fd_list);
 	  e=list_next(e)){
-	struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
+	temp = list_entry (e, struct file_desc, fd_elem);
 	if (fd == temp->fd){
 	  acquire_filesys_lock ();
 	  f->eax = file_tell (temp->file);
@@ -307,15 +313,17 @@ static int syscall_close_ (struct intr_frame *f){
   int fd  = * (int *) (f->esp+4);
   
   struct list_elem *e;
+  struct file_desc *temp;
   for (e=list_begin (&thread_current ()->fd_list);
 	  e!=list_end (&thread_current ()->fd_list);
 	  e=list_next(e)){
-	struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
+	temp = list_entry (e, struct file_desc, fd_elem);
 	if (temp->fd == fd){
 	  acquire_filesys_lock ();
 	  file_close (temp->file);
 	  release_filesys_lock ();
 	  list_remove(e);
+	  free(temp);
 	  return 0;
 	}
   }
