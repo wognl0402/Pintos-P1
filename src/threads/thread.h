@@ -20,6 +20,8 @@ enum thread_status
 typedef int tid_t;
 #define TID_ERROR ((tid_t) -1)          /* Error value for tid_t. */
 
+struct list thread_list;
+
 /* Thread priorities. */
 #define PRI_MIN 0                       /* Lowest priority. */
 #define PRI_DEFAULT 31                  /* Default priority. */
@@ -95,14 +97,20 @@ struct thread
 
     /* Shared between thread.c and synch.c. */
     struct list_elem elem;              /* List element. */
-    struct list lock_list;
+    //struct list lock_list;
 
     struct lock *wait_on;
 
+	//P2 second addition//
+	struct list_elem all;
+	struct lock ch_lock;
+	struct condition ch_cond;
+	bool child_load;
 	//P2 addition//
-	struct thread *parent;
+	int pa_tid;
+	int wait_tid;
 	struct list ch_list;
-	struct semaphore pa_sema;
+	struct semaphore synch_init;
 	int exit_status;
 	struct list fd_list;
 	struct file *proc;
@@ -119,7 +127,9 @@ struct dead_body
   {
 	tid_t ch_tid;
 	int exit_status;
-	bool is_waiting;
+	bool user_kill;
+	bool alive;
+	bool used;
 	struct semaphore ch_sema;
 	struct list_elem ch_elem;
   };
@@ -169,4 +179,5 @@ int thread_get_load_avg (void);
 
 void acquire_filesys_lock (void);
 void release_filesys_lock (void);
+struct thread *get_thread (tid_t);
 #endif /* threads/thread.h */

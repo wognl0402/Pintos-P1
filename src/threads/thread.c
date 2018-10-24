@@ -119,6 +119,8 @@ thread_init (void)
   lock_init (&tid_lock);
   list_init (&ready_list);
   lock_init (&filesys_lock);
+  list_init (&thread_list);
+
   //list_init (&block_list);
   /* Set up a thread structure for the running thread. */
   initial_thread = running_thread ();
@@ -209,14 +211,17 @@ thread_create (const char *name, int priority,
   /* Initialize thread. */
   init_thread (t, name, priority);
   tid = t->tid = allocate_tid ();
-
+  
+/*
   struct dead_body *db = malloc(sizeof(*db));
   db->ch_tid = tid;
   db->exit_status = -1;
   sema_init(&db->ch_sema, 0);
-  db->is_waiting = false;
+  db->user_kill = false;
+  db->used = false;
+  db->alive = true;
   list_push_back (&running_thread ()->ch_list, &db->ch_elem);
-
+  */
 
   /* Stack frame for kernel_thread(). */
   kf = alloc_frame (t, sizeof *kf);
@@ -333,11 +338,13 @@ thread_exit (void)
 #ifdef USERPROG
   process_exit ();
 #endif
-  if(running_thread ()->parent != NULL){
-	struct list_elem *e;
-    struct dead_body *temp;	
-	for (e=list_begin (&running_thread ()->parent->ch_list);
-		e!=list_end (&running_thread ()->parent->ch_list);
+  /*
+  struct list_elem *e;
+  struct dead_body *temp;
+  struct thread *parent = get_thread (thread_current ()->pa_tid); 
+  if(parent != NULL){
+	for (e=list_begin (&parent->ch_list);
+		e!=list_end (&parent->ch_list);
 		e=list_next (e)){
 	  temp = list_entry (e, struct dead_body, ch_elem);
 	  if (temp->ch_tid == running_thread ()->tid){
@@ -345,9 +352,22 @@ thread_exit (void)
 	  }
 	}
   }
+  */
+  
   /* Just set our status to dying and schedule another process.
      We will be destroyed during the call to schedule_tail(). */
   intr_disable ();
+  /*
+	for (e = list_begin (&thread_list);
+	  e != list_end (&thread_list);
+	  e = list_next (e)){
+	temp = list_entry (e, struct thread, all);
+	if (temp->tid = running_thread ()->tid){
+	  list_remove (e)
+	}
+  }
+  */
+  list_remove (&thread_current ()->all);
   thread_current ()->status = THREAD_DYING;
   schedule ();
   NOT_REACHED ();
@@ -377,7 +397,9 @@ void
 thread_set_priority (int new_priority) 
 {
   struct thread *curr = thread_current ();
-  list_sort (&ready_list, high_pri_func, NULL);
+  curr->priority = new_priority;
+  /*
+   * list_sort (&ready_list, high_pri_func, NULL);
   if(list_empty (&curr->lock_list)){
     curr->priority = new_priority;
     curr->priority_ori = new_priority;
@@ -391,6 +413,7 @@ thread_set_priority (int new_priority)
   }
   //if(!list_empty (&ready_list) && new_priority < list_entry (list_front (&ready_list), struct thread, elem))
     //time_to_yield();    //thread_yield();
+  */
 }
 
 
@@ -518,14 +541,22 @@ init_thread (struct thread *t, const char *name, int priority)
   t->priority = priority;
 
   t->priority_ori = priority;
-  list_init (&t->lock_list);
+  //list_init (&t->lock_list);
 
+  //P2 second addition
+  list_push_back (&thread_list, &t->all);
+  
+
+  lock_init (&t->ch_lock);
+  cond_init (&t->ch_cond);
+  
   //P2 addition
-  t->parent = running_thread ();
-  sema_init(&t->pa_sema, 0);
+  t->pa_tid = running_thread ()->tid;
+  sema_init(&t->synch_init, 0);
+
   list_init(&t->ch_list);
   list_init(&t->fd_list);
-  t->exit_status = -1;
+  //t->exit_status = -1;
   t->magic = THREAD_MAGIC;
 }
 
@@ -646,8 +677,34 @@ allocate_tid (void)
 uint32_t thread_stack_ofs = offsetof (struct thread, stack);
 
 void acquire_filesys_lock (void){
+  /*
+  printf("[%d] tryin' acquire\n", thread_current ()-> tid);
+  struct list_elem *e;
+  struct thread *temp;
+  for (e=list_begin (&filesys_lock.semaphore.waiters);
+	  e!=list_end (&filesys_lock.semaphore.waiters);
+	  e=list_next(e))
+	printf("₩₩waiting.....[%d]\n", list_entry (e, struct thread, elem) -> tid);
+  */
   lock_acquire (&filesys_lock);
+  //printf("ACQUIRED....[%d]\n", filesys_lock.holder->tid);
 }
 void release_filesys_lock (void){
+  //printf("tryin' release\n");
   lock_release (&filesys_lock);
+  //printf("[%d] RELEASED\n", thread_current()-> tid);
+}
+
+struct thread *get_thread (tid_t tid){
+  struct list_elem *e;
+  struct thread *temp;
+  for (e = list_begin (&thread_list);
+	  e!= list_end (&thread_list);
+	  e = list_next (e)){
+	temp = list_entry (e, struct thread, all);
+	if (temp->tid == tid){
+	  return temp;
+	}
+  }
+  return NULL;
 }

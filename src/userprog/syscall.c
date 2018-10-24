@@ -5,6 +5,9 @@
 #include "threads/thread.h"
 #include "threads/vaddr.h"
 #include "threads/init.h"
+#include "threads/malloc.h"
+#include "devices/input.h"
+#include "userprog/pagedir.h"
 
 #define PHYS_TOP ((void *) 0x08048000)
 
@@ -20,14 +23,36 @@ static int (*syscall_case[20]) (struct intr_frame *f);
 static void syscall_handler (struct intr_frame *);
 static void valid_usrptr (const void *uaddr);
 void valid_multiple (int *esp, int num);
-struct file* fd_find (int fd);
+struct file_desc *fd_find (int fd);
 
 static int syscall_halt_ (struct intr_frame *f){
   power_off ();
   return -1;
 }
 void exit_ (int status){  
-  thread_current ()->exit_status = status;
+  //struct dead_body *db;
+  struct thread *cur = thread_current ();
+  printf ("%s: exit(%d)\n", cur->name, status);
+
+  struct thread *parent = get_thread (cur->pa_tid);
+  if (parent != NULL){
+	struct list_elem *e;
+	struct dead_body *temp;
+	for (e=list_begin (&parent->ch_list);
+		e!=list_end (&parent->ch_list);
+		e=list_next (e)){
+	  temp = list_entry (e, struct dead_body, ch_elem);
+	  if (temp->ch_tid == cur->tid){
+		lock_acquire (&parent->ch_lock);
+		temp->user_kill = true;
+		temp->exit_status = status;
+		temp->alive = false;
+		lock_release (&parent->ch_lock);
+	  }
+	}
+  }
+    
+  //thread_current ()->exit_status = status;
   //printf("exit_ call with %d\n", status);
   //printf("%s: exit(%d)\n", thread_current ()->name, status);
   thread_exit ();
@@ -41,26 +66,33 @@ static int syscall_exit_ (struct intr_frame *f){
 	status = 0;
   }
   //printf("Given child status = %d\n", status);
-  struct list_elem *e;
+  /*
+   * struct list_elem *e;
   struct dead_body *temp;
-  for (e=list_begin (&thread_current ()->parent->ch_list);
-	  e!=list_end (&thread_current ()->parent->ch_list);
+  struct thread *parent = get_thread (thread_current ()->pa_tid);
+  for (e=list_begin (&parent->ch_list);
+	  e!=list_end (&parent->ch_list);
 	  e=list_next(e)){
 	temp = list_entry (e, struct dead_body, ch_elem);
 	if (temp->ch_tid == thread_current ()->tid){
 	  temp->exit_status = status;
 	}
-  }
+  }*/
   exit_ (status);
-  return -1;
+  return 0;
   
 }
 static int syscall_exec_ (struct intr_frame *f){
   valid_multiple(f->esp,1);
-  valid_usrptr(*(uint32_t *) (f->esp+4));
+  //valid_usrptr(*(uint32_t *) (f->esp+4));
   //printf("GOOD ESP\n");
   char * file_name = * (char **) (f->esp+4);
+  valid_usrptr (file_name);
   
+  tid_t tid;
+  tid = process_execute (file_name);
+  f->eax = tid;
+  /*
   char *f_name = malloc (strlen(file_name)+1);
   strlcpy (f_name, file_name, strlen(file_name)+1);
   char *save_ptr;
@@ -78,7 +110,10 @@ static int syscall_exec_ (struct intr_frame *f){
   free(f_name);
   
   f->eax = process_execute(file_name);
-  return f->eax;
+   
+  */
+  //printf("NEW PID [%d] is BORN\n", tid);
+  return 0;
 }
 
 static int syscall_wait_ (struct intr_frame *f){
@@ -88,7 +123,7 @@ static int syscall_wait_ (struct intr_frame *f){
   return 0;
 }
 static int syscall_create_ (struct intr_frame *f){
-  valid_multiple(f->esp, 2);
+  valid_multiple((uint32_t *) f->esp, 2);
   valid_usrptr (*(uint32_t *) (f->esp+4));
   char *file = * (char **) (f->esp+4);
   unsigned size = * (unsigned *) (f->esp+8);
@@ -122,7 +157,12 @@ static int syscall_open_ (struct intr_frame *f){
   char *file_name = * (char **) (f->esp+4);
   acquire_filesys_lock ();
   struct file *ff = filesys_open (file_name);
+  
   release_filesys_lock ();
+  //printf("OPENING BY PID[%d]\n", thread_current ()->tid);
+  
+  
+  
   if (ff==NULL){
 	//printf("NOFILE\n");
 	f->eax=-1;
@@ -132,14 +172,22 @@ static int syscall_open_ (struct intr_frame *f){
   fd_->file = ff;
   if (list_empty (&thread_current ()->fd_list)){
 	  ///sdfsdfsdf
-	  fd_->fd=2;
+	  fd_->fd=3;
 	  list_push_back (&thread_current ()->fd_list, &fd_->fd_elem);
 	  //release_filesys_lock ();
 	  f->eax=fd_->fd;
+  	  //printf("...........fd[%d]\n",fd_-> fd);
 	  return fd_->fd;
   }else{
+	//what if jsut fd+1//
+	/*	
+	fd_->fd = list_entry (list_back(&thread_current ()->fd_list), struct file_desc, fd_elem) -> fd +1;
+	list_push_back (&thread_current ()->fd_list, &fd_->fd_elem);
+	*/
+	//=================//
+	
 	struct list_elem *e;
-	int temp_fd = 2;
+	int temp_fd = 3;
 	struct file_desc *temp;
 	for (e=list_begin (&thread_current ()->fd_list);
 		e!=list_end (&thread_current ()->fd_list);
@@ -159,7 +207,14 @@ static int syscall_open_ (struct intr_frame *f){
 	//release_filesys_lock ();
 	f->eax = fd_->fd;
 	return fd_->fd;
-
+	
+	//=====continued part=====//
+	/*
+	f->eax = fd_->fd;
+  	//printf("...........fd[%d]\n",fd_-> fd);
+	return fd_->fd;
+	*/
+	//=======================//
   }
 
   return -1;
@@ -168,6 +223,16 @@ static int syscall_open_ (struct intr_frame *f){
 static int syscall_filesize_ (struct intr_frame *f){
   valid_multiple (f->esp, 1);
   int fd = * (int *) (f->esp+4);
+
+  struct file_desc *temp = fd_find (fd);
+  if (temp == NULL){
+	f->eax = -1;
+    return -1;
+  }
+  acquire_filesys_lock ();
+  f->eax = file_length (temp->file);
+  release_filesys_lock ();
+  /*
   struct list_elem *e;
   struct file_desc *temp;
   for (e=list_begin (&thread_current ()->fd_list);
@@ -180,16 +245,23 @@ static int syscall_filesize_ (struct intr_frame *f){
 	  release_filesys_lock ();
 	  return 0;
 	}
-  }
-  return -1;
+  }*/
+
+  return 0;
 }
 
 static int syscall_read_ (struct intr_frame *f){
+  //printf("START TO READ PID[%d]\n",  thread_current ()->tid);
   valid_multiple (f->esp, 3);
-  valid_usrptr (* (uint32_t *) (f->esp+8));
+  //valid_usrptr (* (uint32_t *) (f->esp+8));
   int fd = * (int *) (f->esp+4);
   char *buffer = * (char **) (f->esp+8);
+  //printf("CHECK BUF\n");
+  valid_usrptr ((const uint8_t *) buffer);
   unsigned size = * (unsigned *) (f->esp+12);
+  //printf("[%d]......TRYINg TO READ fd[%d]\n", thread_current ()->tid, fd);
+  
+  //acquire_filesys_lock ();
   if (fd==0){
 	acquire_filesys_lock ();
 	int i = 0;
@@ -199,27 +271,38 @@ static int syscall_read_ (struct intr_frame *f){
 	}
 	release_filesys_lock ();
 	f->eax= size;
+	//goto finish;
 	return 0;
   }else{
-	struct file_desc *temp;
-	struct list_elem *e;
+	struct file_desc *temp = NULL;
+	struct list_elem *e = NULL;
+	//printf("When is fault...#1\n");
 	for (e=list_begin (&thread_current ()->fd_list);
 		e!=list_end (&thread_current ()->fd_list);
 		e=list_next(e)){
+	  //printf("When is fault....#k\n");
 	  temp = list_entry (e, struct file_desc, fd_elem);
+	  //printf("[%d].................[%d]\n", fd, temp->fd);
 	  if (fd==temp->fd){
 		if (temp->file == NULL){
 		  f->eax = -1;
+		  //goto finish;
 		  return 0;
 		}
 		acquire_filesys_lock ();
+		//printf("read_attemp\n");
 		f->eax=file_read (temp->file, buffer, size);
+		//printf("read_done.....[size:%d], [f->eax:%d]\n", size, f->eax);
 		release_filesys_lock ();
+		//goto finish;
 		return 0;
 	  }
 	}
   }
-  
+   
+  //return -1;
+  //finish:
+  //release_filesys_lock ();
   return -1;
 }
 
@@ -252,21 +335,19 @@ static int syscall_write_ (struct intr_frame *f){
 	}
   }
   return -1;
-  release_filesys_lock ();
-  return -1;
 }
 
 static int syscall_seek_ (struct intr_frame *f){
   valid_multiple (f->esp, 2);
   int fd = * (int *) (f->esp+4);
   unsigned position = * (unsigned *) (f->esp+8);
-  struct file *temp = fd_find(fd);
+  struct file_desc *temp = fd_find(fd);
   if (temp == NULL){
 	//f->eax = -1;
 	return 0;
   }
   acquire_filesys_lock ();
-  file_seek (temp, position);
+  file_seek (temp->file, position);
   release_filesys_lock ();
   /*struct list_elem *temp = fd_find(fd);
   if (e==NULL){
@@ -416,6 +497,7 @@ static void
 syscall_handler (struct intr_frame *f) 
 {
   valid_usrptr(f->esp);
+  valid_multiple(f->esp, 3);
   int syscall_num = * (int *) f->esp;
 //  int syscall_num;
 /*  asm volatile ("movl %0, %%esp; popl %%eax" : "=a" (syscall_num) : "g" (f->esp));
@@ -430,16 +512,24 @@ syscall_handler (struct intr_frame *f)
 }
 
 static void valid_usrptr (const void *uaddr){
-  if (uaddr >= PHYS_BASE){
+  //printf("PID[%d] is checking validity....\n",thread_current ()->tid);
+  if (!is_user_vaddr (uaddr)){
+	//printf("CASE1!\n");
 	exit_(-1);
 	return;
   }
+  /*
   if (uaddr < PHYS_TOP){
 	exit_(-1);
 	return;
+  }*/
+  if (uaddr == NULL){
+	//printf("CASE2!\n");
+	exit_(-1);
+	return;
   }
-
   if ((pagedir_get_page (thread_current ()->pagedir, uaddr))==NULL){
+	//printf("CASE3!\n");
 	exit_(-1);
 	return;
   }
@@ -480,14 +570,15 @@ void valid_multiple (int * esp, int num){
   }
 }
 
-struct file* fd_find (int fd){
+struct file_desc *fd_find (int fd){
   struct list_elem *e;
+  struct file_desc *temp = NULL;
   for (e=list_begin (&thread_current ()->fd_list);
 	  e!=list_end (&thread_current ()->fd_list);
 	  e=list_next (e)){
-	struct file_desc *temp = list_entry (e, struct file_desc, fd_elem);
+	temp = list_entry (e, struct file_desc, fd_elem);
 	if (fd==temp->fd){
-	  return temp->file;
+	  return temp;
 	}
   }
   return NULL;

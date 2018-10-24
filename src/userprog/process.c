@@ -15,8 +15,10 @@
 #include "threads/init.h"
 #include "threads/interrupt.h"
 #include "threads/palloc.h"
+#include "threads/malloc.h"
 #include "threads/thread.h"
 #include "threads/vaddr.h"
+#include "userprog/syscall.h"
 
 #define MAX_ARG 64
 #define MAX_COM 128
@@ -42,7 +44,6 @@ process_execute (const char *file_name)
   if (fn_copy == NULL)
     return TID_ERROR;
   strlcpy (fn_copy, file_name, PGSIZE);
-
   /*
   char *f_name;
   char *save_arg;
@@ -76,12 +77,27 @@ process_execute (const char *file_name)
 
   tid = thread_create (t_name, PRI_DEFAULT, start_process, fn_copy);
   free(t_name);
-  if (tid == TID_ERROR)
-    palloc_free_page (fn_copy); 
-  //printf("sema_down pa_sema\n"); 
-  sema_down (&thread_current ()->pa_sema);
-  //printf("sema_down done\n");
+  if (tid == TID_ERROR){
+    palloc_free_page (fn_copy);
+	return tid;
+  }//printf("sema_down pa_sema\n"); 
   
+  sema_down (&thread_current ()->synch_init);
+  
+  //printf("child?\n");
+  if(!thread_current ()->child_load)
+	return -1;
+  struct dead_body *db = malloc (sizeof (*db));
+  db->ch_tid = tid;
+  db->exit_status = -1;
+  sema_init (&db->ch_sema,0);
+  db->user_kill = false;
+  db->used = false;
+  db->alive = true;
+
+  list_push_back (&thread_current ()->ch_list, &db->ch_elem);
+  
+  //printf("sema_down done\n");
   return tid;
 }
 
@@ -99,14 +115,21 @@ start_process (void *f_name)
   if_.gs = if_.fs = if_.es = if_.ds = if_.ss = SEL_UDSEG;
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
+  acquire_filesys_lock ();
   success = load (file_name, &if_.eip, &if_.esp);
-
-  sema_up (&thread_current ()->parent->pa_sema);
-  /* If load failed, quit. */
+  release_filesys_lock ();
   palloc_free_page (file_name);
+  
+  struct thread *parent = get_thread (thread_current ()->pa_tid);
+ 
+  parent->child_load = success;
+  sema_up (&parent->synch_init);
+  
+  /* If load failed, quit. */
   if (!success){ 
-    printf("BAD LOADING...\n");
-   	thread_exit ();
+    //printf("BAD LOADING...\n");
+    //exit_ (0);	
+	thread_exit ();
   }
   
   /* Start the user process by simulating a return from an
@@ -130,19 +153,23 @@ start_process (void *f_name)
    This function will be implemented in problem 2-2.  For now, it
    does nothing. */
 int
-process_wait (tid_t child_tid UNUSED) 
+process_wait (tid_t child_tid) 
 {
+  if (child_tid == TID_ERROR)
+	return TID_ERROR;
+
   struct list_elem *e;
   struct dead_body *temp;
   int child_status = 0;
-  for (e=list_begin (&thread_current ()->ch_list);
-	  e!=list_end (&thread_current ()->ch_list);
+  struct thread *cur = thread_current ();
+  for (e=list_begin (&cur->ch_list);
+	  e!=list_end (&cur->ch_list);
 	  e=list_next(e)){
 	temp = list_entry (e, struct dead_body, ch_elem);
 	if(temp->ch_tid == child_tid){
-	  if(temp->is_waiting){
-		return -1;
-	  }
+	  //list_remove (e);
+	  break;
+	  /*
 	  temp->is_waiting = true;
 	  sema_down (&temp->ch_sema);
 	  child_status = temp->exit_status; 
@@ -150,13 +177,33 @@ process_wait (tid_t child_tid UNUSED)
 	  list_remove (e);
 	  free (temp); 
 	  return child_status;
+	  */
 	}
 
   }
+  if (temp == NULL)
+	return -1;
 
-
-	  //while(1){}
-  return -1;
+  lock_acquire (&cur->ch_lock);
+  //cur->wait_tid = child_tid;
+  if (temp->alive){
+  //while (get_thread (child_tid) != NULL ){
+	//printf("GO TO SLEEP\n");
+	cur->wait_tid = child_tid;
+	cond_wait (&cur->ch_cond, &cur->ch_lock);
+  }
+  cur->wait_tid = 0;
+  if (!temp->user_kill || temp->used){
+	child_status = -1;
+  }else{
+  temp->used = true;
+  child_status = temp->exit_status;
+  lock_release (&cur->ch_lock);
+  }
+  //while(1){}
+  //list_remove (e);
+  //free (temp);
+  return child_status;
 }
 
 /* Free the current process's resources. */
@@ -171,6 +218,7 @@ process_exit (void)
 	curr->exit_status=-1;
   }
   */
+  //printf("I want to die : [%d]\n", curr->tid);
   acquire_filesys_lock ();
   if (thread_current ()->proc != NULL){
   file_allow_write (thread_current ()->proc);
@@ -180,7 +228,15 @@ process_exit (void)
   release_filesys_lock ();
   child_close_all ();
 
-  printf("%s: exit(%d)\n", curr->name, curr->exit_status);
+  //printf("PAPA WAKEUP\n");
+  struct thread *parent = get_thread (curr->pa_tid);
+  if (parent != NULL){
+	lock_acquire (&parent->ch_lock);
+	if (parent->wait_tid == curr->tid)
+	  cond_signal (&parent->ch_cond, &parent->ch_lock);
+	lock_release (&parent->ch_lock);
+  }
+//  printf("%s: exit(%d)\n", curr->name, curr->exit_status);
   //printf("IT'S exiting\n");
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
@@ -299,7 +355,7 @@ load (const char *f_name, void (**eip) (void), void **esp)
   bool success = false;
   int i;
 
-  acquire_filesys_lock ();
+  //acquire_filesys_lock ();
 /*
   char *file_name = malloc (strlen(f_name)+1);
   char *save_arg;
@@ -451,7 +507,7 @@ load (const char *f_name, void (**eip) (void), void **esp)
   */
   /* We arrive here whether the load is successful or not. */
   //file_close (file);
-  release_filesys_lock ();
+  //release_filesys_lock ();
   //test_stack(*esp);
   return success;
 }
