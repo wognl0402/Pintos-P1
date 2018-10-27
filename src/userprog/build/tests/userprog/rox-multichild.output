@@ -1,6 +1,6 @@
-Copying tests/userprog/rox-multichild into /tmp/Kdt8jBl0kq.dsk...
-Copying tests/userprog/child-rox into /tmp/Kdt8jBl0kq.dsk...
-Writing command line to /tmp/yfaseQKts5.dsk...
+Copying tests/userprog/rox-multichild into /tmp/C2QySuRLQc.dsk...
+Copying tests/userprog/child-rox into /tmp/C2QySuRLQc.dsk...
+Writing command line to /tmp/UkxGSPvgkY.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put rox-multichild put child-rox run rox-multichild
@@ -17,49 +17,20 @@ Putting 'rox-multichild' into the file system...
 Putting 'child-rox' into the file system...
 Executing 'rox-multichild':
 (rox-multichild) begin
-(rox-multichild) open "child-rox"
-(rox-multichild) read "child-rox"
-(rox-multichild) write "child-rox"
-(rox-multichild) exec "child-rox 5"
-(child-rox) begin
-(child-rox) try to write "child-rox"
-(child-rox) exec "child-rox 4"
-(child-rox) begin
-(child-rox) try to write "child-rox"
-(child-rox) exec "child-rox 3"
-(child-rox) begin
-(child-rox) try to write "child-rox"
-(child-rox) exec "child-rox 2"
-(child-rox) begin
-(child-rox) try to write "child-rox"
-(child-rox) exec "child-rox 1"
-(child-rox) begin
-(child-rox) try to write "child-rox"
-(child-rox) try to write "child-rox"
-(child-rox) end
-child-rox: exit(12)
-(child-rox) try to write "child-rox"
-(child-rox) end
-child-rox: exit(12)
-(child-rox) try to write "child-rox"
-(child-rox) end
-child-rox: exit(12)
-(child-rox) try to write "child-rox"
-(child-rox) end
-child-rox: exit(12)
-(child-rox) try to write "child-rox"
-(child-rox) end
-child-rox: exit(12)
-(rox-multichild) write "child-rox"
-(rox-multichild) end
-rox-multichild: exit(0)
-Execution of 'rox-multichild' complete.
-Timer: 811 ticks
-Thread: 30 idle ticks, 414 kernel ticks, 374 user ticks
+Kernel PANIC at ../../lib/kernel/list.c:84 in list_next(): assertion `is_head (elem) || is_interior (elem)' failed.
+Call stack: 0xc011be34Page fault at 0x54: not present error reading page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105852
+ cr2=00000054 error=00000000
+ eax=00000054 ebx=00000054 ecx=c011bd60 edx=000003d4
+ esi=c010db20 edi=c010f241 esp=c010ef8b ebp=c011bdf4
+ cs=0008 ds=0010 es=0010 ss=be34
+Kernel PANIC recursion at ../../userprog/exception.c:102 in kill().
+Timer: 401 ticks
+Thread: 30 idle ticks, 298 kernel ticks, 73 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 289 reads, 456 writes
+hd0:1: 87 reads, 454 writes
 hd1:0: 222 reads, 0 writes
-Console: 1844 characters output
+Console: 1323 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 1 page faults
 Powering off...

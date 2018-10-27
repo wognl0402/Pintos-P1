@@ -30,7 +30,7 @@
 00000000000i[     ]   SB16 support: no
 00000000000i[     ]   USB support: no
 00000000000i[     ]   VGA extension support:  
-00000000000i[MEM0 ] allocated memory at 0x2b5af2ec7010. after alignment, vector=0x2b5af2ec8000
+00000000000i[MEM0 ] allocated memory at 0x2b8654f67010. after alignment, vector=0x2b8654f68000
 00000000000i[MEM0 ] 4.00MB
 00000000000i[MEM0 ] rom at 0xf0000/65536 ('/usr/local/share/bochs/BIOS-bochs-latest')
 00000000000i[MEM0 ] rom at 0xc0000/32768 ('/usr/local/share/bochs/VGABIOS-lgpl-latest')
@@ -46,9 +46,9 @@
 00000000000i[     ] init_mem of 'extfpuirq' plugin device by virtual method
 00000000000i[     ] init_mem of 'speaker' plugin device by virtual method
 00000000000i[     ] init_dev of 'harddrv' plugin device by virtual method
-00000000000i[HD   ] HD on ata0-0: '/tmp/BSgfz2zG18.dsk' 'flat' mode 
-00000000000i[HD   ] HD on ata0-1: '/tmp/wrxVcFOz0X.dsk' 'flat' mode 
-00000000000i[HD   ] HD on ata1-0: '/tmp/7BqGgAe5hu.dsk' 'flat' mode 
+00000000000i[HD   ] HD on ata0-0: '/tmp/TO9bWXrc81.dsk' 'flat' mode 
+00000000000i[HD   ] HD on ata0-1: '/tmp/yxiKuEANUH.dsk' 'flat' mode 
+00000000000i[HD   ] HD on ata1-0: '/tmp/yEyGc7fAda.dsk' 'flat' mode 
 00000000000i[HD   ] Using boot sequence disk, none, none
 00000000000i[HD   ] Floppy boot signature check is enabled
 00000000000i[     ] init_dev of 'keyboard' plugin device by virtual method
@@ -75,29 +75,1139 @@
 00000793268i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
 00000848672i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
 00000897373e[HD   ] ata1: device set to 1 which does not exist
-00001875244e[HD   ] ata1: device set to 1 which does not exist
-00002021332e[HD   ] ata1: device set to 1 which does not exist
-00016041766p[UNMP ] >>PANIC<< Shutdown port: shutdown requested
-00016041766i[SYS  ] Last time is 16
-00016041766i[NGUI ] bx_nogui_gui_c::exit() not implemented yet.
-00016041766i[CPU  ] protected mode
-00016041766i[CPU  ] CS.d_b = 32 bit
-00016041766i[CPU  ] SS.d_b = 32 bit
-00016041766i[CPU  ] | EAX=0000006e  EBX=c002ff82  ECX=ffff8900  EDX=ffff8900
-00016041766i[CPU  ] | ESP=c002ff70  EBP=c002ff88  ESI=00000000  EDI=c0113c00
-00016041766i[CPU  ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf zf af pf cf
-00016041766i[CPU  ] | SEG selector     base    limit G D
-00016041766i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
-00016041766i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
-00016041766i[CPU  ] |  DS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00016041766i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00016041766i[CPU  ] |  ES:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00016041766i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
-00016041766i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
-00016041766i[CPU  ] | EIP=c0100079 (c0100078)
-00016041766i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0x00000000
-00016041766i[CPU  ] | CR3=0x00113000 CR4=0x00000000
-00016041766i[CPU  ] >> ee
-00016041766i[CPU  ] >> : out dx, al
-00016041766i[     ] restoring default signal behavior
-00016041766i[CTRL ] quit_sim called with exit code 1
+00001896622e[HD   ] ata1: device set to 1 which does not exist
+00002045203e[HD   ] ata1: device set to 1 which does not exist
+00010099586i[CPU  ] read_virtual_checks(): read beyond limit
+00010099608i[CPU  ] read_virtual_checks(): read beyond limit
+00010099630i[CPU  ] read_virtual_checks(): read beyond limit
+00010099652i[CPU  ] read_virtual_checks(): read beyond limit
+00010099674i[CPU  ] read_virtual_checks(): read beyond limit
+00010099696i[CPU  ] read_virtual_checks(): read beyond limit
+00010099718i[CPU  ] read_virtual_checks(): read beyond limit
+00010099740i[CPU  ] read_virtual_checks(): read beyond limit
+00010099762i[CPU  ] read_virtual_checks(): read beyond limit
+00010099784i[CPU  ] read_virtual_checks(): read beyond limit
+00010099806i[CPU  ] read_virtual_checks(): read beyond limit
+00010099828i[CPU  ] read_virtual_checks(): read beyond limit
+00010099850i[CPU  ] read_virtual_checks(): read beyond limit
+00010099872i[CPU  ] read_virtual_checks(): read beyond limit
+00010099894i[CPU  ] read_virtual_checks(): read beyond limit
+00010099916i[CPU  ] read_virtual_checks(): read beyond limit
+00010099938i[CPU  ] read_virtual_checks(): read beyond limit
+00010099960i[CPU  ] read_virtual_checks(): read beyond limit
+00010099982i[CPU  ] read_virtual_checks(): read beyond limit
+00010100004i[CPU  ] read_virtual_checks(): read beyond limit
+00010100026i[CPU  ] read_virtual_checks(): read beyond limit
+00010100048i[CPU  ] read_virtual_checks(): read beyond limit
+00010100070i[CPU  ] read_virtual_checks(): read beyond limit
+00010100092i[CPU  ] read_virtual_checks(): read beyond limit
+00010100114i[CPU  ] read_virtual_checks(): read beyond limit
+00010100136i[CPU  ] read_virtual_checks(): read beyond limit
+00010100158i[CPU  ] read_virtual_checks(): read beyond limit
+00010100180i[CPU  ] read_virtual_checks(): read beyond limit
+00010100202i[CPU  ] read_virtual_checks(): read beyond limit
+00010100224i[CPU  ] read_virtual_checks(): read beyond limit
+00010100246i[CPU  ] read_virtual_checks(): read beyond limit
+00010100268i[CPU  ] read_virtual_checks(): read beyond limit
+00010100290i[CPU  ] read_virtual_checks(): read beyond limit
+00010100312i[CPU  ] read_virtual_checks(): read beyond limit
+00010100334i[CPU  ] read_virtual_checks(): read beyond limit
+00010100356i[CPU  ] read_virtual_checks(): read beyond limit
+00010100378i[CPU  ] read_virtual_checks(): read beyond limit
+00010100400i[CPU  ] read_virtual_checks(): read beyond limit
+00010100422i[CPU  ] read_virtual_checks(): read beyond limit
+00010100444i[CPU  ] read_virtual_checks(): read beyond limit
+00010100466i[CPU  ] read_virtual_checks(): read beyond limit
+00010100488i[CPU  ] read_virtual_checks(): read beyond limit
+00010100510i[CPU  ] read_virtual_checks(): read beyond limit
+00010100532i[CPU  ] read_virtual_checks(): read beyond limit
+00010100554i[CPU  ] read_virtual_checks(): read beyond limit
+00010100576i[CPU  ] read_virtual_checks(): read beyond limit
+00010100576e[CPU  ] exception(): 3rd (11) exception with no resolution, shutdown status is 00h, resetting
+00010100576i[CPU  ] protected mode
+00010100576i[CPU  ] CS.d_b = 32 bit
+00010100576i[CPU  ] SS.d_b = 32 bit
+00010100576i[CPU  ] | EAX=00000010  EBX=c010eabb  ECX=c0117000  EDX=c0117000
+00010100576i[CPU  ] | ESP=c01105cc  EBP=c01105f4  ESI=c0110600  EDI=c010eaa4
+00010100576i[CPU  ] | IOPL=0 id vip vif ac vm RF nt of df if tf SF zf af PF cf
+00010100576i[CPU  ] | SEG selector     base    limit G D
+00010100576i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00010100576i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00010100576i[CPU  ] |  DS:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00010100576i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00010100576i[CPU  ] |  ES:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00010100576i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00010100576i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00010100576i[CPU  ] | EIP=c0101843 (c0101843)
+00010100576i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0xc010eac3
+00010100576i[CPU  ] | CR3=0x00127000 CR4=0x00000000
+00010100576i[CPU  ] >> 8b
+00010100576i[CPU  ] >> 46
+00010100576i[CPU  ] >> 30
+00010100576i[CPU  ] >> : mov eax, dword ptr ds:[esi+0x30]
+00010100576i[SYS  ] bx_pc_system_c::Reset(SOFTWARE) called
+00010104316i[BIOS ] $Revision: 1.160 $ $Date: 2006/01/25 17:51:49 $
+00010418063i[KBD  ] reset-disable command received
+00010525750i[VBIOS] VGABios $Id: vgabios.c,v 1.63 2005/12/26 19:50:26 vruppert Exp $
+00010528757i[VBIOS] VBE Bios $Id: vbe.c,v 1.48 2005/12/26 19:50:26 vruppert Exp $
+00010838372i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00010893768i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
+00010949172i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00010997873e[HD   ] ata1: device set to 1 which does not exist
+00011997122e[HD   ] ata1: device set to 1 which does not exist
+00012145703e[HD   ] ata1: device set to 1 which does not exist
+00020200086i[CPU  ] read_virtual_checks(): read beyond limit
+00020200108i[CPU  ] read_virtual_checks(): read beyond limit
+00020200130i[CPU  ] read_virtual_checks(): read beyond limit
+00020200152i[CPU  ] read_virtual_checks(): read beyond limit
+00020200174i[CPU  ] read_virtual_checks(): read beyond limit
+00020200196i[CPU  ] read_virtual_checks(): read beyond limit
+00020200218i[CPU  ] read_virtual_checks(): read beyond limit
+00020200240i[CPU  ] read_virtual_checks(): read beyond limit
+00020200262i[CPU  ] read_virtual_checks(): read beyond limit
+00020200284i[CPU  ] read_virtual_checks(): read beyond limit
+00020200306i[CPU  ] read_virtual_checks(): read beyond limit
+00020200328i[CPU  ] read_virtual_checks(): read beyond limit
+00020200350i[CPU  ] read_virtual_checks(): read beyond limit
+00020200372i[CPU  ] read_virtual_checks(): read beyond limit
+00020200394i[CPU  ] read_virtual_checks(): read beyond limit
+00020200416i[CPU  ] read_virtual_checks(): read beyond limit
+00020200438i[CPU  ] read_virtual_checks(): read beyond limit
+00020200460i[CPU  ] read_virtual_checks(): read beyond limit
+00020200482i[CPU  ] read_virtual_checks(): read beyond limit
+00020200504i[CPU  ] read_virtual_checks(): read beyond limit
+00020200526i[CPU  ] read_virtual_checks(): read beyond limit
+00020200548i[CPU  ] read_virtual_checks(): read beyond limit
+00020200570i[CPU  ] read_virtual_checks(): read beyond limit
+00020200592i[CPU  ] read_virtual_checks(): read beyond limit
+00020200614i[CPU  ] read_virtual_checks(): read beyond limit
+00020200636i[CPU  ] read_virtual_checks(): read beyond limit
+00020200658i[CPU  ] read_virtual_checks(): read beyond limit
+00020200680i[CPU  ] read_virtual_checks(): read beyond limit
+00020200702i[CPU  ] read_virtual_checks(): read beyond limit
+00020200724i[CPU  ] read_virtual_checks(): read beyond limit
+00020200746i[CPU  ] read_virtual_checks(): read beyond limit
+00020200768i[CPU  ] read_virtual_checks(): read beyond limit
+00020200790i[CPU  ] read_virtual_checks(): read beyond limit
+00020200812i[CPU  ] read_virtual_checks(): read beyond limit
+00020200834i[CPU  ] read_virtual_checks(): read beyond limit
+00020200856i[CPU  ] read_virtual_checks(): read beyond limit
+00020200878i[CPU  ] read_virtual_checks(): read beyond limit
+00020200900i[CPU  ] read_virtual_checks(): read beyond limit
+00020200922i[CPU  ] read_virtual_checks(): read beyond limit
+00020200944i[CPU  ] read_virtual_checks(): read beyond limit
+00020200966i[CPU  ] read_virtual_checks(): read beyond limit
+00020200988i[CPU  ] read_virtual_checks(): read beyond limit
+00020201010i[CPU  ] read_virtual_checks(): read beyond limit
+00020201032i[CPU  ] read_virtual_checks(): read beyond limit
+00020201054i[CPU  ] read_virtual_checks(): read beyond limit
+00020201076i[CPU  ] read_virtual_checks(): read beyond limit
+00020201076e[CPU  ] exception(): 3rd (11) exception with no resolution, shutdown status is 00h, resetting
+00020201076i[CPU  ] protected mode
+00020201076i[CPU  ] CS.d_b = 32 bit
+00020201076i[CPU  ] SS.d_b = 32 bit
+00020201076i[CPU  ] | EAX=00000010  EBX=c010eabb  ECX=c0117000  EDX=c0117000
+00020201076i[CPU  ] | ESP=c01105cc  EBP=c01105f4  ESI=c0110600  EDI=c010eaa4
+00020201076i[CPU  ] | IOPL=0 id vip vif ac vm RF nt of df if tf SF zf af PF cf
+00020201076i[CPU  ] | SEG selector     base    limit G D
+00020201076i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00020201076i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00020201076i[CPU  ] |  DS:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00020201076i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00020201076i[CPU  ] |  ES:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00020201076i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00020201076i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00020201076i[CPU  ] | EIP=c0101843 (c0101843)
+00020201076i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0xc010eac3
+00020201076i[CPU  ] | CR3=0x00127000 CR4=0x00000000
+00020201076i[CPU  ] >> 8b
+00020201076i[CPU  ] >> 46
+00020201076i[CPU  ] >> 30
+00020201076i[CPU  ] >> : mov eax, dword ptr ds:[esi+0x30]
+00020201076i[SYS  ] bx_pc_system_c::Reset(SOFTWARE) called
+00020204816i[BIOS ] $Revision: 1.160 $ $Date: 2006/01/25 17:51:49 $
+00020518563i[KBD  ] reset-disable command received
+00020626250i[VBIOS] VGABios $Id: vgabios.c,v 1.63 2005/12/26 19:50:26 vruppert Exp $
+00020629257i[VBIOS] VBE Bios $Id: vbe.c,v 1.48 2005/12/26 19:50:26 vruppert Exp $
+00020938872i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00020994268i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
+00021049672i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00021098373e[HD   ] ata1: device set to 1 which does not exist
+00022097622e[HD   ] ata1: device set to 1 which does not exist
+00022246203e[HD   ] ata1: device set to 1 which does not exist
+00030300586i[CPU  ] read_virtual_checks(): read beyond limit
+00030300608i[CPU  ] read_virtual_checks(): read beyond limit
+00030300630i[CPU  ] read_virtual_checks(): read beyond limit
+00030300652i[CPU  ] read_virtual_checks(): read beyond limit
+00030300674i[CPU  ] read_virtual_checks(): read beyond limit
+00030300696i[CPU  ] read_virtual_checks(): read beyond limit
+00030300718i[CPU  ] read_virtual_checks(): read beyond limit
+00030300740i[CPU  ] read_virtual_checks(): read beyond limit
+00030300762i[CPU  ] read_virtual_checks(): read beyond limit
+00030300784i[CPU  ] read_virtual_checks(): read beyond limit
+00030300806i[CPU  ] read_virtual_checks(): read beyond limit
+00030300828i[CPU  ] read_virtual_checks(): read beyond limit
+00030300850i[CPU  ] read_virtual_checks(): read beyond limit
+00030300872i[CPU  ] read_virtual_checks(): read beyond limit
+00030300894i[CPU  ] read_virtual_checks(): read beyond limit
+00030300916i[CPU  ] read_virtual_checks(): read beyond limit
+00030300938i[CPU  ] read_virtual_checks(): read beyond limit
+00030300960i[CPU  ] read_virtual_checks(): read beyond limit
+00030300982i[CPU  ] read_virtual_checks(): read beyond limit
+00030301004i[CPU  ] read_virtual_checks(): read beyond limit
+00030301026i[CPU  ] read_virtual_checks(): read beyond limit
+00030301048i[CPU  ] read_virtual_checks(): read beyond limit
+00030301070i[CPU  ] read_virtual_checks(): read beyond limit
+00030301092i[CPU  ] read_virtual_checks(): read beyond limit
+00030301114i[CPU  ] read_virtual_checks(): read beyond limit
+00030301136i[CPU  ] read_virtual_checks(): read beyond limit
+00030301158i[CPU  ] read_virtual_checks(): read beyond limit
+00030301180i[CPU  ] read_virtual_checks(): read beyond limit
+00030301202i[CPU  ] read_virtual_checks(): read beyond limit
+00030301224i[CPU  ] read_virtual_checks(): read beyond limit
+00030301246i[CPU  ] read_virtual_checks(): read beyond limit
+00030301268i[CPU  ] read_virtual_checks(): read beyond limit
+00030301290i[CPU  ] read_virtual_checks(): read beyond limit
+00030301312i[CPU  ] read_virtual_checks(): read beyond limit
+00030301334i[CPU  ] read_virtual_checks(): read beyond limit
+00030301356i[CPU  ] read_virtual_checks(): read beyond limit
+00030301378i[CPU  ] read_virtual_checks(): read beyond limit
+00030301400i[CPU  ] read_virtual_checks(): read beyond limit
+00030301422i[CPU  ] read_virtual_checks(): read beyond limit
+00030301444i[CPU  ] read_virtual_checks(): read beyond limit
+00030301466i[CPU  ] read_virtual_checks(): read beyond limit
+00030301488i[CPU  ] read_virtual_checks(): read beyond limit
+00030301510i[CPU  ] read_virtual_checks(): read beyond limit
+00030301532i[CPU  ] read_virtual_checks(): read beyond limit
+00030301554i[CPU  ] read_virtual_checks(): read beyond limit
+00030301576i[CPU  ] read_virtual_checks(): read beyond limit
+00030301576e[CPU  ] exception(): 3rd (11) exception with no resolution, shutdown status is 00h, resetting
+00030301576i[CPU  ] protected mode
+00030301576i[CPU  ] CS.d_b = 32 bit
+00030301576i[CPU  ] SS.d_b = 32 bit
+00030301576i[CPU  ] | EAX=00000010  EBX=c010eabb  ECX=c0117000  EDX=c0117000
+00030301576i[CPU  ] | ESP=c01105cc  EBP=c01105f4  ESI=c0110600  EDI=c010eaa4
+00030301576i[CPU  ] | IOPL=0 id vip vif ac vm RF nt of df if tf SF zf af PF cf
+00030301576i[CPU  ] | SEG selector     base    limit G D
+00030301576i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00030301576i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00030301576i[CPU  ] |  DS:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00030301576i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00030301576i[CPU  ] |  ES:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00030301576i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00030301576i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00030301576i[CPU  ] | EIP=c0101843 (c0101843)
+00030301576i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0xc010eac3
+00030301576i[CPU  ] | CR3=0x00127000 CR4=0x00000000
+00030301576i[CPU  ] >> 8b
+00030301576i[CPU  ] >> 46
+00030301576i[CPU  ] >> 30
+00030301576i[CPU  ] >> : mov eax, dword ptr ds:[esi+0x30]
+00030301576i[SYS  ] bx_pc_system_c::Reset(SOFTWARE) called
+00030305316i[BIOS ] $Revision: 1.160 $ $Date: 2006/01/25 17:51:49 $
+00030619063i[KBD  ] reset-disable command received
+00030726750i[VBIOS] VGABios $Id: vgabios.c,v 1.63 2005/12/26 19:50:26 vruppert Exp $
+00030729757i[VBIOS] VBE Bios $Id: vbe.c,v 1.48 2005/12/26 19:50:26 vruppert Exp $
+00031039372i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00031094768i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
+00031150172i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00031198873e[HD   ] ata1: device set to 1 which does not exist
+00032198123e[HD   ] ata1: device set to 1 which does not exist
+00032346704e[HD   ] ata1: device set to 1 which does not exist
+00040401087i[CPU  ] read_virtual_checks(): read beyond limit
+00040401109i[CPU  ] read_virtual_checks(): read beyond limit
+00040401131i[CPU  ] read_virtual_checks(): read beyond limit
+00040401153i[CPU  ] read_virtual_checks(): read beyond limit
+00040401175i[CPU  ] read_virtual_checks(): read beyond limit
+00040401197i[CPU  ] read_virtual_checks(): read beyond limit
+00040401219i[CPU  ] read_virtual_checks(): read beyond limit
+00040401241i[CPU  ] read_virtual_checks(): read beyond limit
+00040401263i[CPU  ] read_virtual_checks(): read beyond limit
+00040401285i[CPU  ] read_virtual_checks(): read beyond limit
+00040401307i[CPU  ] read_virtual_checks(): read beyond limit
+00040401329i[CPU  ] read_virtual_checks(): read beyond limit
+00040401351i[CPU  ] read_virtual_checks(): read beyond limit
+00040401373i[CPU  ] read_virtual_checks(): read beyond limit
+00040401395i[CPU  ] read_virtual_checks(): read beyond limit
+00040401417i[CPU  ] read_virtual_checks(): read beyond limit
+00040401439i[CPU  ] read_virtual_checks(): read beyond limit
+00040401461i[CPU  ] read_virtual_checks(): read beyond limit
+00040401483i[CPU  ] read_virtual_checks(): read beyond limit
+00040401505i[CPU  ] read_virtual_checks(): read beyond limit
+00040401527i[CPU  ] read_virtual_checks(): read beyond limit
+00040401549i[CPU  ] read_virtual_checks(): read beyond limit
+00040401571i[CPU  ] read_virtual_checks(): read beyond limit
+00040401593i[CPU  ] read_virtual_checks(): read beyond limit
+00040401615i[CPU  ] read_virtual_checks(): read beyond limit
+00040401637i[CPU  ] read_virtual_checks(): read beyond limit
+00040401659i[CPU  ] read_virtual_checks(): read beyond limit
+00040401681i[CPU  ] read_virtual_checks(): read beyond limit
+00040401703i[CPU  ] read_virtual_checks(): read beyond limit
+00040401725i[CPU  ] read_virtual_checks(): read beyond limit
+00040401747i[CPU  ] read_virtual_checks(): read beyond limit
+00040401769i[CPU  ] read_virtual_checks(): read beyond limit
+00040401791i[CPU  ] read_virtual_checks(): read beyond limit
+00040401813i[CPU  ] read_virtual_checks(): read beyond limit
+00040401835i[CPU  ] read_virtual_checks(): read beyond limit
+00040401857i[CPU  ] read_virtual_checks(): read beyond limit
+00040401879i[CPU  ] read_virtual_checks(): read beyond limit
+00040401901i[CPU  ] read_virtual_checks(): read beyond limit
+00040401923i[CPU  ] read_virtual_checks(): read beyond limit
+00040401945i[CPU  ] read_virtual_checks(): read beyond limit
+00040401967i[CPU  ] read_virtual_checks(): read beyond limit
+00040401989i[CPU  ] read_virtual_checks(): read beyond limit
+00040402011i[CPU  ] read_virtual_checks(): read beyond limit
+00040402033i[CPU  ] read_virtual_checks(): read beyond limit
+00040402055i[CPU  ] read_virtual_checks(): read beyond limit
+00040402077i[CPU  ] read_virtual_checks(): read beyond limit
+00040402077e[CPU  ] exception(): 3rd (11) exception with no resolution, shutdown status is 00h, resetting
+00040402077i[CPU  ] protected mode
+00040402077i[CPU  ] CS.d_b = 32 bit
+00040402077i[CPU  ] SS.d_b = 32 bit
+00040402077i[CPU  ] | EAX=00000010  EBX=c010eabb  ECX=c0117000  EDX=c0117000
+00040402077i[CPU  ] | ESP=c01105cc  EBP=c01105f4  ESI=c0110600  EDI=c010eaa4
+00040402077i[CPU  ] | IOPL=0 id vip vif ac vm RF nt of df if tf SF zf af PF cf
+00040402077i[CPU  ] | SEG selector     base    limit G D
+00040402077i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00040402077i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00040402077i[CPU  ] |  DS:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00040402077i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00040402077i[CPU  ] |  ES:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00040402077i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00040402077i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00040402077i[CPU  ] | EIP=c0101843 (c0101843)
+00040402077i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0xc010eac3
+00040402077i[CPU  ] | CR3=0x00127000 CR4=0x00000000
+00040402077i[CPU  ] >> 8b
+00040402077i[CPU  ] >> 46
+00040402077i[CPU  ] >> 30
+00040402077i[CPU  ] >> : mov eax, dword ptr ds:[esi+0x30]
+00040402077i[SYS  ] bx_pc_system_c::Reset(SOFTWARE) called
+00040405817i[BIOS ] $Revision: 1.160 $ $Date: 2006/01/25 17:51:49 $
+00040719564i[KBD  ] reset-disable command received
+00040827251i[VBIOS] VGABios $Id: vgabios.c,v 1.63 2005/12/26 19:50:26 vruppert Exp $
+00040830258i[VBIOS] VBE Bios $Id: vbe.c,v 1.48 2005/12/26 19:50:26 vruppert Exp $
+00041139873i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00041195269i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
+00041250673i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00041299374e[HD   ] ata1: device set to 1 which does not exist
+00042298623e[HD   ] ata1: device set to 1 which does not exist
+00042447204e[HD   ] ata1: device set to 1 which does not exist
+00050501587i[CPU  ] read_virtual_checks(): read beyond limit
+00050501609i[CPU  ] read_virtual_checks(): read beyond limit
+00050501631i[CPU  ] read_virtual_checks(): read beyond limit
+00050501653i[CPU  ] read_virtual_checks(): read beyond limit
+00050501675i[CPU  ] read_virtual_checks(): read beyond limit
+00050501697i[CPU  ] read_virtual_checks(): read beyond limit
+00050501719i[CPU  ] read_virtual_checks(): read beyond limit
+00050501741i[CPU  ] read_virtual_checks(): read beyond limit
+00050501763i[CPU  ] read_virtual_checks(): read beyond limit
+00050501785i[CPU  ] read_virtual_checks(): read beyond limit
+00050501807i[CPU  ] read_virtual_checks(): read beyond limit
+00050501829i[CPU  ] read_virtual_checks(): read beyond limit
+00050501851i[CPU  ] read_virtual_checks(): read beyond limit
+00050501873i[CPU  ] read_virtual_checks(): read beyond limit
+00050501895i[CPU  ] read_virtual_checks(): read beyond limit
+00050501917i[CPU  ] read_virtual_checks(): read beyond limit
+00050501939i[CPU  ] read_virtual_checks(): read beyond limit
+00050501961i[CPU  ] read_virtual_checks(): read beyond limit
+00050501983i[CPU  ] read_virtual_checks(): read beyond limit
+00050502005i[CPU  ] read_virtual_checks(): read beyond limit
+00050502027i[CPU  ] read_virtual_checks(): read beyond limit
+00050502049i[CPU  ] read_virtual_checks(): read beyond limit
+00050502071i[CPU  ] read_virtual_checks(): read beyond limit
+00050502093i[CPU  ] read_virtual_checks(): read beyond limit
+00050502115i[CPU  ] read_virtual_checks(): read beyond limit
+00050502137i[CPU  ] read_virtual_checks(): read beyond limit
+00050502159i[CPU  ] read_virtual_checks(): read beyond limit
+00050502181i[CPU  ] read_virtual_checks(): read beyond limit
+00050502203i[CPU  ] read_virtual_checks(): read beyond limit
+00050502225i[CPU  ] read_virtual_checks(): read beyond limit
+00050502247i[CPU  ] read_virtual_checks(): read beyond limit
+00050502269i[CPU  ] read_virtual_checks(): read beyond limit
+00050502291i[CPU  ] read_virtual_checks(): read beyond limit
+00050502313i[CPU  ] read_virtual_checks(): read beyond limit
+00050502335i[CPU  ] read_virtual_checks(): read beyond limit
+00050502357i[CPU  ] read_virtual_checks(): read beyond limit
+00050502379i[CPU  ] read_virtual_checks(): read beyond limit
+00050502401i[CPU  ] read_virtual_checks(): read beyond limit
+00050502423i[CPU  ] read_virtual_checks(): read beyond limit
+00050502445i[CPU  ] read_virtual_checks(): read beyond limit
+00050502467i[CPU  ] read_virtual_checks(): read beyond limit
+00050502489i[CPU  ] read_virtual_checks(): read beyond limit
+00050502511i[CPU  ] read_virtual_checks(): read beyond limit
+00050502533i[CPU  ] read_virtual_checks(): read beyond limit
+00050502555i[CPU  ] read_virtual_checks(): read beyond limit
+00050502577i[CPU  ] read_virtual_checks(): read beyond limit
+00050502577e[CPU  ] exception(): 3rd (11) exception with no resolution, shutdown status is 00h, resetting
+00050502577i[CPU  ] protected mode
+00050502577i[CPU  ] CS.d_b = 32 bit
+00050502577i[CPU  ] SS.d_b = 32 bit
+00050502577i[CPU  ] | EAX=00000010  EBX=c010eabb  ECX=c0117000  EDX=c0117000
+00050502577i[CPU  ] | ESP=c01105cc  EBP=c01105f4  ESI=c0110600  EDI=c010eaa4
+00050502577i[CPU  ] | IOPL=0 id vip vif ac vm RF nt of df if tf SF zf af PF cf
+00050502577i[CPU  ] | SEG selector     base    limit G D
+00050502577i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00050502577i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00050502577i[CPU  ] |  DS:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00050502577i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00050502577i[CPU  ] |  ES:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00050502577i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00050502577i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00050502577i[CPU  ] | EIP=c0101843 (c0101843)
+00050502577i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0xc010eac3
+00050502577i[CPU  ] | CR3=0x00127000 CR4=0x00000000
+00050502577i[CPU  ] >> 8b
+00050502577i[CPU  ] >> 46
+00050502577i[CPU  ] >> 30
+00050502577i[CPU  ] >> : mov eax, dword ptr ds:[esi+0x30]
+00050502577i[SYS  ] bx_pc_system_c::Reset(SOFTWARE) called
+00050506317i[BIOS ] $Revision: 1.160 $ $Date: 2006/01/25 17:51:49 $
+00050820064i[KBD  ] reset-disable command received
+00050927751i[VBIOS] VGABios $Id: vgabios.c,v 1.63 2005/12/26 19:50:26 vruppert Exp $
+00050930758i[VBIOS] VBE Bios $Id: vbe.c,v 1.48 2005/12/26 19:50:26 vruppert Exp $
+00051240373i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00051295769i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
+00051351173i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00051399874e[HD   ] ata1: device set to 1 which does not exist
+00052399123e[HD   ] ata1: device set to 1 which does not exist
+00052547704e[HD   ] ata1: device set to 1 which does not exist
+00060602087i[CPU  ] read_virtual_checks(): read beyond limit
+00060602109i[CPU  ] read_virtual_checks(): read beyond limit
+00060602131i[CPU  ] read_virtual_checks(): read beyond limit
+00060602153i[CPU  ] read_virtual_checks(): read beyond limit
+00060602175i[CPU  ] read_virtual_checks(): read beyond limit
+00060602197i[CPU  ] read_virtual_checks(): read beyond limit
+00060602219i[CPU  ] read_virtual_checks(): read beyond limit
+00060602241i[CPU  ] read_virtual_checks(): read beyond limit
+00060602263i[CPU  ] read_virtual_checks(): read beyond limit
+00060602285i[CPU  ] read_virtual_checks(): read beyond limit
+00060602307i[CPU  ] read_virtual_checks(): read beyond limit
+00060602329i[CPU  ] read_virtual_checks(): read beyond limit
+00060602351i[CPU  ] read_virtual_checks(): read beyond limit
+00060602373i[CPU  ] read_virtual_checks(): read beyond limit
+00060602395i[CPU  ] read_virtual_checks(): read beyond limit
+00060602417i[CPU  ] read_virtual_checks(): read beyond limit
+00060602439i[CPU  ] read_virtual_checks(): read beyond limit
+00060602461i[CPU  ] read_virtual_checks(): read beyond limit
+00060602483i[CPU  ] read_virtual_checks(): read beyond limit
+00060602505i[CPU  ] read_virtual_checks(): read beyond limit
+00060602527i[CPU  ] read_virtual_checks(): read beyond limit
+00060602549i[CPU  ] read_virtual_checks(): read beyond limit
+00060602571i[CPU  ] read_virtual_checks(): read beyond limit
+00060602593i[CPU  ] read_virtual_checks(): read beyond limit
+00060602615i[CPU  ] read_virtual_checks(): read beyond limit
+00060602637i[CPU  ] read_virtual_checks(): read beyond limit
+00060602659i[CPU  ] read_virtual_checks(): read beyond limit
+00060602681i[CPU  ] read_virtual_checks(): read beyond limit
+00060602703i[CPU  ] read_virtual_checks(): read beyond limit
+00060602725i[CPU  ] read_virtual_checks(): read beyond limit
+00060602747i[CPU  ] read_virtual_checks(): read beyond limit
+00060602769i[CPU  ] read_virtual_checks(): read beyond limit
+00060602791i[CPU  ] read_virtual_checks(): read beyond limit
+00060602813i[CPU  ] read_virtual_checks(): read beyond limit
+00060602835i[CPU  ] read_virtual_checks(): read beyond limit
+00060602857i[CPU  ] read_virtual_checks(): read beyond limit
+00060602879i[CPU  ] read_virtual_checks(): read beyond limit
+00060602901i[CPU  ] read_virtual_checks(): read beyond limit
+00060602923i[CPU  ] read_virtual_checks(): read beyond limit
+00060602945i[CPU  ] read_virtual_checks(): read beyond limit
+00060602967i[CPU  ] read_virtual_checks(): read beyond limit
+00060602989i[CPU  ] read_virtual_checks(): read beyond limit
+00060603011i[CPU  ] read_virtual_checks(): read beyond limit
+00060603033i[CPU  ] read_virtual_checks(): read beyond limit
+00060603055i[CPU  ] read_virtual_checks(): read beyond limit
+00060603077i[CPU  ] read_virtual_checks(): read beyond limit
+00060603077e[CPU  ] exception(): 3rd (11) exception with no resolution, shutdown status is 00h, resetting
+00060603077i[CPU  ] protected mode
+00060603077i[CPU  ] CS.d_b = 32 bit
+00060603077i[CPU  ] SS.d_b = 32 bit
+00060603077i[CPU  ] | EAX=00000010  EBX=c010eabb  ECX=c0117000  EDX=c0117000
+00060603077i[CPU  ] | ESP=c01105cc  EBP=c01105f4  ESI=c0110600  EDI=c010eaa4
+00060603077i[CPU  ] | IOPL=0 id vip vif ac vm RF nt of df if tf SF zf af PF cf
+00060603077i[CPU  ] | SEG selector     base    limit G D
+00060603077i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00060603077i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00060603077i[CPU  ] |  DS:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00060603077i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00060603077i[CPU  ] |  ES:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00060603077i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00060603077i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00060603077i[CPU  ] | EIP=c0101843 (c0101843)
+00060603077i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0xc010eac3
+00060603077i[CPU  ] | CR3=0x00127000 CR4=0x00000000
+00060603077i[CPU  ] >> 8b
+00060603077i[CPU  ] >> 46
+00060603077i[CPU  ] >> 30
+00060603077i[CPU  ] >> : mov eax, dword ptr ds:[esi+0x30]
+00060603077i[SYS  ] bx_pc_system_c::Reset(SOFTWARE) called
+00060606817i[BIOS ] $Revision: 1.160 $ $Date: 2006/01/25 17:51:49 $
+00060920564i[KBD  ] reset-disable command received
+00061028251i[VBIOS] VGABios $Id: vgabios.c,v 1.63 2005/12/26 19:50:26 vruppert Exp $
+00061031258i[VBIOS] VBE Bios $Id: vbe.c,v 1.48 2005/12/26 19:50:26 vruppert Exp $
+00061340873i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00061396269i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
+00061451673i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00061500374e[HD   ] ata1: device set to 1 which does not exist
+00062499623e[HD   ] ata1: device set to 1 which does not exist
+00062648204e[HD   ] ata1: device set to 1 which does not exist
+00070702587i[CPU  ] read_virtual_checks(): read beyond limit
+00070702609i[CPU  ] read_virtual_checks(): read beyond limit
+00070702631i[CPU  ] read_virtual_checks(): read beyond limit
+00070702653i[CPU  ] read_virtual_checks(): read beyond limit
+00070702675i[CPU  ] read_virtual_checks(): read beyond limit
+00070702697i[CPU  ] read_virtual_checks(): read beyond limit
+00070702719i[CPU  ] read_virtual_checks(): read beyond limit
+00070702741i[CPU  ] read_virtual_checks(): read beyond limit
+00070702763i[CPU  ] read_virtual_checks(): read beyond limit
+00070702785i[CPU  ] read_virtual_checks(): read beyond limit
+00070702807i[CPU  ] read_virtual_checks(): read beyond limit
+00070702829i[CPU  ] read_virtual_checks(): read beyond limit
+00070702851i[CPU  ] read_virtual_checks(): read beyond limit
+00070702873i[CPU  ] read_virtual_checks(): read beyond limit
+00070702895i[CPU  ] read_virtual_checks(): read beyond limit
+00070702917i[CPU  ] read_virtual_checks(): read beyond limit
+00070702939i[CPU  ] read_virtual_checks(): read beyond limit
+00070702961i[CPU  ] read_virtual_checks(): read beyond limit
+00070702983i[CPU  ] read_virtual_checks(): read beyond limit
+00070703005i[CPU  ] read_virtual_checks(): read beyond limit
+00070703027i[CPU  ] read_virtual_checks(): read beyond limit
+00070703049i[CPU  ] read_virtual_checks(): read beyond limit
+00070703071i[CPU  ] read_virtual_checks(): read beyond limit
+00070703093i[CPU  ] read_virtual_checks(): read beyond limit
+00070703115i[CPU  ] read_virtual_checks(): read beyond limit
+00070703137i[CPU  ] read_virtual_checks(): read beyond limit
+00070703159i[CPU  ] read_virtual_checks(): read beyond limit
+00070703181i[CPU  ] read_virtual_checks(): read beyond limit
+00070703203i[CPU  ] read_virtual_checks(): read beyond limit
+00070703225i[CPU  ] read_virtual_checks(): read beyond limit
+00070703247i[CPU  ] read_virtual_checks(): read beyond limit
+00070703269i[CPU  ] read_virtual_checks(): read beyond limit
+00070703291i[CPU  ] read_virtual_checks(): read beyond limit
+00070703313i[CPU  ] read_virtual_checks(): read beyond limit
+00070703335i[CPU  ] read_virtual_checks(): read beyond limit
+00070703357i[CPU  ] read_virtual_checks(): read beyond limit
+00070703379i[CPU  ] read_virtual_checks(): read beyond limit
+00070703401i[CPU  ] read_virtual_checks(): read beyond limit
+00070703423i[CPU  ] read_virtual_checks(): read beyond limit
+00070703445i[CPU  ] read_virtual_checks(): read beyond limit
+00070703467i[CPU  ] read_virtual_checks(): read beyond limit
+00070703489i[CPU  ] read_virtual_checks(): read beyond limit
+00070703511i[CPU  ] read_virtual_checks(): read beyond limit
+00070703533i[CPU  ] read_virtual_checks(): read beyond limit
+00070703555i[CPU  ] read_virtual_checks(): read beyond limit
+00070703577i[CPU  ] read_virtual_checks(): read beyond limit
+00070703577e[CPU  ] exception(): 3rd (11) exception with no resolution, shutdown status is 00h, resetting
+00070703577i[CPU  ] protected mode
+00070703577i[CPU  ] CS.d_b = 32 bit
+00070703577i[CPU  ] SS.d_b = 32 bit
+00070703577i[CPU  ] | EAX=00000010  EBX=c010eabb  ECX=c0117000  EDX=c0117000
+00070703577i[CPU  ] | ESP=c01105cc  EBP=c01105f4  ESI=c0110600  EDI=c010eaa4
+00070703577i[CPU  ] | IOPL=0 id vip vif ac vm RF nt of df if tf SF zf af PF cf
+00070703577i[CPU  ] | SEG selector     base    limit G D
+00070703577i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00070703577i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00070703577i[CPU  ] |  DS:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00070703577i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00070703577i[CPU  ] |  ES:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00070703577i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00070703577i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00070703577i[CPU  ] | EIP=c0101843 (c0101843)
+00070703577i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0xc010eac3
+00070703577i[CPU  ] | CR3=0x00127000 CR4=0x00000000
+00070703577i[CPU  ] >> 8b
+00070703577i[CPU  ] >> 46
+00070703577i[CPU  ] >> 30
+00070703577i[CPU  ] >> : mov eax, dword ptr ds:[esi+0x30]
+00070703577i[SYS  ] bx_pc_system_c::Reset(SOFTWARE) called
+00070707317i[BIOS ] $Revision: 1.160 $ $Date: 2006/01/25 17:51:49 $
+00071021064i[KBD  ] reset-disable command received
+00071128751i[VBIOS] VGABios $Id: vgabios.c,v 1.63 2005/12/26 19:50:26 vruppert Exp $
+00071131758i[VBIOS] VBE Bios $Id: vbe.c,v 1.48 2005/12/26 19:50:26 vruppert Exp $
+00071441373i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00071496769i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
+00071552173i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00071600874e[HD   ] ata1: device set to 1 which does not exist
+00072600123e[HD   ] ata1: device set to 1 which does not exist
+00072748704e[HD   ] ata1: device set to 1 which does not exist
+00080803087i[CPU  ] read_virtual_checks(): read beyond limit
+00080803109i[CPU  ] read_virtual_checks(): read beyond limit
+00080803131i[CPU  ] read_virtual_checks(): read beyond limit
+00080803153i[CPU  ] read_virtual_checks(): read beyond limit
+00080803175i[CPU  ] read_virtual_checks(): read beyond limit
+00080803197i[CPU  ] read_virtual_checks(): read beyond limit
+00080803219i[CPU  ] read_virtual_checks(): read beyond limit
+00080803241i[CPU  ] read_virtual_checks(): read beyond limit
+00080803263i[CPU  ] read_virtual_checks(): read beyond limit
+00080803285i[CPU  ] read_virtual_checks(): read beyond limit
+00080803307i[CPU  ] read_virtual_checks(): read beyond limit
+00080803329i[CPU  ] read_virtual_checks(): read beyond limit
+00080803351i[CPU  ] read_virtual_checks(): read beyond limit
+00080803373i[CPU  ] read_virtual_checks(): read beyond limit
+00080803395i[CPU  ] read_virtual_checks(): read beyond limit
+00080803417i[CPU  ] read_virtual_checks(): read beyond limit
+00080803439i[CPU  ] read_virtual_checks(): read beyond limit
+00080803461i[CPU  ] read_virtual_checks(): read beyond limit
+00080803483i[CPU  ] read_virtual_checks(): read beyond limit
+00080803505i[CPU  ] read_virtual_checks(): read beyond limit
+00080803527i[CPU  ] read_virtual_checks(): read beyond limit
+00080803549i[CPU  ] read_virtual_checks(): read beyond limit
+00080803571i[CPU  ] read_virtual_checks(): read beyond limit
+00080803593i[CPU  ] read_virtual_checks(): read beyond limit
+00080803615i[CPU  ] read_virtual_checks(): read beyond limit
+00080803637i[CPU  ] read_virtual_checks(): read beyond limit
+00080803659i[CPU  ] read_virtual_checks(): read beyond limit
+00080803681i[CPU  ] read_virtual_checks(): read beyond limit
+00080803703i[CPU  ] read_virtual_checks(): read beyond limit
+00080803725i[CPU  ] read_virtual_checks(): read beyond limit
+00080803747i[CPU  ] read_virtual_checks(): read beyond limit
+00080803769i[CPU  ] read_virtual_checks(): read beyond limit
+00080803791i[CPU  ] read_virtual_checks(): read beyond limit
+00080803813i[CPU  ] read_virtual_checks(): read beyond limit
+00080803835i[CPU  ] read_virtual_checks(): read beyond limit
+00080803857i[CPU  ] read_virtual_checks(): read beyond limit
+00080803879i[CPU  ] read_virtual_checks(): read beyond limit
+00080803901i[CPU  ] read_virtual_checks(): read beyond limit
+00080803923i[CPU  ] read_virtual_checks(): read beyond limit
+00080803945i[CPU  ] read_virtual_checks(): read beyond limit
+00080803967i[CPU  ] read_virtual_checks(): read beyond limit
+00080803989i[CPU  ] read_virtual_checks(): read beyond limit
+00080804011i[CPU  ] read_virtual_checks(): read beyond limit
+00080804033i[CPU  ] read_virtual_checks(): read beyond limit
+00080804055i[CPU  ] read_virtual_checks(): read beyond limit
+00080804077i[CPU  ] read_virtual_checks(): read beyond limit
+00080804077e[CPU  ] exception(): 3rd (11) exception with no resolution, shutdown status is 00h, resetting
+00080804077i[CPU  ] protected mode
+00080804077i[CPU  ] CS.d_b = 32 bit
+00080804077i[CPU  ] SS.d_b = 32 bit
+00080804077i[CPU  ] | EAX=00000010  EBX=c010eabb  ECX=c0117000  EDX=c0117000
+00080804077i[CPU  ] | ESP=c01105cc  EBP=c01105f4  ESI=c0110600  EDI=c010eaa4
+00080804077i[CPU  ] | IOPL=0 id vip vif ac vm RF nt of df if tf SF zf af PF cf
+00080804077i[CPU  ] | SEG selector     base    limit G D
+00080804077i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00080804077i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00080804077i[CPU  ] |  DS:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00080804077i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00080804077i[CPU  ] |  ES:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00080804077i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00080804077i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00080804077i[CPU  ] | EIP=c0101843 (c0101843)
+00080804077i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0xc010eac3
+00080804077i[CPU  ] | CR3=0x00127000 CR4=0x00000000
+00080804077i[CPU  ] >> 8b
+00080804077i[CPU  ] >> 46
+00080804077i[CPU  ] >> 30
+00080804077i[CPU  ] >> : mov eax, dword ptr ds:[esi+0x30]
+00080804077i[SYS  ] bx_pc_system_c::Reset(SOFTWARE) called
+00080807817i[BIOS ] $Revision: 1.160 $ $Date: 2006/01/25 17:51:49 $
+00081121564i[KBD  ] reset-disable command received
+00081229251i[VBIOS] VGABios $Id: vgabios.c,v 1.63 2005/12/26 19:50:26 vruppert Exp $
+00081232258i[VBIOS] VBE Bios $Id: vbe.c,v 1.48 2005/12/26 19:50:26 vruppert Exp $
+00081541873i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00081597269i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
+00081652673i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00081701374e[HD   ] ata1: device set to 1 which does not exist
+00082700623e[HD   ] ata1: device set to 1 which does not exist
+00082849204e[HD   ] ata1: device set to 1 which does not exist
+00090903587i[CPU  ] read_virtual_checks(): read beyond limit
+00090903609i[CPU  ] read_virtual_checks(): read beyond limit
+00090903631i[CPU  ] read_virtual_checks(): read beyond limit
+00090903653i[CPU  ] read_virtual_checks(): read beyond limit
+00090903675i[CPU  ] read_virtual_checks(): read beyond limit
+00090903697i[CPU  ] read_virtual_checks(): read beyond limit
+00090903719i[CPU  ] read_virtual_checks(): read beyond limit
+00090903741i[CPU  ] read_virtual_checks(): read beyond limit
+00090903763i[CPU  ] read_virtual_checks(): read beyond limit
+00090903785i[CPU  ] read_virtual_checks(): read beyond limit
+00090903807i[CPU  ] read_virtual_checks(): read beyond limit
+00090903829i[CPU  ] read_virtual_checks(): read beyond limit
+00090903851i[CPU  ] read_virtual_checks(): read beyond limit
+00090903873i[CPU  ] read_virtual_checks(): read beyond limit
+00090903895i[CPU  ] read_virtual_checks(): read beyond limit
+00090903917i[CPU  ] read_virtual_checks(): read beyond limit
+00090903939i[CPU  ] read_virtual_checks(): read beyond limit
+00090903961i[CPU  ] read_virtual_checks(): read beyond limit
+00090903983i[CPU  ] read_virtual_checks(): read beyond limit
+00090904005i[CPU  ] read_virtual_checks(): read beyond limit
+00090904027i[CPU  ] read_virtual_checks(): read beyond limit
+00090904049i[CPU  ] read_virtual_checks(): read beyond limit
+00090904071i[CPU  ] read_virtual_checks(): read beyond limit
+00090904093i[CPU  ] read_virtual_checks(): read beyond limit
+00090904115i[CPU  ] read_virtual_checks(): read beyond limit
+00090904137i[CPU  ] read_virtual_checks(): read beyond limit
+00090904159i[CPU  ] read_virtual_checks(): read beyond limit
+00090904181i[CPU  ] read_virtual_checks(): read beyond limit
+00090904203i[CPU  ] read_virtual_checks(): read beyond limit
+00090904225i[CPU  ] read_virtual_checks(): read beyond limit
+00090904247i[CPU  ] read_virtual_checks(): read beyond limit
+00090904269i[CPU  ] read_virtual_checks(): read beyond limit
+00090904291i[CPU  ] read_virtual_checks(): read beyond limit
+00090904313i[CPU  ] read_virtual_checks(): read beyond limit
+00090904335i[CPU  ] read_virtual_checks(): read beyond limit
+00090904357i[CPU  ] read_virtual_checks(): read beyond limit
+00090904379i[CPU  ] read_virtual_checks(): read beyond limit
+00090904401i[CPU  ] read_virtual_checks(): read beyond limit
+00090904423i[CPU  ] read_virtual_checks(): read beyond limit
+00090904445i[CPU  ] read_virtual_checks(): read beyond limit
+00090904467i[CPU  ] read_virtual_checks(): read beyond limit
+00090904489i[CPU  ] read_virtual_checks(): read beyond limit
+00090904511i[CPU  ] read_virtual_checks(): read beyond limit
+00090904533i[CPU  ] read_virtual_checks(): read beyond limit
+00090904555i[CPU  ] read_virtual_checks(): read beyond limit
+00090904577i[CPU  ] read_virtual_checks(): read beyond limit
+00090904577e[CPU  ] exception(): 3rd (11) exception with no resolution, shutdown status is 00h, resetting
+00090904577i[CPU  ] protected mode
+00090904577i[CPU  ] CS.d_b = 32 bit
+00090904577i[CPU  ] SS.d_b = 32 bit
+00090904577i[CPU  ] | EAX=00000010  EBX=c010eabb  ECX=c0117000  EDX=c0117000
+00090904577i[CPU  ] | ESP=c01105cc  EBP=c01105f4  ESI=c0110600  EDI=c010eaa4
+00090904577i[CPU  ] | IOPL=0 id vip vif ac vm RF nt of df if tf SF zf af PF cf
+00090904577i[CPU  ] | SEG selector     base    limit G D
+00090904577i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00090904577i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00090904577i[CPU  ] |  DS:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00090904577i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00090904577i[CPU  ] |  ES:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00090904577i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00090904577i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00090904577i[CPU  ] | EIP=c0101843 (c0101843)
+00090904577i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0xc010eac3
+00090904577i[CPU  ] | CR3=0x00127000 CR4=0x00000000
+00090904577i[CPU  ] >> 8b
+00090904577i[CPU  ] >> 46
+00090904577i[CPU  ] >> 30
+00090904577i[CPU  ] >> : mov eax, dword ptr ds:[esi+0x30]
+00090904577i[SYS  ] bx_pc_system_c::Reset(SOFTWARE) called
+00090908317i[BIOS ] $Revision: 1.160 $ $Date: 2006/01/25 17:51:49 $
+00091222064i[KBD  ] reset-disable command received
+00091329751i[VBIOS] VGABios $Id: vgabios.c,v 1.63 2005/12/26 19:50:26 vruppert Exp $
+00091332758i[VBIOS] VBE Bios $Id: vbe.c,v 1.48 2005/12/26 19:50:26 vruppert Exp $
+00091642373i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00091697769i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
+00091753173i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00091801874e[HD   ] ata1: device set to 1 which does not exist
+00092801123e[HD   ] ata1: device set to 1 which does not exist
+00092949704e[HD   ] ata1: device set to 1 which does not exist
+00101004087i[CPU  ] read_virtual_checks(): read beyond limit
+00101004109i[CPU  ] read_virtual_checks(): read beyond limit
+00101004131i[CPU  ] read_virtual_checks(): read beyond limit
+00101004153i[CPU  ] read_virtual_checks(): read beyond limit
+00101004175i[CPU  ] read_virtual_checks(): read beyond limit
+00101004197i[CPU  ] read_virtual_checks(): read beyond limit
+00101004219i[CPU  ] read_virtual_checks(): read beyond limit
+00101004241i[CPU  ] read_virtual_checks(): read beyond limit
+00101004263i[CPU  ] read_virtual_checks(): read beyond limit
+00101004285i[CPU  ] read_virtual_checks(): read beyond limit
+00101004307i[CPU  ] read_virtual_checks(): read beyond limit
+00101004329i[CPU  ] read_virtual_checks(): read beyond limit
+00101004351i[CPU  ] read_virtual_checks(): read beyond limit
+00101004373i[CPU  ] read_virtual_checks(): read beyond limit
+00101004395i[CPU  ] read_virtual_checks(): read beyond limit
+00101004417i[CPU  ] read_virtual_checks(): read beyond limit
+00101004439i[CPU  ] read_virtual_checks(): read beyond limit
+00101004461i[CPU  ] read_virtual_checks(): read beyond limit
+00101004483i[CPU  ] read_virtual_checks(): read beyond limit
+00101004505i[CPU  ] read_virtual_checks(): read beyond limit
+00101004527i[CPU  ] read_virtual_checks(): read beyond limit
+00101004549i[CPU  ] read_virtual_checks(): read beyond limit
+00101004571i[CPU  ] read_virtual_checks(): read beyond limit
+00101004593i[CPU  ] read_virtual_checks(): read beyond limit
+00101004615i[CPU  ] read_virtual_checks(): read beyond limit
+00101004637i[CPU  ] read_virtual_checks(): read beyond limit
+00101004659i[CPU  ] read_virtual_checks(): read beyond limit
+00101004681i[CPU  ] read_virtual_checks(): read beyond limit
+00101004703i[CPU  ] read_virtual_checks(): read beyond limit
+00101004725i[CPU  ] read_virtual_checks(): read beyond limit
+00101004747i[CPU  ] read_virtual_checks(): read beyond limit
+00101004769i[CPU  ] read_virtual_checks(): read beyond limit
+00101004791i[CPU  ] read_virtual_checks(): read beyond limit
+00101004813i[CPU  ] read_virtual_checks(): read beyond limit
+00101004835i[CPU  ] read_virtual_checks(): read beyond limit
+00101004857i[CPU  ] read_virtual_checks(): read beyond limit
+00101004879i[CPU  ] read_virtual_checks(): read beyond limit
+00101004901i[CPU  ] read_virtual_checks(): read beyond limit
+00101004923i[CPU  ] read_virtual_checks(): read beyond limit
+00101004945i[CPU  ] read_virtual_checks(): read beyond limit
+00101004967i[CPU  ] read_virtual_checks(): read beyond limit
+00101004989i[CPU  ] read_virtual_checks(): read beyond limit
+00101005011i[CPU  ] read_virtual_checks(): read beyond limit
+00101005033i[CPU  ] read_virtual_checks(): read beyond limit
+00101005055i[CPU  ] read_virtual_checks(): read beyond limit
+00101005077i[CPU  ] read_virtual_checks(): read beyond limit
+00101005077e[CPU  ] exception(): 3rd (11) exception with no resolution, shutdown status is 00h, resetting
+00101005077i[CPU  ] protected mode
+00101005077i[CPU  ] CS.d_b = 32 bit
+00101005077i[CPU  ] SS.d_b = 32 bit
+00101005077i[CPU  ] | EAX=00000010  EBX=c010eabb  ECX=c0117000  EDX=c0117000
+00101005077i[CPU  ] | ESP=c01105cc  EBP=c01105f4  ESI=c0110600  EDI=c010eaa4
+00101005077i[CPU  ] | IOPL=0 id vip vif ac vm RF nt of df if tf SF zf af PF cf
+00101005077i[CPU  ] | SEG selector     base    limit G D
+00101005077i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00101005077i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00101005077i[CPU  ] |  DS:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00101005077i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00101005077i[CPU  ] |  ES:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00101005077i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00101005077i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00101005077i[CPU  ] | EIP=c0101843 (c0101843)
+00101005077i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0xc010eac3
+00101005077i[CPU  ] | CR3=0x00127000 CR4=0x00000000
+00101005077i[CPU  ] >> 8b
+00101005077i[CPU  ] >> 46
+00101005077i[CPU  ] >> 30
+00101005077i[CPU  ] >> : mov eax, dword ptr ds:[esi+0x30]
+00101005077i[SYS  ] bx_pc_system_c::Reset(SOFTWARE) called
+00101008817i[BIOS ] $Revision: 1.160 $ $Date: 2006/01/25 17:51:49 $
+00101322564i[KBD  ] reset-disable command received
+00101430251i[VBIOS] VGABios $Id: vgabios.c,v 1.63 2005/12/26 19:50:26 vruppert Exp $
+00101433258i[VBIOS] VBE Bios $Id: vbe.c,v 1.48 2005/12/26 19:50:26 vruppert Exp $
+00101742873i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00101798269i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
+00101853673i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00101902374e[HD   ] ata1: device set to 1 which does not exist
+00102901624e[HD   ] ata1: device set to 1 which does not exist
+00103050205e[HD   ] ata1: device set to 1 which does not exist
+00111104588i[CPU  ] read_virtual_checks(): read beyond limit
+00111104610i[CPU  ] read_virtual_checks(): read beyond limit
+00111104632i[CPU  ] read_virtual_checks(): read beyond limit
+00111104654i[CPU  ] read_virtual_checks(): read beyond limit
+00111104676i[CPU  ] read_virtual_checks(): read beyond limit
+00111104698i[CPU  ] read_virtual_checks(): read beyond limit
+00111104720i[CPU  ] read_virtual_checks(): read beyond limit
+00111104742i[CPU  ] read_virtual_checks(): read beyond limit
+00111104764i[CPU  ] read_virtual_checks(): read beyond limit
+00111104786i[CPU  ] read_virtual_checks(): read beyond limit
+00111104808i[CPU  ] read_virtual_checks(): read beyond limit
+00111104830i[CPU  ] read_virtual_checks(): read beyond limit
+00111104852i[CPU  ] read_virtual_checks(): read beyond limit
+00111104874i[CPU  ] read_virtual_checks(): read beyond limit
+00111104896i[CPU  ] read_virtual_checks(): read beyond limit
+00111104918i[CPU  ] read_virtual_checks(): read beyond limit
+00111104940i[CPU  ] read_virtual_checks(): read beyond limit
+00111104962i[CPU  ] read_virtual_checks(): read beyond limit
+00111104984i[CPU  ] read_virtual_checks(): read beyond limit
+00111105006i[CPU  ] read_virtual_checks(): read beyond limit
+00111105028i[CPU  ] read_virtual_checks(): read beyond limit
+00111105050i[CPU  ] read_virtual_checks(): read beyond limit
+00111105072i[CPU  ] read_virtual_checks(): read beyond limit
+00111105094i[CPU  ] read_virtual_checks(): read beyond limit
+00111105116i[CPU  ] read_virtual_checks(): read beyond limit
+00111105138i[CPU  ] read_virtual_checks(): read beyond limit
+00111105160i[CPU  ] read_virtual_checks(): read beyond limit
+00111105182i[CPU  ] read_virtual_checks(): read beyond limit
+00111105204i[CPU  ] read_virtual_checks(): read beyond limit
+00111105226i[CPU  ] read_virtual_checks(): read beyond limit
+00111105248i[CPU  ] read_virtual_checks(): read beyond limit
+00111105270i[CPU  ] read_virtual_checks(): read beyond limit
+00111105292i[CPU  ] read_virtual_checks(): read beyond limit
+00111105314i[CPU  ] read_virtual_checks(): read beyond limit
+00111105336i[CPU  ] read_virtual_checks(): read beyond limit
+00111105358i[CPU  ] read_virtual_checks(): read beyond limit
+00111105380i[CPU  ] read_virtual_checks(): read beyond limit
+00111105402i[CPU  ] read_virtual_checks(): read beyond limit
+00111105424i[CPU  ] read_virtual_checks(): read beyond limit
+00111105446i[CPU  ] read_virtual_checks(): read beyond limit
+00111105468i[CPU  ] read_virtual_checks(): read beyond limit
+00111105490i[CPU  ] read_virtual_checks(): read beyond limit
+00111105512i[CPU  ] read_virtual_checks(): read beyond limit
+00111105534i[CPU  ] read_virtual_checks(): read beyond limit
+00111105556i[CPU  ] read_virtual_checks(): read beyond limit
+00111105578i[CPU  ] read_virtual_checks(): read beyond limit
+00111105578e[CPU  ] exception(): 3rd (11) exception with no resolution, shutdown status is 00h, resetting
+00111105578i[CPU  ] protected mode
+00111105578i[CPU  ] CS.d_b = 32 bit
+00111105578i[CPU  ] SS.d_b = 32 bit
+00111105578i[CPU  ] | EAX=00000010  EBX=c010eabb  ECX=c0117000  EDX=c0117000
+00111105578i[CPU  ] | ESP=c01105cc  EBP=c01105f4  ESI=c0110600  EDI=c010eaa4
+00111105578i[CPU  ] | IOPL=0 id vip vif ac vm RF nt of df if tf SF zf af PF cf
+00111105578i[CPU  ] | SEG selector     base    limit G D
+00111105578i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00111105578i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00111105578i[CPU  ] |  DS:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00111105578i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00111105578i[CPU  ] |  ES:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00111105578i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00111105578i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00111105578i[CPU  ] | EIP=c0101843 (c0101843)
+00111105578i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0xc010eac3
+00111105578i[CPU  ] | CR3=0x00127000 CR4=0x00000000
+00111105578i[CPU  ] >> 8b
+00111105578i[CPU  ] >> 46
+00111105578i[CPU  ] >> 30
+00111105578i[CPU  ] >> : mov eax, dword ptr ds:[esi+0x30]
+00111105578i[SYS  ] bx_pc_system_c::Reset(SOFTWARE) called
+00111109318i[BIOS ] $Revision: 1.160 $ $Date: 2006/01/25 17:51:49 $
+00111423065i[KBD  ] reset-disable command received
+00111530752i[VBIOS] VGABios $Id: vgabios.c,v 1.63 2005/12/26 19:50:26 vruppert Exp $
+00111533759i[VBIOS] VBE Bios $Id: vbe.c,v 1.48 2005/12/26 19:50:26 vruppert Exp $
+00111843374i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00111898770i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
+00111954174i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00112002875e[HD   ] ata1: device set to 1 which does not exist
+00113002124e[HD   ] ata1: device set to 1 which does not exist
+00113150705e[HD   ] ata1: device set to 1 which does not exist
+00121205088i[CPU  ] read_virtual_checks(): read beyond limit
+00121205110i[CPU  ] read_virtual_checks(): read beyond limit
+00121205132i[CPU  ] read_virtual_checks(): read beyond limit
+00121205154i[CPU  ] read_virtual_checks(): read beyond limit
+00121205176i[CPU  ] read_virtual_checks(): read beyond limit
+00121205198i[CPU  ] read_virtual_checks(): read beyond limit
+00121205220i[CPU  ] read_virtual_checks(): read beyond limit
+00121205242i[CPU  ] read_virtual_checks(): read beyond limit
+00121205264i[CPU  ] read_virtual_checks(): read beyond limit
+00121205286i[CPU  ] read_virtual_checks(): read beyond limit
+00121205308i[CPU  ] read_virtual_checks(): read beyond limit
+00121205330i[CPU  ] read_virtual_checks(): read beyond limit
+00121205352i[CPU  ] read_virtual_checks(): read beyond limit
+00121205374i[CPU  ] read_virtual_checks(): read beyond limit
+00121205396i[CPU  ] read_virtual_checks(): read beyond limit
+00121205418i[CPU  ] read_virtual_checks(): read beyond limit
+00121205440i[CPU  ] read_virtual_checks(): read beyond limit
+00121205462i[CPU  ] read_virtual_checks(): read beyond limit
+00121205484i[CPU  ] read_virtual_checks(): read beyond limit
+00121205506i[CPU  ] read_virtual_checks(): read beyond limit
+00121205528i[CPU  ] read_virtual_checks(): read beyond limit
+00121205550i[CPU  ] read_virtual_checks(): read beyond limit
+00121205572i[CPU  ] read_virtual_checks(): read beyond limit
+00121205594i[CPU  ] read_virtual_checks(): read beyond limit
+00121205616i[CPU  ] read_virtual_checks(): read beyond limit
+00121205638i[CPU  ] read_virtual_checks(): read beyond limit
+00121205660i[CPU  ] read_virtual_checks(): read beyond limit
+00121205682i[CPU  ] read_virtual_checks(): read beyond limit
+00121205704i[CPU  ] read_virtual_checks(): read beyond limit
+00121205726i[CPU  ] read_virtual_checks(): read beyond limit
+00121205748i[CPU  ] read_virtual_checks(): read beyond limit
+00121205770i[CPU  ] read_virtual_checks(): read beyond limit
+00121205792i[CPU  ] read_virtual_checks(): read beyond limit
+00121205814i[CPU  ] read_virtual_checks(): read beyond limit
+00121205836i[CPU  ] read_virtual_checks(): read beyond limit
+00121205858i[CPU  ] read_virtual_checks(): read beyond limit
+00121205880i[CPU  ] read_virtual_checks(): read beyond limit
+00121205902i[CPU  ] read_virtual_checks(): read beyond limit
+00121205924i[CPU  ] read_virtual_checks(): read beyond limit
+00121205946i[CPU  ] read_virtual_checks(): read beyond limit
+00121205968i[CPU  ] read_virtual_checks(): read beyond limit
+00121205990i[CPU  ] read_virtual_checks(): read beyond limit
+00121206012i[CPU  ] read_virtual_checks(): read beyond limit
+00121206034i[CPU  ] read_virtual_checks(): read beyond limit
+00121206056i[CPU  ] read_virtual_checks(): read beyond limit
+00121206078i[CPU  ] read_virtual_checks(): read beyond limit
+00121206078e[CPU  ] exception(): 3rd (11) exception with no resolution, shutdown status is 00h, resetting
+00121206078i[CPU  ] protected mode
+00121206078i[CPU  ] CS.d_b = 32 bit
+00121206078i[CPU  ] SS.d_b = 32 bit
+00121206078i[CPU  ] | EAX=00000010  EBX=c010eabb  ECX=c0117000  EDX=c0117000
+00121206078i[CPU  ] | ESP=c01105cc  EBP=c01105f4  ESI=c0110600  EDI=c010eaa4
+00121206078i[CPU  ] | IOPL=0 id vip vif ac vm RF nt of df if tf SF zf af PF cf
+00121206078i[CPU  ] | SEG selector     base    limit G D
+00121206078i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00121206078i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00121206078i[CPU  ] |  DS:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00121206078i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00121206078i[CPU  ] |  ES:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00121206078i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00121206078i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00121206078i[CPU  ] | EIP=c0101843 (c0101843)
+00121206078i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0xc010eac3
+00121206078i[CPU  ] | CR3=0x00127000 CR4=0x00000000
+00121206078i[CPU  ] >> 8b
+00121206078i[CPU  ] >> 46
+00121206078i[CPU  ] >> 30
+00121206078i[CPU  ] >> : mov eax, dword ptr ds:[esi+0x30]
+00121206078i[SYS  ] bx_pc_system_c::Reset(SOFTWARE) called
+00121209818i[BIOS ] $Revision: 1.160 $ $Date: 2006/01/25 17:51:49 $
+00121523565i[KBD  ] reset-disable command received
+00121631252i[VBIOS] VGABios $Id: vgabios.c,v 1.63 2005/12/26 19:50:26 vruppert Exp $
+00121634259i[VBIOS] VBE Bios $Id: vbe.c,v 1.48 2005/12/26 19:50:26 vruppert Exp $
+00121943874i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00121999270i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
+00122054674i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00122103375e[HD   ] ata1: device set to 1 which does not exist
+00123102624e[HD   ] ata1: device set to 1 which does not exist
+00123251205e[HD   ] ata1: device set to 1 which does not exist
+00131305588i[CPU  ] read_virtual_checks(): read beyond limit
+00131305610i[CPU  ] read_virtual_checks(): read beyond limit
+00131305632i[CPU  ] read_virtual_checks(): read beyond limit
+00131305654i[CPU  ] read_virtual_checks(): read beyond limit
+00131305676i[CPU  ] read_virtual_checks(): read beyond limit
+00131305698i[CPU  ] read_virtual_checks(): read beyond limit
+00131305720i[CPU  ] read_virtual_checks(): read beyond limit
+00131305742i[CPU  ] read_virtual_checks(): read beyond limit
+00131305764i[CPU  ] read_virtual_checks(): read beyond limit
+00131305786i[CPU  ] read_virtual_checks(): read beyond limit
+00131305808i[CPU  ] read_virtual_checks(): read beyond limit
+00131305830i[CPU  ] read_virtual_checks(): read beyond limit
+00131305852i[CPU  ] read_virtual_checks(): read beyond limit
+00131305874i[CPU  ] read_virtual_checks(): read beyond limit
+00131305896i[CPU  ] read_virtual_checks(): read beyond limit
+00131305918i[CPU  ] read_virtual_checks(): read beyond limit
+00131305940i[CPU  ] read_virtual_checks(): read beyond limit
+00131305962i[CPU  ] read_virtual_checks(): read beyond limit
+00131305984i[CPU  ] read_virtual_checks(): read beyond limit
+00131306006i[CPU  ] read_virtual_checks(): read beyond limit
+00131306028i[CPU  ] read_virtual_checks(): read beyond limit
+00131306050i[CPU  ] read_virtual_checks(): read beyond limit
+00131306072i[CPU  ] read_virtual_checks(): read beyond limit
+00131306094i[CPU  ] read_virtual_checks(): read beyond limit
+00131306116i[CPU  ] read_virtual_checks(): read beyond limit
+00131306138i[CPU  ] read_virtual_checks(): read beyond limit
+00131306160i[CPU  ] read_virtual_checks(): read beyond limit
+00131306182i[CPU  ] read_virtual_checks(): read beyond limit
+00131306204i[CPU  ] read_virtual_checks(): read beyond limit
+00131306226i[CPU  ] read_virtual_checks(): read beyond limit
+00131306248i[CPU  ] read_virtual_checks(): read beyond limit
+00131306270i[CPU  ] read_virtual_checks(): read beyond limit
+00131306292i[CPU  ] read_virtual_checks(): read beyond limit
+00131306314i[CPU  ] read_virtual_checks(): read beyond limit
+00131306336i[CPU  ] read_virtual_checks(): read beyond limit
+00131306358i[CPU  ] read_virtual_checks(): read beyond limit
+00131306380i[CPU  ] read_virtual_checks(): read beyond limit
+00131306402i[CPU  ] read_virtual_checks(): read beyond limit
+00131306424i[CPU  ] read_virtual_checks(): read beyond limit
+00131306446i[CPU  ] read_virtual_checks(): read beyond limit
+00131306468i[CPU  ] read_virtual_checks(): read beyond limit
+00131306490i[CPU  ] read_virtual_checks(): read beyond limit
+00131306512i[CPU  ] read_virtual_checks(): read beyond limit
+00131306534i[CPU  ] read_virtual_checks(): read beyond limit
+00131306556i[CPU  ] read_virtual_checks(): read beyond limit
+00131306578i[CPU  ] read_virtual_checks(): read beyond limit
+00131306578e[CPU  ] exception(): 3rd (11) exception with no resolution, shutdown status is 00h, resetting
+00131306578i[CPU  ] protected mode
+00131306578i[CPU  ] CS.d_b = 32 bit
+00131306578i[CPU  ] SS.d_b = 32 bit
+00131306578i[CPU  ] | EAX=00000010  EBX=c010eabb  ECX=c0117000  EDX=c0117000
+00131306578i[CPU  ] | ESP=c01105cc  EBP=c01105f4  ESI=c0110600  EDI=c010eaa4
+00131306578i[CPU  ] | IOPL=0 id vip vif ac vm RF nt of df if tf SF zf af PF cf
+00131306578i[CPU  ] | SEG selector     base    limit G D
+00131306578i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00131306578i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00131306578i[CPU  ] |  DS:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00131306578i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00131306578i[CPU  ] |  ES:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00131306578i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00131306578i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00131306578i[CPU  ] | EIP=c0101843 (c0101843)
+00131306578i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0xc010eac3
+00131306578i[CPU  ] | CR3=0x00127000 CR4=0x00000000
+00131306578i[CPU  ] >> 8b
+00131306578i[CPU  ] >> 46
+00131306578i[CPU  ] >> 30
+00131306578i[CPU  ] >> : mov eax, dword ptr ds:[esi+0x30]
+00131306578i[SYS  ] bx_pc_system_c::Reset(SOFTWARE) called
+00131310318i[BIOS ] $Revision: 1.160 $ $Date: 2006/01/25 17:51:49 $
+00131624065i[KBD  ] reset-disable command received
+00131731752i[VBIOS] VGABios $Id: vgabios.c,v 1.63 2005/12/26 19:50:26 vruppert Exp $
+00131734759i[VBIOS] VBE Bios $Id: vbe.c,v 1.48 2005/12/26 19:50:26 vruppert Exp $
+00132044374i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00132099770i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
+00132155174i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00132203875e[HD   ] ata1: device set to 1 which does not exist
+00133203124e[HD   ] ata1: device set to 1 which does not exist
+00133351705e[HD   ] ata1: device set to 1 which does not exist
+00141406088i[CPU  ] read_virtual_checks(): read beyond limit
+00141406110i[CPU  ] read_virtual_checks(): read beyond limit
+00141406132i[CPU  ] read_virtual_checks(): read beyond limit
+00141406154i[CPU  ] read_virtual_checks(): read beyond limit
+00141406176i[CPU  ] read_virtual_checks(): read beyond limit
+00141406198i[CPU  ] read_virtual_checks(): read beyond limit
+00141406220i[CPU  ] read_virtual_checks(): read beyond limit
+00141406242i[CPU  ] read_virtual_checks(): read beyond limit
+00141406264i[CPU  ] read_virtual_checks(): read beyond limit
+00141406286i[CPU  ] read_virtual_checks(): read beyond limit
+00141406308i[CPU  ] read_virtual_checks(): read beyond limit
+00141406330i[CPU  ] read_virtual_checks(): read beyond limit
+00141406352i[CPU  ] read_virtual_checks(): read beyond limit
+00141406374i[CPU  ] read_virtual_checks(): read beyond limit
+00141406396i[CPU  ] read_virtual_checks(): read beyond limit
+00141406418i[CPU  ] read_virtual_checks(): read beyond limit
+00141406440i[CPU  ] read_virtual_checks(): read beyond limit
+00141406462i[CPU  ] read_virtual_checks(): read beyond limit
+00141406484i[CPU  ] read_virtual_checks(): read beyond limit
+00141406506i[CPU  ] read_virtual_checks(): read beyond limit
+00141406528i[CPU  ] read_virtual_checks(): read beyond limit
+00141406550i[CPU  ] read_virtual_checks(): read beyond limit
+00141406572i[CPU  ] read_virtual_checks(): read beyond limit
+00141406594i[CPU  ] read_virtual_checks(): read beyond limit
+00141406616i[CPU  ] read_virtual_checks(): read beyond limit
+00141406638i[CPU  ] read_virtual_checks(): read beyond limit
+00141406660i[CPU  ] read_virtual_checks(): read beyond limit
+00141406682i[CPU  ] read_virtual_checks(): read beyond limit
+00141406704i[CPU  ] read_virtual_checks(): read beyond limit
+00141406726i[CPU  ] read_virtual_checks(): read beyond limit
+00141406748i[CPU  ] read_virtual_checks(): read beyond limit
+00141406770i[CPU  ] read_virtual_checks(): read beyond limit
+00141406792i[CPU  ] read_virtual_checks(): read beyond limit
+00141406814i[CPU  ] read_virtual_checks(): read beyond limit
+00141406836i[CPU  ] read_virtual_checks(): read beyond limit
+00141406858i[CPU  ] read_virtual_checks(): read beyond limit
+00141406880i[CPU  ] read_virtual_checks(): read beyond limit
+00141406902i[CPU  ] read_virtual_checks(): read beyond limit
+00141406924i[CPU  ] read_virtual_checks(): read beyond limit
+00141406946i[CPU  ] read_virtual_checks(): read beyond limit
+00141406968i[CPU  ] read_virtual_checks(): read beyond limit
+00141406990i[CPU  ] read_virtual_checks(): read beyond limit
+00141407012i[CPU  ] read_virtual_checks(): read beyond limit
+00141407034i[CPU  ] read_virtual_checks(): read beyond limit
+00141407056i[CPU  ] read_virtual_checks(): read beyond limit
+00141407078i[CPU  ] read_virtual_checks(): read beyond limit
+00141407078e[CPU  ] exception(): 3rd (11) exception with no resolution, shutdown status is 00h, resetting
+00141407078i[CPU  ] protected mode
+00141407078i[CPU  ] CS.d_b = 32 bit
+00141407078i[CPU  ] SS.d_b = 32 bit
+00141407078i[CPU  ] | EAX=00000010  EBX=c010eabb  ECX=c0117000  EDX=c0117000
+00141407078i[CPU  ] | ESP=c01105cc  EBP=c01105f4  ESI=c0110600  EDI=c010eaa4
+00141407078i[CPU  ] | IOPL=0 id vip vif ac vm RF nt of df if tf SF zf af PF cf
+00141407078i[CPU  ] | SEG selector     base    limit G D
+00141407078i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00141407078i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00141407078i[CPU  ] |  DS:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00141407078i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00141407078i[CPU  ] |  ES:0010( 0002| 0|  0) c087c011 0000701c 0 0
+00141407078i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00141407078i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00141407078i[CPU  ] | EIP=c0101843 (c0101843)
+00141407078i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0xc010eac3
+00141407078i[CPU  ] | CR3=0x00127000 CR4=0x00000000
+00141407078i[CPU  ] >> 8b
+00141407078i[CPU  ] >> 46
+00141407078i[CPU  ] >> 30
+00141407078i[CPU  ] >> : mov eax, dword ptr ds:[esi+0x30]
+00141407078i[SYS  ] bx_pc_system_c::Reset(SOFTWARE) called
+00141410818i[BIOS ] $Revision: 1.160 $ $Date: 2006/01/25 17:51:49 $
+00141724565i[KBD  ] reset-disable command received
+00141832252i[VBIOS] VGABios $Id: vgabios.c,v 1.63 2005/12/26 19:50:26 vruppert Exp $
+00141835259i[VBIOS] VBE Bios $Id: vbe.c,v 1.48 2005/12/26 19:50:26 vruppert Exp $
+00142144874i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00142200270i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
+00142255674i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
+00142304375e[HD   ] ata1: device set to 1 which does not exist
+00143303624e[HD   ] ata1: device set to 1 which does not exist
+00143452205e[HD   ] ata1: device set to 1 which does not exist
+00148737806p[     ] >>PANIC<< SIGNAL 2 caught
+00148737806i[SYS  ] Last time is 148
+00148737806i[NGUI ] bx_nogui_gui_c::exit() not implemented yet.
+00148737806i[CPU  ] protected mode
+00148737806i[CPU  ] CS.d_b = 32 bit
+00148737806i[CPU  ] SS.d_b = 32 bit
+00148737806i[CPU  ] | EAX=00013f88  EBX=00000000  ECX=00000000  EDX=00000000
+00148737806i[CPU  ] | ESP=c0126d08  EBP=c0126d48  ESI=000f4240  EDI=00000000
+00148737806i[CPU  ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf ZF af PF cf
+00148737806i[CPU  ] | SEG selector     base    limit G D
+00148737806i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00148737806i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00148737806i[CPU  ] |  DS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00148737806i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00148737806i[CPU  ] |  ES:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00148737806i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00148737806i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00148737806i[CPU  ] | EIP=c0107286 (c0107286)
+00148737806i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0x00000000
+00148737806i[CPU  ] | CR3=0x0012b000 CR4=0x00000000
+00148737806i[CPU  ] >> ba
+00148737806i[CPU  ] >> 00
+00148737806i[CPU  ] >> 00
+00148737806i[CPU  ] >> 00
+00148737806i[CPU  ] >> 00
+00148737806i[CPU  ] >> : mov edx, 0x00000000
+00148737806i[     ] restoring default signal behavior
+00148737806i[CTRL ] quit_sim called with exit code 1

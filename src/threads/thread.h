@@ -93,11 +93,11 @@ struct thread
     int priority;                       /* Priority. */
     int priority_ori;
     int64_t left_ticks;			/* CUSTOM: blocking time */
-
+	bool donated;
 
     /* Shared between thread.c and synch.c. */
     struct list_elem elem;              /* List element. */
-    //struct list lock_list;
+    struct list lock_list;
 
     struct lock *wait_on;
 

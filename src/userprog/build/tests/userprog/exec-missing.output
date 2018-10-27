@@ -1,5 +1,5 @@
-Copying tests/userprog/exec-missing into /tmp/SwygeWZMcu.dsk...
-Writing command line to /tmp/Xrbhi6AayI.dsk...
+Copying tests/userprog/exec-missing into /tmp/NDgSkNUG_e.dsk...
+Writing command line to /tmp/4G9bSUVwEB.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put exec-missing run exec-missing
@@ -20,8 +20,8 @@ load: no-such-file: open failed
 (exec-missing) end
 exec-missing: exit(0)
 Execution of 'exec-missing' complete.
-Timer: 291 ticks
-Thread: 30 idle ticks, 201 kernel ticks, 67 user ticks
+Timer: 322 ticks
+Thread: 30 idle ticks, 221 kernel ticks, 74 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 76 reads, 216 writes
 hd1:0: 104 reads, 0 writes

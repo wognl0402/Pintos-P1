@@ -86,9 +86,9 @@ bool high_pri_func (const struct list_elem *a,
 void time_to_yield (void){
   if (list_empty (&ready_list))
     return;
-
+  list_sort (&ready_list, high_pri_func, NULL);
   if (thread_current ()->priority < list_entry (list_begin (&ready_list), struct thread, elem)->priority)
-    thread_yield();
+    thread_yield ();
 }
 /*
 typedef bool less_tick_func (const struct list_elem *a,
@@ -240,14 +240,15 @@ thread_create (const char *name, int priority,
   /* Add to run queue. */
   thread_unblock (t);
 
-  
+  time_to_yield ();
+  /*
   if(!list_empty (&ready_list)){
     if(thread_current()->priority < list_entry (list_front (&ready_list),
 						struct thread,
-						elem)){
+						elem)->priority){
       thread_yield();
     }
-  }
+  } */
   return tid;
 }
 
@@ -289,6 +290,10 @@ thread_unblock (struct thread *t)
   list_insert_ordered (&ready_list, &t->elem, high_pri_func, NULL);
   //list_push_back (&ready_list, &t->elem);
   t->status = THREAD_READY;
+
+  if (thread_current () != idle_thread)
+	time_to_yield ();//thread_yield ();
+
   intr_set_level (old_level);
 
   
@@ -353,7 +358,15 @@ thread_exit (void)
 	}
   }
   */
-  
+
+  struct thread *t = thread_current ();
+  struct list_elem *e;
+  for (e=list_begin (&t->lock_list);
+	  e!=list_end (&t->lock_list);
+	  e=list_next (e)){
+	struct lock *lock = list_entry (e, struct lock, lock_list_elem);
+	lock_release (lock);
+  }
   /* Just set our status to dying and schedule another process.
      We will be destroyed during the call to schedule_tail(). */
   intr_disable ();
@@ -397,7 +410,14 @@ void
 thread_set_priority (int new_priority) 
 {
   struct thread *curr = thread_current ();
-  curr->priority = new_priority;
+  //curr->priority = new_priority;
+  //curr->priority_ori = new_priority;
+  if (curr->priority == curr->priority_ori){
+	curr->priority = new_priority;
+	curr->priority_ori = new_priority;
+  }else
+	curr->priority = new_priority;
+  
   /*
    * list_sort (&ready_list, high_pri_func, NULL);
   if(list_empty (&curr->lock_list)){
@@ -410,12 +430,21 @@ thread_set_priority (int new_priority)
     curr->priority_ori = new_priority;
     curr->priority = new_priority;
     time_to_yield();
-  }
-  //if(!list_empty (&ready_list) && new_priority < list_entry (list_front (&ready_list), struct thread, elem))
-    //time_to_yield();    //thread_yield();
-  */
-}
+  }*/
 
+  //if(!list_empty (&ready_list) && new_priority < list_entry (list_front (&ready_list), struct thread, elem)->priority)
+    //time_to_yield();    //thread_yield();
+  
+  time_to_yield ();
+  /*
+   * if (!list_empty (&ready_list)){
+    list_sort (&ready_list, high_pri_func, NULL); 
+	if (new_priority < list_entry (list_front (&ready_list), struct thread, elem)->priority)
+		time_to_yield ();
+  }*/
+}
+void thread_set_priority_don (int new_priority){
+}
 
 /* Returns the current thread's priority. */
 int
@@ -541,7 +570,8 @@ init_thread (struct thread *t, const char *name, int priority)
   t->priority = priority;
 
   t->priority_ori = priority;
-  //list_init (&t->lock_list);
+  list_init (&t->lock_list);
+  t->wait_on = NULL;
 
   //P2 second addition
   list_push_back (&thread_list, &t->all);

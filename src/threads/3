@@ -36,20 +36,11 @@ void thread_donate (struct thread *, int );
      decrement it.
    - up or "V": increment the value (and wake up one waiting
      thread, if any). */
-bool high_lock_func (const struct list_elem *, const struct list_elem *, void *);
-
 bool high_lock_func (const struct list_elem *a,
 			     const struct list_elem *b,
 				 		     void *aux){
-  const struct lock *x = list_entry (a, struct lock, lock_list_elem);
-  const struct lock *y = list_entry (b, struct lock, lock_list_elem);
-  ASSERT (x !=NULL && y!= NULL);
-  return x->high_pri > y->high_pri;
-
-  
-  
-  //    return list_entry (a, struct lock, lock_list_elem)->high_pri >
-//	  	list_entry (b, struct lock, lock_list_elem)->high_pri;  
+    return list_entry (a, struct lock, lock_list_elem)->high_pri >
+	  	list_entry (b, struct lock, lock_list_elem)->high_pri;  
 }
 void
 sema_init (struct semaphore *sema, unsigned value) 
@@ -122,13 +113,13 @@ sema_up (struct semaphore *sema)
   ASSERT (sema != NULL);
 
   old_level = intr_disable ();
-  sema->value++;
   if (!list_empty (&sema->waiters)){ 
     list_sort (&sema->waiters, high_pri_func, NULL);
 	thread_unblock (list_entry (list_pop_front (&sema->waiters),
                                 struct thread, elem));
   
   }
+  sema->value++;
   //time_to_yield ();
   intr_set_level (old_level);
 }
@@ -190,7 +181,6 @@ lock_init (struct lock *lock)
   ASSERT (lock != NULL);
   lock->high_pri = PRI_MIN;
 	//PRI_MIN;
-  
   lock->holder = NULL;
   sema_init (&lock->semaphore, 1);
 }
@@ -245,45 +235,26 @@ lock_acquire (struct lock *lock_)
   struct lock *lock = lock_;
   struct thread *seeker = thread_current ();
   struct thread *keeper = lock->holder;
-   
+  
   if (!thread_mlfqs){
     seeker->wait_on = lock;
-	
 	if (keeper == NULL){
 	  lock->high_pri = seeker->priority;
 	}else{
 	  
-	  if (keeper->priority < seeker->priority){
-		keeper->priority = seeker->priority;
-		keeper->donated = true;
-	    lock->high_pri = seeker->priority;
-	  }
-	  
-	  while (keeper->wait_on != NULL){
-		if (keeper->priority > keeper->wait_on->holder->priority){
-		  
-		  keeper->wait_on->holder->priority = keeper->priority;
-		  keeper = keeper->wait_on->holder;
-		  keeper->donated = true;
-		}else
-		  break;
-	  }
-
-	 /* 
-	  while (keeper != NULL && keeper->priority < seeker->priority){
+	  while (keeper != NULL){
 		thread_donate (keeper, seeker->priority);
 		if (lock->high_pri < seeker->priority){
-		  //lock->high_pri = seeker->priority;
+		  lock->high_pri = seeker->priority;
 		}
 		lock = keeper->wait_on;
 		if (lock == NULL)
 		  break;
 		keeper = lock->holder;
 	  }
-	  */
+	  
 	}
-	
-  } 
+  }
   sema_down (&lock->semaphore);
   lock->holder = thread_current ();
   
@@ -363,14 +334,13 @@ lock_release (struct lock *lock_)
 
   lock->holder = NULL;
   sema_up (&lock->semaphore);
-   
-  if (!thread_mlfqs){
-  //	undonate_new (lock);
+  /*
+  if (!thread_mlfqs)
+  {//	undonate_new (lock);
    // time_to_yield ();
 
-    //if (lock->holder != NULL)
+	//if (lock->holder != NULL)
 	list_remove (&lock->lock_list_elem);
-	
 	if (list_empty (&cur->lock_list)){
 	  cur->donated = false;
 	  thread_donate (cur, cur->priority_ori);
@@ -380,10 +350,15 @@ lock_release (struct lock *lock_)
 	  list_sort (&(cur->lock_list), high_lock_func, NULL);
 	  struct lock *temp = list_entry (list_front (&(cur->lock_list)), struct lock, lock_list_elem);
 	  thread_donate (cur, temp->high_pri);
+	  //lock_highest (lock);
+	  //if (cur->priority_ori > temp->high_pri){
+		//cur->priority = cur->priority_ori;
+		//cur->donated = false;
+	  //}else{
+		//cur->priority = temp->high_pri;
+	  
 	}
-	
-  }
-  
+  }*/
 }
 	
 

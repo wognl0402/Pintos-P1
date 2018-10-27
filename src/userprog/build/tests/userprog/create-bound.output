@@ -1,5 +1,5 @@
-Copying tests/userprog/create-bound into /tmp/L2UlpAUr9c.dsk...
-Writing command line to /tmp/vV31VC4pn2.dsk...
+Copying tests/userprog/create-bound into /tmp/cmRnDYKYXh.dsk...
+Writing command line to /tmp/bmXimr_vAj.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put create-bound run create-bound
@@ -15,16 +15,20 @@ Boot complete.
 Putting 'create-bound' into the file system...
 Executing 'create-bound':
 (create-bound) begin
-(create-bound) create("quux.dat"): 1
-(create-bound) end
-create-bound: exit(0)
-Execution of 'create-bound' complete.
-Timer: 284 ticks
-Thread: 30 idle ticks, 199 kernel ticks, 62 user ticks
+Kernel PANIC at ../../lib/kernel/list.c:84 in list_next(): assertion `is_head (elem) || is_interior (elem)' failed.
+Call stack: 0xc011be14Page fault at 0x54: not present error reading page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105852
+ cr2=00000054 error=00000000
+ eax=00000054 ebx=00000054 ecx=c011bd40 edx=000003d4
+ esi=c010db20 edi=c010f241 esp=c010ef8b ebp=c011bdd4
+ cs=0008 ds=0010 es=0010 ss=be14
+Kernel PANIC recursion at ../../userprog/exception.c:102 in kill().
+Timer: 305 ticks
+Thread: 30 idle ticks, 197 kernel ticks, 78 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 81 reads, 224 writes
+hd0:1: 59 reads, 220 writes
 hd1:0: 106 reads, 0 writes
-Console: 867 characters output
+Console: 1255 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 1 page faults
 Powering off...

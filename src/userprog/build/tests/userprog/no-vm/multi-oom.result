@@ -1,1 +1,5 @@
-PASS
+FAIL
+Kernel panic in run: PANIC at ../../userprog/exception.c:102 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc0161c84
+Translation of call stack:
+0xc0161c84: (unknown)
